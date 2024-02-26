@@ -12,8 +12,7 @@ jobs:
         contents: write
       steps:
         - name: Install ubuntu dependencies
-          run:  sudo apt-get install libcgal-dev \
-                    libglu1-mesa-dev \
+          run:  sudo apt-get update && apt-get install libcgal-dev \
                     libglu1-mesa-dev \
                     libcurl4-openssl-dev \
                     zlib1g-dev \
