@@ -1,19 +1,93 @@
-# Setup {.unnumbered}
+# General Information {.unnumbered}
+
+## Schedule
+
+All classes will be held in room 308 of the Faculty of Economics and Business.
+
+1. Tu 10:15-11:45 in room 308 (will move to room 303 after 27.02.2024)
+2. Tu 12:15-13:45 in room 308
+3. We 14:15-15:45 in room 308
+
+## Grading
+
+TBA
+
+## GitHub Repository
+
+All course materials for the exercise classes will be available in the GitHub
+repository:
+
+[https://github.com/febse/econ2024](https://github.com/febse/econ2024)
+
+## Software Setup
 
 The exercise classes require a minimal software setup:
 
-1.  Open [https://cran.r-project.org/](https://cran.r-project.org/) and you will find links to R builds for different operating systems. Click on the link matching your operating system and choose the latest version of R. When using the Windows operating system you will see a link "Install R for the first time". Click on this link and then download R installer. Run the installer and accept the default settings.
+1. Install Git for you operating system from [https://git-scm.com/downloads/](https://git-scm.com/downloads).
 
-2.  After installing R, open [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/). If the web page recognizes your operating system you will see a download button (right side of the page) for R studio. If the button does not appear, scroll down the page and find the installer appropriate for your operating system.
+2. Open <https://cran.r-project.org/>, and you will find links to R builds for different operating systems. Click on the link matching your operating system and choose the latest version of R. When using the Windows operating system, you will see a link "Install R for the first time ." Click on this link and then download the R installer. Run the installer. Leave the default settings unchanged unless you know what you are doing.
 
-3.  Open R Studio on your computer and create a new R Markdown file. Find the file drop down menu on the top-left part of the interface, select "New file", then find "R Markdown" and click on it. If this is the first time you create a R Markdown file, R Studio will ask you to install a number of packages. Confirm this and wait for the packages to download and install. Click "OK" on the dialogue button, and you will see a text file with a simple R Markdown template that demonstrates some basic functionality.
+3. After installing R, open <https://posit.co/download/rstudio-desktop/>. If the web page recognizes your operating system, you will see a download button (right side of the page) for R studio. If the button does not appear, scroll down the page and find the installer appropriate for your operating system.
 
-4.  In this exercise class we use a lot of functions from the `tidyverse` system and several other packages. In order to access these you need the to install this package. Find the R console in R studio and paste the following line on the command line. Press enter to run it. This will install some of the necessary packages on your system.
 
-```{r, eval = FALSE}
-install.packages(c("tidyverse", "broom", "patchwork", "skimr"))
+4. Should you encounter difficulties installing R and R Studio, you can watch
+these video guides:
+
+- [Windows](https://www.youtube.com/watch?v=YrEe2TLr3MI)
+- [Mac](https://www.youtube.com/watch?v=n8kP7c_QbLA)
+- [Ubuntu 22.04](https://www.youtube.com/watch?v=NFEDEXWomI4)
+
+5. Here are some video guides on how to install git:
+- [Windows](https://www.youtube.com/watch?v=AdzKzlp66sQ)
+- [Mac](https://www.youtube.com/watch?v=hMEyBtsuAJE)
+- [Linux](https://www.youtube.com/watch?v=bc3_FL9zWWs)
+
+5. **The following steps depend on git being installed**. Open R Studio and open a new project dialog: File -> New Project. In the 
+dialog, click on the third option: version control. From the next menu, select git.
+
+![Open a new project.](figures/RStudio_new_project_1.png)
+![Select version control](figures/RStudio_new_project_2.png)
+![Select git](figures/RStudio_new_project_3.png)
+
+In the Repository URL field, paste the address of the course repository:
+
+```
+https://github.com/febse/econ2024.git
 ```
 
-Optional: more on R Markdown: https://rmarkdown.rstudio.com/lesson-1.html
 
-Optional: a base R cheatsheet: https://www.datacamp.com/cheat-sheet/getting-started-r
+![Paste the git repository address](figures/RStudio_new_project_4.png)
+Click on the Create Project button and wait for git R studio to clone the
+repository and open the project.
+
+![Step 5](figures/RStudio_new_project_5.png)
+6. The content of the GitHub repository will be updated continuously throughout
+the semester. In order to download the new files or updated versions of already
+existing files, you can use git pull. Open the git window in the upper right pane
+of R studio and click the pull button. This will download all changes from the GitHub
+repository to your local copy.
+
+![Step 7](figures/RStudio_new_project_7.png)
+
+
+8. Note that if you have modified the files tracked by git that have changed
+in the repository, git pull will fail with an error similar to this one:
+
+![Pull error](figures/RStudio_new_project_8.png)
+
+To avoid this, you can roll back the file to its original state. Right-click
+on the file in the git window and choose "revert."
+
+![Revert](figures/RStudio_new_project_revert.png)
+
+9. In the exercise classes, we will use many functions from the `tidyverse` system and several other packages. Before accessing these packages' functionality, you need to install them first. Find the R console in R studio and paste the following line on the command line. Press enter to run it and wait for the installation to complete.
+
+```{r, eval = FALSE}
+install.packages(c("tidyverse", "tidyverts", "xts", "quantmod", "urca"))
+```
+
+![Install packages](figures/RStudio_new_project_install_packages.png)
+
+Optional: more on Quarto: <https://quarto.org/docs/guide/>
+
+Optional: a base R cheatsheet: <https://www.datacamp.com/cheat-sheet/getting-started-r>
