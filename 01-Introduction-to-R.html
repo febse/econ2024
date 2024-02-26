@@ -245,7 +245,6 @@ window.Quarto = {
   <li><a href="#factors" id="toc-factors" class="nav-link" data-scroll-target="#factors"><span class="header-section-number">1.9</span> Factors</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">1.10</span> Functions</a></li>
   <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="header-section-number">1.11</span> Data Frames</a></li>
-  <li><a href="#deps" id="toc-deps" class="nav-link" data-scroll-target="#deps"><span class="header-section-number">2</span> Deps:</a></li>
   </ul>
 </nav>
     </div>
@@ -506,15 +505,15 @@ Strict Equality and Floating Point Numbers
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Strict equality generally makes sense for strings and integers, but not for floating point numbers! Due to the way floating point numbers are represented in the computer, you may get unexpected results when comparing them. This is because floating point numbers are not stored exactly in the computer. For example, the number 0.1 cannot be represented exactly in binary, so it is stored as an approximation. This can lead to unexpected results when comparing floating point numbers. For example, you may get a result like this:</p>
+<p>Strict equality generally makes sense for strings and integers, but not for floating point numbers! This is because real numbers cannot be stored exactly in memory and computers work with finite precision. This can lead to unexpected results when comparing floating point numbers. For example, you may get a result like this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
 </div>
-<p>Mathematically, <span class="math inline">\sqrt(2)^2</span> is exactlyequal to 2, but the comparison returns <code>FALSE</code>.</p>
-<p>This is because <code>sqrt(2)^2</code> is computed with a finite precision and is not equal to 2. When printing the number in the console you may not see the difference because the print function formats the number. To compare floating point numbers, you should use the <code>all.equal</code> function, which takes into account the fact that floating point numbers are not stored exactly in the computer.</p>
+<p>Mathematically, <span class="math inline">\sqrt(2)^2</span> is exactl yequal to 2, but the comparison in <code>R</code> returns <code>FALSE</code>.</p>
+<p>When printing the number in the console you may not see the difference because the print function formats the number. To compare floating point numbers, you should use the <code>all.equal</code> function, which takes into accounts for the finite precision of floating point numbers.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -701,9 +700,6 @@ Levels: A B C</code></pre>
 3 Charlie    35 TRUE    </code></pre>
 </div>
 </div>
-</section>
-<section id="deps" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Deps:</h1>
 
 
 </section>
