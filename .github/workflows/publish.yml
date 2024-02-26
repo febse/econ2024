@@ -1,28 +1,28 @@
 on:
     workflow_dispatch:
     push:
-      branches: main
-  
-  name: Quarto Publish
-  
-  jobs:
+        branches: main
+
+name: Quarto Publish
+
+jobs:
     build-deploy:
       runs-on: ubuntu-latest
       permissions:
         contents: write
       steps:
         - name: Install ubuntu dependencies
-          run:  sudo apt-get install libcgal-dev 
-                    libglu1-mesa-dev 
-                    libglu1-mesa-dev 
-                    libcurl4-openssl-dev
-                    zlib1g-dev
-                    libfontconfig1-dev
-                    libharfbuzz-dev
-                    libfribidi-dev
-                    libfreetype6-dev
-                    libpng-dev
-                    libtiff5-dev
+          run:  sudo apt-get install libcgal-dev \
+                    libglu1-mesa-dev \
+                    libglu1-mesa-dev \
+                    libcurl4-openssl-dev \
+                    zlib1g-dev \
+                    libfontconfig1-dev \
+                    libharfbuzz-dev \
+                    libfribidi-dev \
+                    libfreetype6-dev \
+                    libpng-dev \
+                    libtiff5-dev \
                     libjpeg-dev
   
         - name: Check out repository
