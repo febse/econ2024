@@ -1,0 +1,197 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introduction to linear regression analysis",
+    "section": "",
+    "text": "Setup\nThe exercise classes require a minimal software setup:\n\nOpen https://cran.r-project.org/ and you will find links to R builds for different operating systems. Click on the link matching your operating system and choose the latest version of R. When using the Windows operating system you will see a link “Install R for the first time”. Click on this link and then download R installer. Run the installer and accept the default settings.\nAfter installing R, open https://posit.co/download/rstudio-desktop/. If the web page recognizes your operating system you will see a download button (right side of the page) for R studio. If the button does not appear, scroll down the page and find the installer appropriate for your operating system.\nOpen R Studio on your computer and create a new R Markdown file. Find the file drop down menu on the top-left part of the interface, select “New file”, then find “R Markdown” and click on it. If this is the first time you create a R Markdown file, R Studio will ask you to install a number of packages. Confirm this and wait for the packages to download and install. Click “OK” on the dialogue button, and you will see a text file with a simple R Markdown template that demonstrates some basic functionality.\nIn this exercise class we use a lot of functions from the tidyverse system and several other packages. In order to access these you need the to install this package. Find the R console in R studio and paste the following line on the command line. Press enter to run it. This will install some of the necessary packages on your system.\n\n\ninstall.packages(c(\"tidyverse\", \"broom\", \"patchwork\", \"skimr\"))\n\nOptional: more on R Markdown: https://rmarkdown.rstudio.com/lesson-1.html\nOptional: a base R cheatsheet: https://www.datacamp.com/cheat-sheet/getting-started-r",
+    "crumbs": [
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "01-Introduction-to-R.html",
+    "href": "01-Introduction-to-R.html",
+    "title": "1  Introduction to R",
+    "section": "",
+    "text": "1.1 R Studio Shortcuts\nR Studio provides a lost of useful shortcuts that can speed up your workflow. We will mostly use the following shortcuts in R Studio:\nFor a complete list of shortcuts, you can go to Help -&gt; Keyboard Shortcuts Help.",
+    "crumbs": [
+      "R and Statistics",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to R</span>"
+    ]
+  },
+  {
+    "objectID": "01-Introduction-to-R.html#r-studio-shortcuts",
+    "href": "01-Introduction-to-R.html#r-studio-shortcuts",
+    "title": "1  Introduction to R",
+    "section": "",
+    "text": "Ctrl+Enter: Run the current line or selection\nCtrl+Shift+Enter: Run the current chunk\nCtrl+Alt+i: Insert a new R code chunk\nAlt + - (minus): Insert the assignment operator &lt;-",
+    "crumbs": [
+      "R and Statistics",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to R</span>"
+    ]
+  },
+  {
+    "objectID": "01-Introduction-to-R.html#arithmetic-operations",
+    "href": "01-Introduction-to-R.html#arithmetic-operations",
+    "title": "1  Introduction to R",
+    "section": "1.2 Arithmetic Operations",
+    "text": "1.2 Arithmetic Operations\n\n1 + 4\n\n[1] 5\n\n3 - 2\n\n[1] 1\n\n2 * 8\n\n[1] 16\n\n2 / 8\n\n[1] 0.25\n\n2^4\n\n[1] 16",
+    "crumbs": [
+      "R and Statistics",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to R</span>"
+    ]
+  },
+  {
+    "objectID": "01-Introduction-to-R.html#assignment",
+    "href": "01-Introduction-to-R.html#assignment",
+    "title": "1  Introduction to R",
+    "section": "1.3 Assignment",
+    "text": "1.3 Assignment\nVery often we want to store a value in the memory of the computer so that we can reuse it later. In R we store values under names (variables) by using the assignment operator `&lt;-` Shortcut for the assignment operator: Alt - (minus)\n\ny &lt;- 34\ny - 40\n\n[1] -6\n\n\nRun this chunks and look at the global environment (right side of R Studio) to see it appear\nin the list of objects.",
+    "crumbs": [
+      "R and Statistics",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to R</span>"
+    ]
+  },
+  {
+    "objectID": "01-Introduction-to-R.html#numeric-vectors",
+    "href": "01-Introduction-to-R.html#numeric-vectors",
+    "title": "1  Introduction to R",
+    "section": "1.4 Numeric Vectors",
+    "text": "1.4 Numeric Vectors\nIt is very common to group values that belong together in a single structure. By default numeric vectors in R are created as double precision floating point numbers. You can create a numeric vector using the c (concatenate) function.\n\nx &lt;- c(1, 4)\nx\n\n[1] 1 4\n\n\nTo see the type of a variable, you can use the typeof function.\n\ntypeof(x)\n\n[1] \"double\"\n\n\n\n## Length, average, sum of a numeric vector\nmean(x)\n\n[1] 2.5\n\nsum(x)\n\n[1] 5\n\nlength(x)\n\n[1] 2\n\n\n\n## Documentation\n# ?mean\n\nVectors can only hold data of the same type: either numeric, character, or logical. If you try to create a vector with different types of data, R will coerce the data to the same type. For example, if you try to create a vector with a number and a string, R will coerce the number to a string.\n\nc(1, \"Hello\")\n\n[1] \"1\"     \"Hello\"",
+    "crumbs": [
+      "R and Statistics",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to R</span>"
+    ]
+  },
+  {
+    "objectID": "01-Introduction-to-R.html#character-vectors",
+    "href": "01-Introduction-to-R.html#character-vectors",
+    "title": "1  Introduction to R",
+    "section": "1.5 Character Vectors",
+    "text": "1.5 Character Vectors\nYou can assign character vectors to variables as well. String literals are enclosed in quotes. It does not matter if you use single or double quotes, but you have to be consistent.\n\nz &lt;- \"Hello, world!\"\n\nThe c function can be used to create character vectors as well.\n\nz1 &lt;- c(\"Hello\", \"world!\")\nz1\n\n[1] \"Hello\"  \"world!\"\n\n\nStrings can be concatenated using the paste function.\n\npaste(z1, collapse = \",\")\n\n[1] \"Hello,world!\"\n\n\n\npaste(z1, \"some string\", sep = \" \")\n\n[1] \"Hello some string\"  \"world! some string\"\n\n\nR is different from other programming languages in that it is vectorized. This means that most functions are designed to work with vectors. For example, the paste function can take a vector of strings as input and return a vector of strings as output.\nUnlike other languages, using length on a variable holding a string will not return the number of characters in the string, but the number of elements in the vector. To count the number of characters in a string, you can use the nchar function.\n\nlength(z)\n\n[1] 1\n\n\n\nnchar(z)\n\n[1] 13\n\n\nAs a lot of other function, nchar is vectorized, meaning that it can take a vector of strings as input and return a vector of integers as output.\n\nnchar(c(\"Hi\", \"world!\", \"Some longer sentence\"))\n\n[1]  2  6 20",
+    "crumbs": [
+      "R and Statistics",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to R</span>"
+    ]
+  },
+  {
+    "objectID": "01-Introduction-to-R.html#recycling",
+    "href": "01-Introduction-to-R.html#recycling",
+    "title": "1  Introduction to R",
+    "section": "1.6 Recycling",
+    "text": "1.6 Recycling\nIf you try to perform an operation on two vectors of different lengths, R will recycle the shorter vector to match the length of the longer vector. This is called recycling or broadcasting.\nLet’s run an example to see how recycling works. We want to add a scalar to each element of a vector. Mathematically, this does not make sense, because you can only add/subtract element-wise two vectors of the same length. However, R will recycle the scalar to match the length of the vector. Recycling means that it creates a new vector by repeating the shorter vector until it has the same length as the longer vector.\n\nc(2, 5) + 1\n\n[1] 3 6\n\n\n\nc(2, 3, 5, 7) + c(10, 20)\n\n[1] 12 23 15 27\n\nc(2, 3, 5, 7) / c(10, 20)\n\n[1] 0.20 0.15 0.50 0.35\n\n\nTake care when using recycling, because it can lead to unexpected results. For example, if you try to add two vectors of different lengths, R will still recycle the shorter vector to match the length of the longer vector, but it will also issue a warning.\n\nc(2, 5) + c(1, 2, 10)\n\nWarning in c(2, 5) + c(1, 2, 10): longer object length is not a multiple of\nshorter object length\n\n\n[1]  3  7 12\n\n\nPay attention to the warning message. It is telling you that the shorter vector is being recycled to match the length of the longer vector. Most of the time, this is not what you want. It is better to be explicit about what you want to happen, so don’t rely on recycling with vectors of different lengths.",
+    "crumbs": [
+      "R and Statistics",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to R</span>"
+    ]
+  },
+  {
+    "objectID": "01-Introduction-to-R.html#logical-operators-and-logical-values",
+    "href": "01-Introduction-to-R.html#logical-operators-and-logical-values",
+    "title": "1  Introduction to R",
+    "section": "1.7 Logical Operators and Logical Values",
+    "text": "1.7 Logical Operators and Logical Values\nThere are two logical values: TRUE and FALSE. These emerge from logical operations and indicate whether some condition is fulfilled (TRUE) or not FALSE. You will find similar constructs in all other languages, where this type of data is commonly known as boolean or binary (i.e., only two values).\nThe basic logical operators in R are\n\n## Less than\n2 &lt; 5\n\n[1] TRUE\n\n## Less than or equal\n2 &lt;= 5\n\n[1] TRUE\n\n## Greater than\n2 &gt; 5\n\n[1] FALSE\n\n## Greater or equal\n2 &gt;= 5\n\n[1] FALSE\n\n## Exactly equal\n2 == 5\n\n[1] FALSE\n\n\"Text 2\" == \"Text 2\"\n\n[1] TRUE\n\n\n\nz == \"Text 2\"\n\n[1] FALSE\n\n\n\n\n\n\n\n\nStrict Equality and Floating Point Numbers\n\n\n\nStrict equality generally makes sense for strings and integers, but not for floating point numbers! Due to the way floating point numbers are represented in the computer, you may get unexpected results when comparing them. This is because floating point numbers are not stored exactly in the computer. For example, the number 0.1 cannot be represented exactly in binary, so it is stored as an approximation. This can lead to unexpected results when comparing floating point numbers. For example, you may get a result like this:\n\nsqrt(2)^2 == 2\n\n[1] FALSE\n\n\nMathematically, \\sqrt(2)^2 is exactlyequal to 2, but the comparison returns FALSE.\nThis is because sqrt(2)^2 is computed with a finite precision and is not equal to 2. When printing the number in the console you may not see the difference because the print function formats the number. To compare floating point numbers, you should use the all.equal function, which takes into account the fact that floating point numbers are not stored exactly in the computer.\n\nall.equal(sqrt(2)^2, 2)\n\n[1] TRUE",
+    "crumbs": [
+      "R and Statistics",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to R</span>"
+    ]
+  },
+  {
+    "objectID": "01-Introduction-to-R.html#indexing",
+    "href": "01-Introduction-to-R.html#indexing",
+    "title": "1  Introduction to R",
+    "section": "1.8 Indexing",
+    "text": "1.8 Indexing\nYou can access elements of a vector using the square brackets. The index of the first element is 1, not 0 (this is different from many other programming languages). You can also use negative indices to exclude elements from the vector.\n\nexpenses &lt;- c(100, 200, 300, 400, 500)\nexpenses[1]\n\n[1] 100\n\n\n\nexpenses[2:4]\n\n[1] 200 300 400\n\n\n\nexpenses[-1]\n\n[1] 200 300 400 500\n\n\nYou can also use logical vectors to index a vector.\n\nexpenses[c(TRUE, FALSE, TRUE, FALSE, TRUE)]\n\n[1] 100 300 500\n\n\nBe careful when using logical vectors to index a vector. If the logical vector is shorter than the vector you are indexing, R will recycle the logical vector to match the length of the vector you are indexing.\n\n(1:10)[c(TRUE, FALSE)]\n\n[1] 1 3 5 7 9",
+    "crumbs": [
+      "R and Statistics",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to R</span>"
+    ]
+  },
+  {
+    "objectID": "01-Introduction-to-R.html#factors",
+    "href": "01-Introduction-to-R.html#factors",
+    "title": "1  Introduction to R",
+    "section": "1.9 Factors",
+    "text": "1.9 Factors\nFactors are used to represent categorical data (e.g., sex: male/femal, employment status: employed, unemployed, retired, etc.). They are stored as integers and have labels associated with them. Factors are important in statistical modeling and are commonly used in plotting functions. Factors are not strings, they are integers with labels.\n\nsome_vector &lt;- c(\"A\", \"B\", \"A\", \"C\", \"B\", \"A\")\nsome_factor &lt;- factor(some_vector)\nsome_factor\n\n[1] A B A C B A\nLevels: A B C\n\nlevels(some_factor)\n\n[1] \"A\" \"B\" \"C\"\n\n\nYou can coerce (convert) a factor to an integer vector using the as.integer function.\n\nas.integer(some_factor)\n\n[1] 1 2 1 3 2 1\n\n\nYou can coerce (convert) as factor to a character vector using the as.character function.\n\nas.character(some_factor)\n\n[1] \"A\" \"B\" \"A\" \"C\" \"B\" \"A\"\n\n\nFactors have also some safeguards. If you try to perform an operation that is not defined for factors, R will issue a warning. For example, you cannot meaningfully add a number to a factor. Note that this will only raise a warning, not an error.\n\nsome_factor + 1\n\nWarning in Ops.factor(some_factor, 1): '+' not meaningful for factors\n\n\n[1] NA NA NA NA NA NA\n\n\n\nsome_factor[1] &lt;- \"Some undefined level\"\n\nWarning in `[&lt;-.factor`(`*tmp*`, 1, value = \"Some undefined level\"): invalid\nfactor level, NA generated\n\nsome_factor\n\n[1] &lt;NA&gt; B    A    C    B    A   \nLevels: A B C\n\n\nRead more about factors in the R documentation, as well as the section on factors here",
+    "crumbs": [
+      "R and Statistics",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to R</span>"
+    ]
+  },
+  {
+    "objectID": "01-Introduction-to-R.html#functions",
+    "href": "01-Introduction-to-R.html#functions",
+    "title": "1  Introduction to R",
+    "section": "1.10 Functions",
+    "text": "1.10 Functions\nFunctions are a fundamental building block most languages, including R. They are used to carry out a specific task and encapsulate a sequence of steps. You can avoid repeating the same code over and over again by abstracting the code into a function.\nYou can think of a function as a recipe. It takes some ingredients (arguments) and returns a dish (output).\nLet’s look at some examples of functions in R, without going into too much detail.\nTo define a function, you use the function keyword and assing the function to a variable. The function is then called by using the variable name and passing the arguments in parentheses. The function has a body that is enclosed in curly braces.\nLet’s write a function that takes two numbers and returns TRUE or FALSE depending on whether the sum of the arguments is odd. Functions return the value of the last expression in the body of the function unless you explicitly use the return keyword.\n\nis_even_sum &lt;- function(x, y) {\n  (x + y) %% 2 == 0\n}\n\nis_even_sum(2, 3)\n\n[1] FALSE\n\nis_even_sum(2, 4)\n\n[1] TRUE\n\n\nThe %% operator is the modulo operator. It returns the remainder of the division of the first number by the second number.\n\n2 %% 2\n\n[1] 0\n\n3 %% 2\n\n[1] 1\n\n\nWriting functions is a large topic and we will not cover all the details in this course. You can find more information about functions in R in the R documentation.\nA thing to note is that R is (mostly) a functional programming language and functions generally do not modify their arguments. This means that if you pass a vector to a function and the function modifies the vector, the original vector will not be changed. This is different from many other languages, where functions can modify their arguments. The reason for this is that arguments are copied when they are passed to a function. This is done to avoid side effects and make the code easier to reason about.\n\nx &lt;- c(1, 2, 3)\n\nf &lt;- function(y) {\n  y[1] &lt;- 100\n  y\n}\n\nf(x)\n\n[1] 100   2   3\n\nx\n\n[1] 1 2 3",
+    "crumbs": [
+      "R and Statistics",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to R</span>"
+    ]
+  },
+  {
+    "objectID": "01-Introduction-to-R.html#data-frames",
+    "href": "01-Introduction-to-R.html#data-frames",
+    "title": "1  Introduction to R",
+    "section": "1.11 Data Frames",
+    "text": "1.11 Data Frames\nThe data for our course will most often be a table of values with columns representing measurements of different characteristics (variables) and rows representing different observations. The base data structure to store this kind of data in R is the data frame. In this course we will use a structure called tibble that is provided by the dplyr package, part of the tidyverse collection of packages.\nYou can create a data frame using the tibble function. The tibble function takes named arguments, where the names are the names of the columns and the values are the vectors that will be the columns of the data frame.\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.0     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\ndt &lt;- tibble(\n  name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  age = c(25, 30, 35),\n  employed = c(TRUE, FALSE, TRUE)\n)\n\ndt\n\n# A tibble: 3 × 3\n  name      age employed\n  &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt;   \n1 Alice      25 TRUE    \n2 Bob        30 FALSE   \n3 Charlie    35 TRUE",
+    "crumbs": [
+      "R and Statistics",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to R</span>"
+    ]
+  },
+  {
+    "objectID": "02-Descriptive-Statistics.html",
+    "href": "02-Descriptive-Statistics.html",
+    "title": "2  DataFrames (Tibbles)",
+    "section": "",
+    "text": "2.1 Basic data summaries\nThe first step in any data analysis is to gain an initial understanding of the context of the data and the distributions of the variables of interest. In this course our main focus will be on two features of the variables: their location and their variability (how different are the observations between each other).",
+    "crumbs": [
+      "R and Statistics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>DataFrames (Tibbles)</span>"
+    ]
+  },
+  {
+    "objectID": "02-Descriptive-Statistics.html#basic-data-summaries",
+    "href": "02-Descriptive-Statistics.html#basic-data-summaries",
+    "title": "2  DataFrames (Tibbles)",
+    "section": "",
+    "text": "2.1.1 Location\nThe most important measure of location for us will be the empirical mean of a variable (arithmetic average). Let i index the observation in our data set from the first (i = 1) to the last i = n. In our case n = 1816: the number of all interviewed customers. We can represent the values of some (numeric) characteristic (e.g., the persons’ weight) as a vector of values x = (x_1, \\ldots, x_n). In this notation x_1 is the weight of the first customer in the data set (x_1 = 210 pounds). The arithmetic average is defined as the sum of all values divided by the number of observations:\n\n\\bar{x} = \\frac{1}{n}(x_1 + x_2 + \\ldots + x_n) = \\frac{1}{n}\\sum_{i = 1}^{n} x_i\n\nLet us now compute the arithmetic average of weight and height. One way to access the columns of the data set earnings is to write the name of the data set and then after a $ sign the name of the column.\n\nmean(earnings$height)\n\n[1] 66.56883\n\nmean(earnings$weight, na.rm = TRUE)\n\n[1] 156.3052\n\n\nAnother measure of location is the (empirical) median. You can compute it using the median function.\n\nmedian(earnings$height)\n\n[1] 66\n\n\nThe result is a median height of 66 inches. This means that about half of the customers were taller than 66 inches.\n\n\n2.1.2 Variability\nThe next important feature of the data is its variability. It answers the following question: how different are the customers between each other with respect to body height (for example). There are numerous ways to measure variability.\nOne intuitive measure would be the range of the data, defined as the difference by the maximal observed height and the minimal observed height\n\nmin(earnings$height)\n\n[1] 57\n\nmax(earnings$height)\n\n[1] 82\n\nrange(earnings$height)\n\n[1] 57 82\n\n\n\nmax(earnings$height) - min(earnings$height)\n\n[1] 25\n\n\nAnother measure is the inter-quartile range. The quartiles are defined similar to the median. To see this lets use the example of body height. The first quartile of height (25-th percentile and 0.25 quantile are different names for the same thing) is the height for which about one quarter of the customers are shorter than it. You can compute it with the function quantile.\n\nquantile(earnings$height, 0.25)\n\n25% \n 64 \n\n\nAbout 25 percent of our customers were shorter than 64 inches.\nThe second quartile is the same as the median (two quarters).\n\nquantile(earnings$height, 0.5)\n\n50% \n 66 \n\nmedian(earnings$height)\n\n[1] 66\n\n\nThe third quartile is the height for which three quarter of the customers are shorter than it.\n\nquantile(earnings$height, 0.75)\n\n  75% \n69.25 \n\n\nIn our case about three quarter of the customers were shorter than 69.25 inches.\nThe inter-quartile range is simply the difference between the third quartile and the second quartile.\n\nquantile(earnings$height, 0.75) - quantile(earnings$height, 0.25)\n\n 75% \n5.25 \n\n\nAbout half of our customers had a hight between the first quartile (64 inches) and the third quartile (69.25 inches). The inter-quartile range shows you the difference between the height of the talles person and the shortest person for the central 50 percent of the customers.\nAs the range, the inter-quartile range is a measure of variability.\nThe most important measure of variability and the one that will be central to our analysis is the (empirical) variance.\n\nDefinition 2.1 (Empirical variance) For a vector of values x = (x_1, \\ldots, x_n) it is defined as the average (apart from a small correction in the denominator) squared deviation of the values from their mean.\n\nS^2_x = \\frac{(x_1 - \\bar{x})^2 + \\ldots + (x_n - \\bar{x}^2)}{n - 1} = \\frac{1}{n - 1} \\sum_{i = 1}^{n}(x_i - \\bar{x})^2: \\quad \\text{variance}\\\\\nS_x = \\sqrt{S^2_x} \\quad \\text{standard deviation}\n\n\n\nExample 2.1 (Computing the empirical variance) Lets apply the formula from Definition 2.1 to a very simple example with just three values.\n\nx_1 = -1, x_2 = 0, x_3 = 4\n\nFirst, the empirical mean of these values is\n\n\\bar{x} = \\frac{-1 + 0 + 4}{3} = 1\n\nNow lets substitute these values in the definition of the empirical variance:\n\n\\begin{aligned}\nS^2_{x} & = \\frac{(x_1 - \\bar{x})^2 + (x_2 - \\bar{x})^2 + (x_3 - \\bar{x})^2 }{n - 1} \\\\\n        & = \\frac{(-1 - 1)^2 + (0 - 1)^2 + (4 - 1)^2 }{3 - 1} \\\\\n        & = \\frac{(-2)^2 + (- 1)^2 + (3 )^2 }{2} \\\\\n        & = \\frac{4 + 1 + 9 }{2} \\\\\n        & = \\frac{14}{2} \\\\\n        & = 7\n\\end{aligned}\n Using R to compute the same thing:\n\nx &lt;- c(-1, 0, 4)\nx_avg &lt;- mean(x)\n\n((-1 - x_avg)^2 + (0 - x_avg)^2 + (4 - x_avg)^2) / (length(x) - 1)\n\n[1] 7\n\n\nThere is also a special function var that can compute it from a vector\n\nvar(x)\n\n[1] 7\n\n\nThe (empirical) standard deviation is simply the square root of the (empirical) variance.\n\nS_x = \\sqrt{S^2_x} = \\sqrt{7} \\approx 2.64\n\nIn R you have two options: take the square root of the result of var using the sqrt function or use sd (standard deviation) to compute the standard deviation directly.\n\nsqrt(var(x))\n\n[1] 2.645751\n\nsd(x)\n\n[1] 2.645751\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nThe following contains code discussed during the classes without additional explanations\n\n\n\n## Basic summaries for the whole tibble\nearnings %&gt;% skimr::skim()\n\n\nData summary\n\n\nName\nPiped data\n\n\nNumber of rows\n1816\n\n\nNumber of columns\n17\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n1\n\n\nnumeric\n16\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nethnicity\n0\n1\n5\n8\n0\n4\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nheight\n0\n1.00\n66.57\n3.83\n57.00\n64.00\n66.00\n69.25\n82.00\n▂▇▅▁▁\n\n\nweight\n27\n0.99\n156.31\n34.62\n80.00\n130.00\n150.00\n180.00\n342.00\n▅▇▃▁▁\n\n\nmale\n0\n1.00\n0.37\n0.48\n0.00\n0.00\n0.00\n1.00\n1.00\n▇▁▁▁▅\n\n\nearn\n0\n1.00\n21147.30\n22531.77\n0.00\n6000.00\n16000.00\n27000.00\n400000.00\n▇▁▁▁▁\n\n\nearnk\n0\n1.00\n21.15\n22.53\n0.00\n6.00\n16.00\n27.00\n400.00\n▇▁▁▁▁\n\n\neducation\n2\n1.00\n13.24\n2.56\n2.00\n12.00\n12.00\n15.00\n18.00\n▁▁▁▇▃\n\n\nmother_education\n244\n0.87\n13.61\n3.22\n3.00\n12.00\n13.00\n16.00\n99.00\n▇▁▁▁▁\n\n\nfather_education\n295\n0.84\n13.65\n3.25\n3.00\n12.00\n13.00\n16.00\n99.00\n▇▁▁▁▁\n\n\nwalk\n0\n1.00\n5.30\n2.60\n1.00\n3.00\n6.00\n8.00\n8.00\n▃▁▃▁▇\n\n\nexercise\n0\n1.00\n3.05\n2.32\n1.00\n1.00\n2.00\n5.00\n7.00\n▇▁▁▁▃\n\n\nsmokenow\n1\n1.00\n1.75\n0.44\n1.00\n1.00\n2.00\n2.00\n2.00\n▃▁▁▁▇\n\n\ntense\n1\n1.00\n1.42\n2.16\n0.00\n0.00\n0.00\n2.00\n7.00\n▇▁▁▁▁\n\n\nangry\n1\n1.00\n1.42\n2.16\n0.00\n0.00\n0.00\n2.00\n7.00\n▇▁▁▁▁\n\n\nage\n0\n1.00\n42.93\n17.16\n18.00\n29.00\n39.00\n56.00\n91.00\n▇▇▃▃▁\n\n\nheight_cm\n0\n1.00\n169.08\n9.73\n144.78\n162.56\n167.64\n175.89\n208.28\n▂▇▅▁▁\n\n\nweight_kg\n27\n0.99\n70.34\n15.58\n36.00\n58.50\n67.50\n81.00\n153.90\n▅▇▃▁▁\n\n\n\n\n\n\ntable(earnings$ethnicity)\n\n\n   Black Hispanic    Other    White \n     180      104       38     1494",
+    "crumbs": [
+      "R and Statistics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>DataFrames (Tibbles)</span>"
+    ]
+  },
+  {
+    "objectID": "02-Descriptive-Statistics.html#visualizations",
+    "href": "02-Descriptive-Statistics.html#visualizations",
+    "title": "2  DataFrames (Tibbles)",
+    "section": "2.2 Visualizations",
+    "text": "2.2 Visualizations\nHistogram\n\nearnings %&gt;%\n  ggplot(aes(x = height)) +\n  geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\nA smooth density plot is an alternative way to visualize the distribution of a variable.\n\nearnings %&gt;%\n  ggplot(aes(x = height)) +\n  geom_density()\n\n\n\n\n\n\n\n\nThe boxplot shows the median and the 25-th and 75-th percentiles (the box). The whiskers in the plot stretch to the minimum or the maximum observed value, unless there are extreme observations that are shown as single dots.\n\nearnings %&gt;%\n  ggplot(aes(x = height)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\nGroup comparisons\n\nearnings %&gt;%\n  ggplot(aes(x = height, y = ethnicity)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\nThe scatterplot will be our primary tool in studying associations between variables. It represents each observation as a point in a coordinate system defined by the variables that we would like to study.\n\nearnings1 %&gt;%\n  ggplot(aes(x = weight_kg, y = height_cm)) +\n  geom_point(position = \"jitter\", alpha = 0.5) +\n  geom_smooth(method = \"lm\") +\n  labs(\n    x = \"Weight (kg)\",\n    y = \"Height (cm)\"\n  )\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning: Removed 27 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 27 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\n\nsummary(lm(height_cm ~ weight_kg, data = earnings1))\n\n\nCall:\nlm(formula = height_cm ~ weight_kg, data = earnings1)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-27.639  -5.611  -0.084   5.645  36.248 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 145.00916    0.89138  162.68   &lt;2e-16 ***\nweight_kg     0.34314    0.01237   27.73   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 8.15 on 1787 degrees of freedom\n  (27 observations deleted due to missingness)\nMultiple R-squared:  0.3009,    Adjusted R-squared:  0.3005 \nF-statistic: 769.1 on 1 and 1787 DF,  p-value: &lt; 2.2e-16",
+    "crumbs": [
+      "R and Statistics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>DataFrames (Tibbles)</span>"
+    ]
+  },
+  {
+    "objectID": "00-Recommended-Literature.html",
+    "href": "00-Recommended-Literature.html",
+    "title": "Recommended reading",
+    "section": "",
+    "text": "The R for data science (Wickham and Grolemund 2016) book covers data management and exploration using the tools from the tidyverse packages.\nDalgaard (2008): Introductory statistics with R. 2nd edition. New York: Springer. This textbook offers an introductory level to probability and basic linear models with a focus on the software (R) and with only a minimal discussion of the mathematical fundamentals. The code shown is base R and mostly differs from what we are using in the classes (tidyverse).\nSheather (2009): A Modern Approach to Regression with R. New York, NY: Springer New York (Springer Texts in Statistics). Available at: https://doi.org/10.1007/978-0-387-09608-7.\nThe Textbook focuses on linear regression models and develops the mathematical fundametals alongside with examples using R.\nGelman, Hill, and Vehtari (2021): Regression and other stories. Cambridge New York, NY Port Melbourne, VIC New Delhi Singapore: Cambridge University Press (Analytical methods for social research). Available at: https://doi.org/10.1017/9781139161879.\nAnother introduction into basic probability theory and linear models. The references to Bayesian inference in the book are not relevant to our course.\nFaraway (2015): Linear models with R. Second edition. Boca Raton: CRC Press, Taylor & Francis Group.\nAnother introduction into linear models with examples in R.\n\n\n\n\n\nDalgaard, Peter. 2008. Introductory Statistics with R. 2nd edition. Statistics and Computing. New York: Springer.\n\n\nFaraway, Julian James. 2015. Linear Models with R. Second edition. Chapman & Hall/CRC Texts in Statistical Science Series. Boca Raton: CRC Press, Taylor & Francis Group.\n\n\nGelman, Andrew, Jennifer Hill, and Aki Vehtari. 2021. Regression and Other Stories. Analytical Methods for Social Research. Cambridge New York, NY Port Melbourne, VIC New Delhi Singapore: Cambridge University Press. https://doi.org/10.1017/9781139161879.\n\n\nSheather, Simon. 2009. A Modern Approach to Regression with R. Edited by George Casella, Stephen Fienberg, and Ingram Olkin. Springer Texts in Statistics. New York, NY: Springer New York. https://doi.org/10.1007/978-0-387-09608-7.\n\n\nWickham, Hadley, and Garrett Grolemund. 2016. R for Data Science: Import, Tidy, Transform, Visualize, and Model Data. First edition. Sebastopol, CA: O’Reilly.",
+    "crumbs": [
+      "Recommended reading"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Dalgaard, Peter. 2008. Introductory Statistics with\nR. 2nd edition. Statistics and Computing. New\nYork: Springer.\n\n\nFaraway, Julian James. 2015. Linear Models with R.\nSecond edition. Chapman & Hall/CRC Texts\nin Statistical Science Series. Boca Raton: CRC Press,\nTaylor & Francis Group.\n\n\nGelman, Andrew, Jennifer Hill, and Aki Vehtari. 2021. Regression and\nOther Stories. Analytical Methods for Social Research.\nCambridge New York, NY Port Melbourne, VIC New Delhi\nSingapore: Cambridge University Press. https://doi.org/10.1017/9781139161879.\n\n\nSheather, Simon. 2009. A Modern Approach to\nRegression with R. Edited by George\nCasella, Stephen Fienberg, and Ingram Olkin. Springer Texts\nin Statistics. New York, NY: Springer\nNew York. https://doi.org/10.1007/978-0-387-09608-7.\n\n\nWickham, Hadley, and Garrett Grolemund. 2016. R for Data Science:\nImport, Tidy, Transform, Visualize, and Model Data. First edition.\nSebastopol, CA: O’Reilly.",
+    "crumbs": [
+      "References"
+    ]
+  }
+]
