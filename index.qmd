@@ -25,12 +25,18 @@ The exercise classes require a minimal software setup:
 
 1. Install Git for you operating system from [https://git-scm.com/downloads/](https://git-scm.com/downloads).
 
-2. Open <https://cran.r-project.org/>, and you will find links to R builds for different operating systems. Click on the link matching your operating system and choose the latest version of R. When using the Windows operating system, you will see a link "Install R for the first time ." Click on this link and then download the R installer. Run the installer. Leave the default settings unchanged unless you know what you are doing.
+2. Open a GitHub account at [https://github.com/signup](https://github.com/signup).
+While you don't need an account to download the course materials, you will need
+one to receive and  submit your assignments (this will be explained in details during
+the exercise classes). You can apply for the GitHub student benefits at [https://education.github.com/pack](https://education.github.com/pack). If approved
+you can receive free access to the GitHub Pro plan and to GitHub Copilot, an AI tool
+that helps you write code.
 
-3. After installing R, open <https://posit.co/download/rstudio-desktop/>. If the web page recognizes your operating system, you will see a download button (right side of the page) for R studio. If the button does not appear, scroll down the page and find the installer appropriate for your operating system.
+3. Open <https://cran.r-project.org/>, and you will find links to R builds for different operating systems. Click on the link matching your operating system and choose the latest version of R. When using the Windows operating system, you will see a link "Install R for the first time ." Click on this link and then download the R installer. Run the installer. Leave the default settings unchanged unless you know what you are doing.
 
+4. After installing R, open <https://posit.co/download/rstudio-desktop/>. If the web page recognizes your operating system, you will see a download button (right side of the page) for R studio. If the button does not appear, scroll down the page and find the installer appropriate for your operating system.
 
-4. Should you encounter difficulties installing R and R Studio, you can watch
+5. Should you encounter difficulties installing R and R Studio, you can watch
 these video guides:
 
 - [Windows](https://www.youtube.com/watch?v=YrEe2TLr3MI)
