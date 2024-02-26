@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to linear regression analysis - 2&nbsp; DataFrames (Tibbles)</title>
+<title>Introduction to linear regression analysis - 2&nbsp; Descriptive Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -158,7 +158,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-Introduction-to-R.html">R and Statistics</a></li><li class="breadcrumb-item"><a href="./02-Descriptive-Statistics.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">DataFrames (Tibbles)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-Introduction-to-R.html">R and Statistics</a></li><li class="breadcrumb-item"><a href="./02-Descriptive-Statistics.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -207,7 +207,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-Descriptive-Statistics.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">DataFrames (Tibbles)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span></a>
   </div>
 </li>
       </ul>
@@ -234,7 +234,8 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#basic-data-summaries" id="toc-basic-data-summaries" class="nav-link active" data-scroll-target="#basic-data-summaries"><span class="header-section-number">2.1</span> Basic data summaries</a>
+  <li><a href="#data-frames-tibbles" id="toc-data-frames-tibbles" class="nav-link active" data-scroll-target="#data-frames-tibbles"><span class="header-section-number">2.0.1</span> Data Frames (Tibbles)</a></li>
+  <li><a href="#basic-data-summaries" id="toc-basic-data-summaries" class="nav-link" data-scroll-target="#basic-data-summaries"><span class="header-section-number">2.1</span> Basic data summaries</a>
   <ul class="collapse">
   <li><a href="#location" id="toc-location" class="nav-link" data-scroll-target="#location"><span class="header-section-number">2.1.1</span> Location</a></li>
   <li><a href="#variability" id="toc-variability" class="nav-link" data-scroll-target="#variability"><span class="header-section-number">2.1.2</span> Variability</a></li>
@@ -246,9 +247,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-Introduction-to-R.html">R and Statistics</a></li><li class="breadcrumb-item"><a href="./02-Descriptive-Statistics.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">DataFrames (Tibbles)</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-Introduction-to-R.html">R and Statistics</a></li><li class="breadcrumb-item"><a href="./02-Descriptive-Statistics.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">DataFrames (Tibbles)</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></h1>
 </div>
 
 
@@ -265,8 +266,10 @@ window.Quarto = {
 </header>
 
 
+<section id="data-frames-tibbles" class="level3" data-number="2.0.1">
+<h3 data-number="2.0.1" class="anchored" data-anchor-id="data-frames-tibbles"><span class="header-section-number">2.0.1</span> Data Frames (Tibbles)</h3>
 <p>In most of our work we will use data tables containing variables (columns) that describe characteristics of observations (rows). Most of the time we will use <code>tibble</code> objects to hold the data. <code>tibble</code> objects are a modern rewrite of the <code>data.frame</code> (an older object type for storing data).</p>
-<p>To use it we need to load the <code>tidyvsere</code> packages</p>
+<p>To use it we need to load the <code>dplyr</code> package, a part of the <code>tidyverse</code> collection of packages.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -345,6 +348,7 @@ dbl (14): height, weight, male, earn, earnk, education, mother_education, fa...
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(height_cm, weight_kg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that the object holding the original data is unaffected by mutate and select. The reason for this is that functions in R generally do not change their arguments. If you want to add the two new columns to the original data set <code>earnings</code>, you need to overwrite it with an assignment.</p>
+</section>
 <section id="basic-data-summaries" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="basic-data-summaries"><span class="header-section-number">2.1</span> Basic data summaries</h2>
 <p>The first step in any data analysis is to gain an initial understanding of the context of the data and the distributions of the variables of interest. In this course our main focus will be on two features of the variables: their location and their variability (how different are the observations between each other).</p>
@@ -440,7 +444,7 @@ dbl (14): height, weight, male, earn, earnk, education, mother_education, fa...
 <p>As the range, the inter-quartile range is a measure of variability.</p>
 <p>The most important measure of variability and the one that will be central to our analysis is the (empirical) variance.</p>
 <div id="def-empirical-variance" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 2.1 (Empirical variance)</strong></span> For a vector of values <span class="math inline">x = (x_1, \ldots, x_n)</span> it is defined as the average (apart from a small correction in the denominator) squared deviation of the values from their mean.</p>
+<p><span class="theorem-title"><strong>Definition 2.1 (Empirical Variance)</strong></span> For a vector of values <span class="math inline">x = (x_1, \ldots, x_n)</span> it is defined as the average (apart from a small correction in the denominator) squared deviation of the values from their mean.</p>
 <p><span class="math display">
 S^2_x = \frac{(x_1 - \bar{x})^2 + \ldots + (x_n - \bar{x}^2)}{n - 1} = \frac{1}{n - 1} \sum_{i = 1}^{n}(x_i - \bar{x})^2: \quad \text{variance}\\
 S_x = \sqrt{S^2_x} \quad \text{standard deviation}
