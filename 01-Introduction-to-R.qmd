@@ -55,12 +55,19 @@ y - 40
 Run this chunks and look at the global environment (right side of R Studio) to see it appear\
 in the list of objects.
 
-## Vectors
+## Numeric Vectors
 
-It is very common to group values that belong together in a single structure.
+It is very common to group values that belong together in a single structure. By default numeric vectors in R are created as double precision floating point numbers. You can create a numeric vector using the `c` (concatenate) function.
 
 ```{r}
 x <- c(1, 4)
+x
+```
+
+To see the type of a variable, you can use the `typeof` function.
+
+```{r}
+typeof(x)
 ```
 
 ```{r}
@@ -72,10 +79,14 @@ length(x)
 
 ```{r}
 ## Documentation
-?mean
+# ?mean
 ```
 
-Vectors can only hold data of the same type. Basically this
+Vectors can only hold data of the same type: either numeric, character, or logical. If you try to create a vector with different types of data, R will coerce the data to the same type. For example, if you try to create a vector with a number and a string, R will coerce the number to a string.
+
+```{r}
+c(1, "Hello")
+```
 
 ## Character Vectors
 
@@ -132,6 +143,7 @@ c(2, 5) + 1
 
 ```{r}
 c(2, 3, 5, 7) + c(10, 20)
+c(2, 3, 5, 7) / c(10, 20)
 ```
 
 Take care when using recycling, because it can lead to unexpected results. For example, if you try to add two vectors of different lengths, R will still recycle the shorter vector to match the length of the longer vector, but it will also issue a warning.
@@ -141,6 +153,7 @@ c(2, 5) + c(1, 2, 10)
 ```
 
 Pay attention to the warning message. It is telling you that the shorter vector is being recycled to match the length of the longer vector. Most of the time, this is not what you want. It is better to be explicit about what you want to happen, so don't rely on recycling with vectors of different lengths.
+
 
 ##  Logical Operators and Logical Values
 
@@ -167,9 +180,10 @@ The basic logical operators in `R` are
 z == "Text 2"
 ```
 :::{.callout-warning}
+
 ## Strict Equality and Floating Point Numbers
 
-When comparing floating point numbers, you should be careful. Due to the way floating point numbers are represented in the computer, you may get unexpected results when comparing them. This is because floating point numbers are not stored exactly in the computer. For example, the number 0.1 cannot be represented exactly in binary, so it is stored as an approximation. This can lead to unexpected results when comparing floating point numbers. For example, you may get a result like this:
+Strict equality generally makes sense for strings and integers, but not for floating point numbers! Due to the way floating point numbers are represented in the computer, you may get unexpected results when comparing them. This is because floating point numbers are not stored exactly in the computer. For example, the number 0.1 cannot be represented exactly in binary, so it is stored as an approximation. This can lead to unexpected results when comparing floating point numbers. For example, you may get a result like this:
 
 ```{r}
 sqrt(2)^2 == 2
@@ -177,13 +191,46 @@ sqrt(2)^2 == 2
 
 Mathematically, $\sqrt(2)^2$ is exactlyequal to 2, but the comparison returns `FALSE`.
 
-This is because `sqrt(2)^2` is not exactly equal to 2. To compare floating point numbers, you should use the `all.equal` function, which takes into account the fact that floating point numbers are not stored exactly in the computer.
+This is because `sqrt(2)^2` is computed with a finite precision and is not equal to 2. When printing the number in the console you may not see the difference because the print function formats the number. To compare floating point numbers, you should use the `all.equal` function, which takes into account the fact that floating point numbers are not stored exactly in the computer.
+
+```{r}
+all.equal(sqrt(2)^2, 2)
+```
+
 :::
 
+## Indexing
+
+You can access elements of a vector using the square brackets. The index of the first element is 1, not 0 (this is different from many other programming languages). You can also use negative indices to exclude elements from the vector.
+
+```{r}
+expenses <- c(100, 200, 300, 400, 500)
+expenses[1]
+```
+
+```{r}
+expenses[2:4]
+```
+
+```{r}
+expenses[-1]
+```
+
+You can also use logical vectors to index a vector.
+
+```{r}
+expenses[c(TRUE, FALSE, TRUE, FALSE, TRUE)]
+```
+
+Be careful when using logical vectors to index a vector. If the logical vector is shorter than the vector you are indexing, R will recycle the logical vector to match the length of the vector you are indexing.
+
+```{r}
+(1:10)[c(TRUE, FALSE)]
+```
 
 ## Factors
 
-Factors are used to represent categorical data. They are stored as integers and have labels associated with them. Factors are important in statistical modeling and are commonly used in plotting functions. Factors are not strings, they are integers with labels.
+Factors are used to represent categorical data (e.g., sex: male/femal, employment status: employed, unemployed, retired, etc.). They are stored as integers and have labels associated with them. Factors are important in statistical modeling and are commonly used in plotting functions. Factors are not strings, they are integers with labels.
 
 ```{r}
 some_vector <- c("A", "B", "A", "C", "B", "A")
@@ -203,8 +250,8 @@ You can coerce (convert) as factor to a character vector using the `as.character
 ```{r}
 as.character(some_factor)
 ```
-Factors have also some safeguards. If you try to perform an operation that is not defined for factors, R will issue a warning. For example, you cannot meaningfully add a number to a factor.
-Note that this will only raise a warning, not an error.
+
+Factors have also some safeguards. If you try to perform an operation that is not defined for factors, R will issue a warning. For example, you cannot meaningfully add a number to a factor. Note that this will only raise a _warning_, not an _error_.
 
 ```{r}
 some_factor + 1
@@ -232,8 +279,7 @@ Let's write a function that takes two numbers and returns TRUE or FALSE dependin
 
 ```{r}
 is_even_sum <- function(x, y) {
-  s <- x + y
-  s %% 2 == 0
+  (x + y) %% 2 == 0
 }
 
 is_even_sum(2, 3)
@@ -262,3 +308,26 @@ f <- function(y) {
 f(x)
 x
 ```
+
+
+
+## Data Frames
+
+The data for our course will most often be a table of values with columns representing measurements of different characteristics (variables) and rows representing different observations. The base data structure to store this kind of data in R is the data frame. In this course we will use a structure called `tibble` that is provided by the `dplyr` package, part of the `tidyverse` collection of packages.
+
+You can create a data frame using the `tibble` function. The `tibble` function takes named arguments, where the names are the names of the columns and the values are the vectors that will be the columns of the data frame.
+
+```{r}
+library(tidyverse)
+
+dt <- tibble(
+  name = c("Alice", "Bob", "Charlie"),
+  age = c(25, 30, 35),
+  employed = c(TRUE, FALSE, TRUE)
+)
+
+dt
+```
+
+
+# Deps:
