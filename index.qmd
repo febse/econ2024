@@ -92,11 +92,6 @@ To avoid this, you can roll back the file to its original state. Right-click on 
 
 9.  In the exercise classes, we will use many functions from the `tidyverse` system and several other packages. Before accessing these packages' functionality, you need to install them first. Find the R console in R studio and paste the following line on the command line. Press enter to run it and wait for the installation to complete.
 
-```{r, eval = FALSE}
-install.packages(c("tidyverse", "tidyverts", "xts", "quantmod", "urca"))
-```
-
-![Install packages](figures/RStudio_new_project_install_packages.png)
 
 Optional: more on Quarto: <https://quarto.org/docs/guide/>
 
