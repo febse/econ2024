@@ -4,9 +4,49 @@
     "href": "index.html",
     "title": "Introduction to linear regression analysis",
     "section": "",
-    "text": "Setup\nThe exercise classes require a minimal software setup:\n\nOpen https://cran.r-project.org/ and you will find links to R builds for different operating systems. Click on the link matching your operating system and choose the latest version of R. When using the Windows operating system you will see a link “Install R for the first time”. Click on this link and then download R installer. Run the installer and accept the default settings.\nAfter installing R, open https://posit.co/download/rstudio-desktop/. If the web page recognizes your operating system you will see a download button (right side of the page) for R studio. If the button does not appear, scroll down the page and find the installer appropriate for your operating system.\nOpen R Studio on your computer and create a new R Markdown file. Find the file drop down menu on the top-left part of the interface, select “New file”, then find “R Markdown” and click on it. If this is the first time you create a R Markdown file, R Studio will ask you to install a number of packages. Confirm this and wait for the packages to download and install. Click “OK” on the dialogue button, and you will see a text file with a simple R Markdown template that demonstrates some basic functionality.\nIn this exercise class we use a lot of functions from the tidyverse system and several other packages. In order to access these you need the to install this package. Find the R console in R studio and paste the following line on the command line. Press enter to run it. This will install some of the necessary packages on your system.\n\n\ninstall.packages(c(\"tidyverse\", \"broom\", \"patchwork\", \"skimr\"))\n\nOptional: more on R Markdown: https://rmarkdown.rstudio.com/lesson-1.html\nOptional: a base R cheatsheet: https://www.datacamp.com/cheat-sheet/getting-started-r",
+    "text": "General Information",
     "crumbs": [
-      "Setup"
+      "General Information"
+    ]
+  },
+  {
+    "objectID": "index.html#schedule",
+    "href": "index.html#schedule",
+    "title": "Introduction to linear regression analysis",
+    "section": "Schedule",
+    "text": "Schedule\nAll classes will be held in room 308 of the Faculty of Economics and Business.\n\nTu 10:15-11:45 in room 308 (will move to room 303 after 27.02.2024)\nTu 12:15-13:45 in room 308\nWe 14:15-15:45 in room 308",
+    "crumbs": [
+      "General Information"
+    ]
+  },
+  {
+    "objectID": "index.html#grading",
+    "href": "index.html#grading",
+    "title": "Introduction to linear regression analysis",
+    "section": "Grading",
+    "text": "Grading\nTBA",
+    "crumbs": [
+      "General Information"
+    ]
+  },
+  {
+    "objectID": "index.html#github-repository",
+    "href": "index.html#github-repository",
+    "title": "Introduction to linear regression analysis",
+    "section": "GitHub Repository",
+    "text": "GitHub Repository\nAll course materials for the exercise classes will be available in the GitHub repository:\nhttps://github.com/febse/econ2024",
+    "crumbs": [
+      "General Information"
+    ]
+  },
+  {
+    "objectID": "index.html#software-setup",
+    "href": "index.html#software-setup",
+    "title": "Introduction to linear regression analysis",
+    "section": "Software Setup",
+    "text": "Software Setup\nThe exercise classes require a minimal software setup:\n\nInstall Git for you operating system from https://git-scm.com/downloads/.\nOpen https://cran.r-project.org/, and you will find links to R builds for different operating systems. Click on the link matching your operating system and choose the latest version of R. When using the Windows operating system, you will see a link “Install R for the first time .” Click on this link and then download the R installer. Run the installer. Leave the default settings unchanged unless you know what you are doing.\nAfter installing R, open https://posit.co/download/rstudio-desktop/. If the web page recognizes your operating system, you will see a download button (right side of the page) for R studio. If the button does not appear, scroll down the page and find the installer appropriate for your operating system.\nShould you encounter difficulties installing R and R Studio, you can watch these video guides:\n\n\nWindows\nMac\nUbuntu 22.04\n\n\nHere are some video guides on how to install git:\n\n\nWindows\nMac\nLinux\n\n\nThe following steps depend on git being installed. Open R Studio and open a new project dialog: File -&gt; New Project. In the dialog, click on the third option: version control. From the next menu, select git.\n\n  \nIn the Repository URL field, paste the address of the course repository:\nhttps://github.com/febse/econ2024.git\n Click on the Create Project button and wait for git R studio to clone the repository and open the project.\n 6. The content of the GitHub repository will be updated continuously throughout the semester. In order to download the new files or updated versions of already existing files, you can use git pull. Open the git window in the upper right pane of R studio and click the pull button. This will download all changes from the GitHub repository to your local copy.\n\n\n\nStep 7\n\n\n\nNote that if you have modified the files tracked by git that have changed in the repository, git pull will fail with an error similar to this one:\n\n\n\n\nPull error\n\n\nTo avoid this, you can roll back the file to its original state. Right-click on the file in the git window and choose “revert.”\n\n\n\nRevert\n\n\n\nIn the exercise classes, we will use many functions from the tidyverse system and several other packages. Before accessing these packages’ functionality, you need to install them first. Find the R console in R studio and paste the following line on the command line. Press enter to run it and wait for the installation to complete.\n\n\ninstall.packages(c(\"tidyverse\", \"tidyverts\", \"xts\", \"quantmod\", \"urca\"))\n\n\n\n\nInstall packages\n\n\nOptional: more on Quarto: https://quarto.org/docs/guide/\nOptional: a base R cheatsheet: https://www.datacamp.com/cheat-sheet/getting-started-r",
+    "crumbs": [
+      "General Information"
     ]
   },
   {

@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Setup</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">General Information</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -144,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Setup</span></a>
+ <span class="menu-text">General Information</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -192,7 +192,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#general-information" id="toc-general-information" class="nav-link active" data-scroll-target="#general-information">General Information</a>
+  <ul class="collapse">
+  <li><a href="#schedule" id="toc-schedule" class="nav-link" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
+  <li><a href="#github-repository" id="toc-github-repository" class="nav-link" data-scroll-target="#github-repository">GitHub Repository</a></li>
+  <li><a href="#software-setup" id="toc-software-setup" class="nav-link" data-scroll-target="#software-setup">Software Setup</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -230,22 +236,95 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="setup" class="level1 unnumbered">
-<h1 class="unnumbered">Setup</h1>
+<section id="general-information" class="level1 unnumbered">
+<h1 class="unnumbered">General Information</h1>
+<section id="schedule" class="level2">
+<h2 class="anchored" data-anchor-id="schedule">Schedule</h2>
+<p>All classes will be held in room 308 of the Faculty of Economics and Business.</p>
+<ol type="1">
+<li>Tu 10:15-11:45 in room 308 (will move to room 303 after 27.02.2024)</li>
+<li>Tu 12:15-13:45 in room 308</li>
+<li>We 14:15-15:45 in room 308</li>
+</ol>
+</section>
+<section id="grading" class="level2">
+<h2 class="anchored" data-anchor-id="grading">Grading</h2>
+<p>TBA</p>
+</section>
+<section id="github-repository" class="level2">
+<h2 class="anchored" data-anchor-id="github-repository">GitHub Repository</h2>
+<p>All course materials for the exercise classes will be available in the GitHub repository:</p>
+<p><a href="https://github.com/febse/econ2024">https://github.com/febse/econ2024</a></p>
+</section>
+<section id="software-setup" class="level2">
+<h2 class="anchored" data-anchor-id="software-setup">Software Setup</h2>
 <p>The exercise classes require a minimal software setup:</p>
 <ol type="1">
-<li><p>Open <a href="https://cran.r-project.org/">https://cran.r-project.org/</a> and you will find links to R builds for different operating systems. Click on the link matching your operating system and choose the latest version of R. When using the Windows operating system you will see a link “Install R for the first time”. Click on this link and then download R installer. Run the installer and accept the default settings.</p></li>
-<li><p>After installing R, open <a href="https://posit.co/download/rstudio-desktop/">https://posit.co/download/rstudio-desktop/</a>. If the web page recognizes your operating system you will see a download button (right side of the page) for R studio. If the button does not appear, scroll down the page and find the installer appropriate for your operating system.</p></li>
-<li><p>Open R Studio on your computer and create a new R Markdown file. Find the file drop down menu on the top-left part of the interface, select “New file”, then find “R Markdown” and click on it. If this is the first time you create a R Markdown file, R Studio will ask you to install a number of packages. Confirm this and wait for the packages to download and install. Click “OK” on the dialogue button, and you will see a text file with a simple R Markdown template that demonstrates some basic functionality.</p></li>
-<li><p>In this exercise class we use a lot of functions from the <code>tidyverse</code> system and several other packages. In order to access these you need the to install this package. Find the R console in R studio and paste the following line on the command line. Press enter to run it. This will install some of the necessary packages on your system.</p></li>
+<li><p>Install Git for you operating system from <a href="https://git-scm.com/downloads">https://git-scm.com/downloads/</a>.</p></li>
+<li><p>Open <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>, and you will find links to R builds for different operating systems. Click on the link matching your operating system and choose the latest version of R. When using the Windows operating system, you will see a link “Install R for the first time .” Click on this link and then download the R installer. Run the installer. Leave the default settings unchanged unless you know what you are doing.</p></li>
+<li><p>After installing R, open <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a>. If the web page recognizes your operating system, you will see a download button (right side of the page) for R studio. If the button does not appear, scroll down the page and find the installer appropriate for your operating system.</p></li>
+<li><p>Should you encounter difficulties installing R and R Studio, you can watch these video guides:</p></li>
+</ol>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=YrEe2TLr3MI">Windows</a></li>
+<li><a href="https://www.youtube.com/watch?v=n8kP7c_QbLA">Mac</a></li>
+<li><a href="https://www.youtube.com/watch?v=NFEDEXWomI4">Ubuntu 22.04</a></li>
+</ul>
+<ol start="5" type="1">
+<li>Here are some video guides on how to install git:</li>
+</ol>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=AdzKzlp66sQ">Windows</a></li>
+<li><a href="https://www.youtube.com/watch?v=hMEyBtsuAJE">Mac</a></li>
+<li><a href="https://www.youtube.com/watch?v=bc3_FL9zWWs">Linux</a></li>
+</ul>
+<ol start="5" type="1">
+<li><strong>The following steps depend on git being installed</strong>. Open R Studio and open a new project dialog: File -&gt; New Project. In the dialog, click on the third option: version control. From the next menu, select git.</li>
+</ol>
+<p><img src="figures/RStudio_new_project_1.png" class="img-fluid" alt="Open a new project."> <img src="figures/RStudio_new_project_2.png" class="img-fluid" alt="Select version control"> <img src="figures/RStudio_new_project_3.png" class="img-fluid" alt="Select git"></p>
+<p>In the Repository URL field, paste the address of the course repository:</p>
+<pre><code>https://github.com/febse/econ2024.git</code></pre>
+<p><img src="figures/RStudio_new_project_4.png" class="img-fluid" alt="Paste the git repository address"> Click on the Create Project button and wait for git R studio to clone the repository and open the project.</p>
+<p><img src="figures/RStudio_new_project_5.png" class="img-fluid" alt="Step 5"> 6. The content of the GitHub repository will be updated continuously throughout the semester. In order to download the new files or updated versions of already existing files, you can use git pull. Open the git window in the upper right pane of R studio and click the pull button. This will download all changes from the GitHub repository to your local copy.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/RStudio_new_project_7.png" class="img-fluid figure-img"></p>
+<figcaption>Step 7</figcaption>
+</figure>
+</div>
+<ol start="8" type="1">
+<li>Note that if you have modified the files tracked by git that have changed in the repository, git pull will fail with an error similar to this one:</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/RStudio_new_project_8.png" class="img-fluid figure-img"></p>
+<figcaption>Pull error</figcaption>
+</figure>
+</div>
+<p>To avoid this, you can roll back the file to its original state. Right-click on the file in the git window and choose “revert.”</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/RStudio_new_project_revert.png" class="img-fluid figure-img"></p>
+<figcaption>Revert</figcaption>
+</figure>
+</div>
+<ol start="9" type="1">
+<li>In the exercise classes, we will use many functions from the <code>tidyverse</code> system and several other packages. Before accessing these packages’ functionality, you need to install them first. Find the R console in R studio and paste the following line on the command line. Press enter to run it and wait for the installation to complete.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"broom"</span>, <span class="st">"patchwork"</span>, <span class="st">"skimr"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"tidyverts"</span>, <span class="st">"xts"</span>, <span class="st">"quantmod"</span>, <span class="st">"urca"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Optional: more on R Markdown: https://rmarkdown.rstudio.com/lesson-1.html</p>
-<p>Optional: a base R cheatsheet: https://www.datacamp.com/cheat-sheet/getting-started-r</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/RStudio_new_project_install_packages.png" class="img-fluid figure-img"></p>
+<figcaption>Install packages</figcaption>
+</figure>
+</div>
+<p>Optional: more on Quarto: <a href="https://quarto.org/docs/guide/" class="uri">https://quarto.org/docs/guide/</a></p>
+<p>Optional: a base R cheatsheet: <a href="https://www.datacamp.com/cheat-sheet/getting-started-r" class="uri">https://www.datacamp.com/cheat-sheet/getting-started-r</a></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
