@@ -1,8 +1,10 @@
-## DataFrames (Tibbles)
+## Descriptive Statistics
+
+### Data Frames  (Tibbles)
 
 In most of our work we will use data tables containing variables (columns) that describe characteristics of observations (rows). Most of the time we will use `tibble` objects to hold the data. `tibble` objects are a modern rewrite of the `data.frame` (an older object type for storing data).
 
-To use it we need to load the `tidyvsere` packages
+To use it we need to load the `dplyr` package, a part of the `tidyverse` collection of packages.
 
 ```{r}
 library(tidyverse)
@@ -141,7 +143,7 @@ As the range, the inter-quartile range is a measure of variability.
 The most important measure of variability and the one that will be central to our analysis is the (empirical) variance.
 
 ::: {#def-empirical-variance}
-## Empirical variance
+## Empirical Variance
 
 For a vector of values $x = (x_1, \ldots, x_n)$ it is defined as the average (apart from a small correction in the denominator) squared deviation of the values from their mean.
 

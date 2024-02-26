@@ -228,6 +228,7 @@ Be careful when using logical vectors to index a vector. If the logical vector i
 (1:10)[c(TRUE, FALSE)]
 ```
 
+
 ## Factors
 
 Factors are used to represent categorical data (e.g., sex: male/femal, employment status: employed, unemployed, retired, etc.). They are stored as integers and have labels associated with them. Factors are important in statistical modeling and are commonly used in plotting functions. Factors are not strings, they are integers with labels.
