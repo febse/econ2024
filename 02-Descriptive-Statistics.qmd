@@ -271,3 +271,4 @@ earnings1 %>%
 ```{r}
 summary(lm(height_cm ~ weight_kg, data = earnings1))
 ```
+
