@@ -22,7 +22,7 @@ The exercise classes require a minimal software setup:
 
 1.  Install Git for you operating system from [https://git-scm.com/downloads/](https://git-scm.com/downloads).
 
-2.  Open a GitHub account at <https://github.com/signup>. While you don't need an account to download the course materials, you will need one to receive and submit your assignments (this will be explained in details during the exercise classes). You can apply for the GitHub student benefits at <https://education.github.com/pack>. If approved you can receive free access to the GitHub Pro plan and to GitHub Copilot, an AI tool that helps you write code.
+2.  Open a GitHub account at <https://github.com/signup>. While you don't need an account to download the course materials, you will need one to receive and submit your assignments (this will be explained in details during the exercise classes). You can apply for the GitHub student benefits at <https://education.github.com/benefits>. If approved you can receive free access to the GitHub Pro plan and to GitHub Copilot, an AI tool that helps you write code.
 
 3.  Open <https://cran.r-project.org/>, and you will find links to R builds for different operating systems. Click on the link matching your operating system and choose the latest version of R. When using the Windows operating system, you will see a link "Install R for the first time ." Click on this link and then download the R installer. Run the installer. Leave the default settings unchanged unless you know what you are doing.
 

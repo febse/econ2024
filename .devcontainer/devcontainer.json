@@ -3,10 +3,20 @@
 {
 	"name": "Ubuntu",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/base:jammy",
-	"features": {
-		"ghcr.io/rocker-org/devcontainer-features/rstudio-server:0": {}
-	},
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "features": {
+		"ghcr.io/rocker-org/devcontainer-features/r-apt:latest": {},
+		"ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+			"packages": [
+				"r-cran-tidyverse",
+				"r-cran-rmarkdown",
+				"r-cran-plotly",
+				// "r-cran-patchwork",
+				"r-cran-ggally",
+				"r-cran-broom"
+			]
+		}
+    },
 	"customizations": {
 		"vscode": {
 			"extensions": [
