@@ -558,7 +558,7 @@ Strict Equality and Floating Point Numbers
 <pre><code>[1] 100 300 500</code></pre>
 </div>
 </div>
-<p>Be careful when using logical vectors to index a vector. If the logical vector is shorter than the vector you are indexing, R will recycle the logical vector to match the length of the vector you are indexing.</p>
+<p>Be careful when using logical vectors to index a vector. If the logical vector is shorter than the vector you are indexing, <code>R</code> will recycle the logical vector to match the length of the vector you are indexing.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)[<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -653,7 +653,7 @@ Levels: A B C</code></pre>
 </div>
 </div>
 <p>Writing functions is a large topic and we will not cover all the details in this course. You can find more information about functions in R in the <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Functions">R documentation</a>.</p>
-<p>A thing to note is that R is (mostly) a functional programming language and functions generally do not modify their arguments. This means that if you pass a vector to a function and the function modifies the vector, the original vector will not be changed. This is different from many other languages, where functions can modify their arguments. The reason for this is that arguments are copied when they are passed to a function. This is done to avoid side effects and make the code easier to reason about.</p>
+<p>A thing to note is that R is (mostly) a functional programming language and functions generally do not modify their arguments. This means that if you pass a variable to a function and the function modifies that variable, the original value will not be changed. This is different from many other languages, where functions can modify their arguments. The reason for this is that arguments are copied when they are passed to a function. This is done to avoid side effects and make the code easier to reason about.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a></span>
