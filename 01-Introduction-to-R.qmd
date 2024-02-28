@@ -224,7 +224,7 @@ You can also use logical vectors to index a vector.
 expenses[c(TRUE, FALSE, TRUE, FALSE, TRUE)]
 ```
 
-Be careful when using logical vectors to index a vector. If the logical vector is shorter than the vector you are indexing, R will recycle the logical vector to match the length of the vector you are indexing.
+Be careful when using logical vectors to index a vector. If the logical vector is shorter than the vector you are indexing, `R` will recycle the logical vector to match the length of the vector you are indexing.
 
 ```{r}
 (1:10)[c(TRUE, FALSE)]
@@ -239,6 +239,7 @@ Factors are used to represent categorical data (e.g., sex: male/femal, employmen
 some_vector <- c("A", "B", "A", "C", "B", "A")
 some_factor <- factor(some_vector)
 some_factor
+
 levels(some_factor)
 ```
 
@@ -298,7 +299,7 @@ The `%%` operator is the modulo operator. It returns the remainder of the divisi
 
 Writing functions is a large topic and we will not cover all the details in this course. You can find more information about functions in R in the [R documentation](https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Functions).
 
-A thing to note is that R is (mostly) a functional programming language and functions generally do not modify their arguments. This means that if you pass a vector to a function and the function modifies the vector, the original vector will not be changed. This is different from many other languages, where functions can modify their arguments. The reason for this is that arguments are copied when they are passed to a function. This is done to avoid side effects and make the code easier to reason about.
+A thing to note is that R is (mostly) a functional programming language and functions generally do not modify their arguments. This means that if you pass a variable to a function and the function modifies that variable, the original value will not be changed. This is different from many other languages, where functions can modify their arguments. The reason for this is that arguments are copied when they are passed to a function. This is done to avoid side effects and make the code easier to reason about.
 
 ```{r}
 x <- c(1, 2, 3)
