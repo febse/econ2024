@@ -98,7 +98,14 @@ To avoid this, you can roll back the file to its original state. Right-click on 
 
 ![Revert](figures/RStudio_new_project_revert.png)
 
-9.  In the exercise classes, we will use many functions from the `tidyverse` system and several other packages. Before accessing these packages' functionality, you need to install them first. Find the R console in R studio and paste the following line on the command line. Press enter to run it and wait for the installation to complete.
+9. In the exercise classes, we will use many functions from the `tidyverse` system and several other packages. Before accessing these packages' functionality, you need to install them first. Find the R console in R studio and paste the following line on the command line. Press enter to run it and wait for the installation to complete. The `renv` package will take care of the installation of the packages in a separate environment, so you should't worry about installing packages.
+
+In case it does not work, you can install the packages manually by running the following command in the R console:
+
+```r
+install.packages(c("tidyverse", "broom", "patchwork", "GGally", "caret"))
+```
+
 
 
 Optional: more on Quarto: <https://quarto.org/docs/guide/>
