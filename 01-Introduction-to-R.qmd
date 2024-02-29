@@ -6,10 +6,9 @@ A R Markdown document is a pure text file that you can open in any text editor (
 
 In the body of the document we write code in code chunks that start with three backticks and end with three backticks. After the first sequence of backticks there is a language identifier which in our case will always be `r`.
 
-It may be easier to work with R Markdown documents in R Studio's `Visual` mode. After opening a R Markdown document, you will find two buttons (`Source` and `Visual`) just below the file name (below the save file icon). Click the `Visual` button to activate it. After that\
-you will be able to click on the `Insert` menu and add code chunks from `Insert` -\> `Code Chunk` -\> `R`.
+It may be easier to work with R Markdown documents in R Studio's `Visual` mode. After opening a R Markdown document, you will find two buttons (`Source` and `Visual`) just below the file name (below the save file icon). Click the `Visual` button to activate it. After that you will be able to click on the `Insert` menu and add code chunks from `Insert` -\> `Code Chunk` -\> `R`.
 
-To run a code chunk, find the green `Run` button on the right side of the chunk and click on it. You will see the printed output of the chunk below it. Note that some chunks do not print any output (e.g. chunks that only contain assignments).
+To run a code chunk, find the green `Run` button on the right side of the chunk and click on it. You will see the printed output of the chunk below it. Note that some chunks do not print any output (e.g. chunks that only contain assignments). 
 
 
 ```{r}
@@ -18,20 +17,23 @@ To run a code chunk, find the green `Run` button on the right side of the chunk 
 
 You can find more information and video tutorials about R Markdown [here](https://rmarkdown.rstudio.com/).
 
-An often used shortcut for inserting R code chunks is Ctrl-Alt-i. You can find more shortcuts and a concise overview of the elements of R Studio in the\
-[R Studio Cheatsheet](https://posit.co/wp-content/uploads/2022/10/rstudio-ide-1.pdf).
 
-## R Studio Shortcuts
+:::{.callout-note}
+## Keyboard Shortcuts
 
-R Studio provides a lost of useful shortcuts that can speed up your workflow.
-We will mostly use the following shortcuts in R Studio:
+A lot of the work in R Studio can be done using keyboard shortcuts. This can speed up your workflow and make you more productive. 
 
 - `Ctrl+Enter`: Run the current line or selection
 - `Ctrl+Shift+Enter`: Run the current chunk
 - `Ctrl+Alt+i`: Insert a new R code chunk
 - `Alt + - (minus)`: Insert the assignment operator `<-`
 
+You can find more shortcuts and a concise overview of the elements of R Studio in the
+[R Studio Cheatsheet](https://posit.co/wp-content/uploads/2022/10/rstudio-ide-1.pdf).
+
 For a complete list of shortcuts, you can go to `Help` -\> `Keyboard Shortcuts Help`.
+:::
+
 
 ## Arithmetic Operations
 
@@ -149,10 +151,10 @@ c(2, 3, 5, 7) / c(10, 20)
 Take care when using recycling, because it can lead to unexpected results. For example, if you try to add two vectors of different lengths, R will still recycle the shorter vector to match the length of the longer vector, but it will also issue a warning.
 
 ```{r}
-c(2, 5) + c(1, 2, 10)
+c(1, 2, 10) + c(2, 5)
 ```
 
-Pay attention to the warning message. It is telling you that the shorter vector is being recycled to match the length of the longer vector. Most of the time, this is not what you want. It is better to be explicit about what you want to happen, so don't rely on recycling with vectors of different lengths.
+Pay attention to the warning message. It is telling you that the shorter vector is being recycled to match the length of the longer vector but it cannot expand the shorter vector to match the longer vector exactly. Although this is not an error that will stop your program, most of the time, this is not what you want and is a result from some error before it. You should not rely on recycling vectors of incompatible lengths. Instead, you should be explicit about what you want to do.
 
 
 ##  Logical Operators and Logical Values
@@ -183,15 +185,15 @@ z == "Text 2"
 
 ## Strict Equality and Floating Point Numbers
 
-Strict equality generally makes sense for strings and integers, but not for floating point numbers! Due to the way floating point numbers are represented in the computer, you may get unexpected results when comparing them. This is because floating point numbers are not stored exactly in the computer. For example, the number 0.1 cannot be represented exactly in binary, so it is stored as an approximation. This can lead to unexpected results when comparing floating point numbers. For example, you may get a result like this:
+Strict equality generally makes sense for strings and integers, but not for floating point numbers! This is because real numbers cannot be stored exactly in memory and computers work with finite precision. This can lead to unexpected results when comparing floating point numbers. For example, you may get a result like this:
 
 ```{r}
 sqrt(2)^2 == 2
 ```
 
-Mathematically, $\sqrt(2)^2$ is exactlyequal to 2, but the comparison returns `FALSE`.
+Mathematically, $\sqrt(2)^2$ is exactl yequal to 2, but the comparison in `R` returns `FALSE`.
 
-This is because `sqrt(2)^2` is computed with a finite precision and is not equal to 2. When printing the number in the console you may not see the difference because the print function formats the number. To compare floating point numbers, you should use the `all.equal` function, which takes into account the fact that floating point numbers are not stored exactly in the computer.
+When printing the number in the console you may not see the difference because the print function formats the number. To compare floating point numbers, you should use the `all.equal` function, which takes into accounts for the finite precision of floating point numbers.
 
 ```{r}
 all.equal(sqrt(2)^2, 2)
@@ -222,11 +224,12 @@ You can also use logical vectors to index a vector.
 expenses[c(TRUE, FALSE, TRUE, FALSE, TRUE)]
 ```
 
-Be careful when using logical vectors to index a vector. If the logical vector is shorter than the vector you are indexing, R will recycle the logical vector to match the length of the vector you are indexing.
+Be careful when using logical vectors to index a vector. If the logical vector is shorter than the vector you are indexing, `R` will recycle the logical vector to match the length of the vector you are indexing.
 
 ```{r}
 (1:10)[c(TRUE, FALSE)]
 ```
+
 
 ## Factors
 
@@ -236,6 +239,7 @@ Factors are used to represent categorical data (e.g., sex: male/femal, employmen
 some_vector <- c("A", "B", "A", "C", "B", "A")
 some_factor <- factor(some_vector)
 some_factor
+
 levels(some_factor)
 ```
 
@@ -295,7 +299,7 @@ The `%%` operator is the modulo operator. It returns the remainder of the divisi
 
 Writing functions is a large topic and we will not cover all the details in this course. You can find more information about functions in R in the [R documentation](https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Functions).
 
-A thing to note is that R is (mostly) a functional programming language and functions generally do not modify their arguments. This means that if you pass a vector to a function and the function modifies the vector, the original vector will not be changed. This is different from many other languages, where functions can modify their arguments. The reason for this is that arguments are copied when they are passed to a function. This is done to avoid side effects and make the code easier to reason about.
+A thing to note is that R is (mostly) a functional programming language and functions generally do not modify their arguments. This means that if you pass a variable to a function and the function modifies that variable, the original value will not be changed. This is different from many other languages, where functions can modify their arguments. The reason for this is that arguments are copied when they are passed to a function. This is done to avoid side effects and make the code easier to reason about.
 
 ```{r}
 x <- c(1, 2, 3)
@@ -309,7 +313,15 @@ f(x)
 x
 ```
 
+The function above assigns a value to the frst element of the vector `y` and returns the modified vector. However, the original vector `x` is not modified, because `y` is a copy of `x`.
 
+
+```{r}
+s1 <- c(4, 1, 2, 3)
+s1
+s1[1] <- 100
+s1
+```
 
 ## Data Frames
 
@@ -328,6 +340,3 @@ dt <- tibble(
 
 dt
 ```
-
-
-# Deps:
