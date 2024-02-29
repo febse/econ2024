@@ -1,5 +1,13 @@
 # General Information {.unnumbered}
 
+:::{.callout-info}
+## Website URL
+
+<span style="font-size:2em">[https://febse.github.io/econ2024/](https://febse.github.io/econ2024/)</span>
+
+![](figures/qrcode.png)
+:::
+
 ## Schedule
 
 All classes will be held in room 308 of the Faculty of Economics and Business.
