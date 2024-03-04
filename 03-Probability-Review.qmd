@@ -5,7 +5,7 @@
 ## If the package is not installed, uncomment the next line and run the code chunk again
 ## install.packages("tidyverse")
 library(tidyverse)
-source("lib.R")
+# source("lib.R")
 ```
 
 ## Probability {#sec-probability}
@@ -102,7 +102,7 @@ From our point of view the rules of the game are completely determined by two th
 #| label: tbl-discrete-game-probabilities
 #| tbl-cap: "Distribution of outcomes for two games of chance. Possible outcomes and probabilities for each outcome."
 
-fmtTable(as.data.frame(gameDat1))
+gameDat1
 ```
 
 Let us focus on the first game with probabilities (0.5, 0.3 and 0.2) and develop some intuitive understanding of these quantities. You can think about the probabilities in @tbl-discrete-game-probabilities as theoretical proportions in a sense that if you play the lottery 100 times you would expect to win nothing (0 EUR) in *about* 50 games, 1 EUR in *about* 30 games and 2 EUR in about *20* games. Notice that to *expect* 20 2-EUR wins out of 100 games is absolutely *not* the same as the statement that you *will* win 2 EUR in exactly 20 out of 100 games! To convince yourself look at @tbl-discrete-games-simulation which presents the results of five simulated games with 100 tickets each. You can play with this and similar games by changing the number of tickets and the number of games in this [simulation](https://feb-uni-sofia.shinyapps.io/econometrics2020/). In the first game the player had 49 tickets that won nothing, but in the second game she had only 38 0-win tickets. When we say to expect 50 0-wins out of 100 tickets we mean that the number of observed (actually played) 0-wins will *vary* around 50. In neither of the five simulated games was the number of 0-wins exactly equal to 50 (this is also possible, though).

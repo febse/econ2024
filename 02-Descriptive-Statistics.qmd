@@ -1,6 +1,6 @@
-## Descriptive Statistics
+# Descriptive Statistics
 
-### Data Frames  (Tibbles)
+## Data Frames (Tibbles)
 
 In most of our work we will use data tables containing variables (columns) that describe characteristics of observations (rows). Most of the time we will use `tibble` objects to hold the data. `tibble` objects are a modern rewrite of the `data.frame` (an older object type for storing data).
 
@@ -90,7 +90,7 @@ median(earnings$height)
 
 The result is a median height of 66 inches. This means that about half of the customers were taller than 66 inches.
 
-### Variability
+### Variability (Spread)
 
 The next important feature of the data is its variability. It answers the following question: how different are the customers between each other with respect to body height (for example). There are numerous ways to measure variability.
 
@@ -208,16 +208,18 @@ sd(x)
 ```
 :::
 
-::: callout-warning
-## Warning
+### Overview of the data
 
-The following contains code discussed during the classes without additional explanations
-:::
+The `skim` function from the `skimr` package provides a quick overview of the data set. It shows the number of observations, the number of variables, the names of the variables, the type of the variables, the number of missing values, the mean, the standard deviation, the minimum and maximum values, and the quartiles for the numeric variables.
 
 ```{r}
 ## Basic summaries for the whole tibble
 earnings %>% skimr::skim()
 ```
+
+### Summarizing a single categorical variable
+
+While the mean, median, and variance are useful for numeric variables, they are not defined for categorical variables. Instead, we can use the `table` function to count the number of observations in each category.
 
 ```{r}
 table(earnings$ethnicity)
@@ -263,7 +265,6 @@ The scatterplot will be our primary tool in studying associations between variab
 earnings1 %>%
   ggplot(aes(x = weight_kg, y = height_cm)) +
   geom_point(position = "jitter", alpha = 0.5) +
-  geom_smooth(method = "lm") +
   labs(
     x = "Weight (kg)",
     y = "Height (cm)"
@@ -271,6 +272,14 @@ earnings1 %>%
 ```
 
 ```{r}
-summary(lm(height_cm ~ weight_kg, data = earnings1))
+library(plotly)
+
+# Create a scatterplot
+fig <- plot_ly(earnings1, x = ~weight_kg, y = ~height_cm, mode = 'markers')
+fig
 ```
 
+
+```{r}
+summary(lm(height_cm ~ weight_kg, data = earnings1))
+```

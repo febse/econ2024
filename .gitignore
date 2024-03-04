@@ -47,3 +47,7 @@ vignettes/*.pdf
 .Renviron
 
 /.quarto/
+*.html
+figure-html/
+libs/
+
