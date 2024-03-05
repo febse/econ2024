@@ -208,6 +208,32 @@ sd(x)
 ```
 :::
 
+
+:::{#exr-empirical-moments}
+## Empirical Moments (Mean and Variance)
+
+1. Compute the sample mean and variance of the annual earnings of the customers in the `earnings` data set. First, compute it by accessing the columns of the data using the dollar syntax. 
+
+```{r}
+
+```
+
+
+2. Then use the `summarize` function from the `dplyr` (already loaded) package to compute the mean and the variance of the `earn` variable.
+
+```{r}
+
+```
+
+3. Run the same calculations as before, but this time group the dataset by the `ethnicity` variable. This will give you the mean and the variance of the annual earnings for every ethnic group in the data set. Use the `group_by` function.
+
+```{r}
+
+```
+
+:::
+
+
 ### Overview of the data
 
 The `skim` function from the `skimr` package provides a quick overview of the data set. It shows the number of observations, the number of variables, the names of the variables, the type of the variables, the number of missing values, the mean, the standard deviation, the minimum and maximum values, and the quartiles for the numeric variables.
