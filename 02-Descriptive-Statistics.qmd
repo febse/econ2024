@@ -184,9 +184,13 @@ $$
 Using R to compute the same thing:
 
 ```{r}
+# Create a vector called x
 x <- c(-1, 0, 4)
+# Compute the average of the values in x and store it in a variable called x_avg (look it up in the global environment)
+
 x_avg <- mean(x)
 
+# Manually compute the variance of x
 ((-1 - x_avg)^2 + (0 - x_avg)^2 + (4 - x_avg)^2) / (length(x) - 1)
 ```
 
