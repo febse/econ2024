@@ -148,7 +148,7 @@ The most important measure of variability and the one that will be central to ou
 For a vector of values $x = (x_1, \ldots, x_n)$ it is defined as the average (apart from a small correction in the denominator) squared deviation of the values from their mean.
 
 $$
-S^2_x = \frac{(x_1 - \bar{x})^2 + \ldots + (x_n - \bar{x}^2)}{n - 1} = \frac{1}{n - 1} \sum_{i = 1}^{n}(x_i - \bar{x})^2: \quad \text{variance}\\
+S^2_x = \frac{(x_1 - \bar{x})^2 + \ldots + (x_n - \bar{x})^2}{n - 1} = \frac{1}{n - 1} \sum_{i = 1}^{n}(x_i - \bar{x})^2: \quad \text{variance}\\
 S_x = \sqrt{S^2_x} \quad \text{standard deviation}
 $$
 :::
@@ -179,7 +179,9 @@ S^2_{x} & = \frac{(x_1 - \bar{x})^2 + (x_2 - \bar{x})^2 + (x_3 - \bar{x})^2 }{n 
         & = \frac{14}{2} \\
         & = 7
 \end{aligned}
-$$ Using R to compute the same thing:
+$$
+
+Using R to compute the same thing:
 
 ```{r}
 x <- c(-1, 0, 4)
@@ -309,7 +311,6 @@ fig
 ```{r}
 summary(lm(height_cm ~ weight_kg, data = earnings1))
 ```
-
 
 :::{#exr-visualizations}
 ## Data Manipulation and Visualization
