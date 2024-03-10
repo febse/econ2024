@@ -55,7 +55,7 @@ $$
 Strategy 2: Use the following linear equation for the predictions
 
 $$
-\widehat{\text{Time}}_i^{eq1} = 0.1 + 0.02 \cdot \text{Invoices}_i
+\widehat{\text{Time}}_i^{eq1} = 0.6 + 0.01 \cdot \text{Invoices}_i
 $$
 
 
@@ -115,12 +115,12 @@ ggplot(aes(x = Invoices, y = Time)) +
 #| 
 invoices %>%
     mutate(
-        Time_hat = 0.1 + 0.02 * Invoices,
+        Time_hat = 0.6 + 0.01 * Invoices,
         residuals = Time - Time_hat
     ) %>%
 ggplot(aes(x = Invoices, y = Time)) +
   geom_point() +
-  geom_abline(intercept = 0.1, slope = 0.02) +
+  geom_abline(intercept = 0.6, slope = 0.01) +
   ylim(c(0, 5)) +
   geom_segment(
     aes(
@@ -129,6 +129,13 @@ ggplot(aes(x = Invoices, y = Time)) +
         alpha = 0.5
     )) +
   geom_label(aes(label = round(residuals, 2)))
+```
+
+```{r}
+lm(Time ~ Invoices, data = invoices) %>% summary()
+```
+
+```{r}
 ```
 
 
