@@ -10,7 +10,7 @@ book:
     - 00-Recommended-Literature.qmd
     - 01-Introduction-to-R.qmd
     - 02-Descriptive-Statistics.qmd
-    - 03-Probability-Review.qmd
+    # - 03-Probability-Review.qmd
     - 04-Least-Squares.qmd          
     # - 00-Homework-Instructions.qmd  
     # - 02a-Continuous-Distributions.qmd

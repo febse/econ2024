@@ -162,7 +162,12 @@ Let's calculate the MSE for the two strategies.
 
 ```
 
+Can you guess better values for the coefficients in the linear equation? Try your own values and calculate the MSE.
 
+```{r}
+# Your own strategy
+
+```
 
 ## Least Squares
 
@@ -174,7 +179,7 @@ First, let us visualize the MSE as a function of the coefficients. For this purp
 #| label: fig-rss-3d
 #| fig-cap: "MSE as a function of the coefficients"
 
-# NOTE: the code here is only for illustration purposes, you don't need to understand it
+# NOTE: this code here is only for illustration purposes, you don't need to study it or understand it for the course
 
 library(plotly)
 
@@ -209,12 +214,12 @@ fig <- plot_ly(
 fig
 ```
 
-Our goal is to find the values of $\beta_0$ and $\beta_1$ that minimize the MSE. The method of least squares provides a formula for the coefficients that minimize the MSE.
+Our goal is to find the values of $\beta_0$ and $\beta_1$ that minimize the RSS. The method of least squares provides a formula for the coefficients that minimize the RSS.
 
 First, let us solve a simpler problem. Assume that the predictive equation is
 
 $$
-\widehat{\text{Time}}_i = \hat{beta}_0
+\widehat{\text{Time}}_i = \hat{\beta}_0
 $$
 
 
@@ -238,4 +243,293 @@ rss_dt <- invoices_beta_0_dt %>%
 rss_dt %>%
     ggplot(aes(x = beta0_hat, y = RSS)) +
     geom_line()
+```
+
+How do we find the value of $\hat{\beta}_0$ that minimizes the MSE? We take the derivative of the MSE with respect to $\hat{\beta}_0$ and set it to zero.
+
+In order to find the minimum of the MSE, we take the derivative of the MSE with respect to $\hat{\beta}_0$ and set it to zero. Instead of $\text{Time}$ we will use the shorter notation $y_i$ and instead of $\hat{\text{Time}}_i$ we will use the shorter notation $\hat{y}_i$.
+
+$$
+\begin{align*}
+RSS(\hat{\beta}_0) & = \sum_{i=1}^n (y_i - \hat{y}_i)^2 \\
+ & = \sum_{i=1}^n (y_i - \hat{\beta}_0)^2
+\end{align*}
+$$
+
+Try to find the value of $\hat{\beta}_0$ that minimizes the MSE. **Hint**: Take the derivative of the RSS with respect to $\hat{\beta}_0$, set it to zero and solve for $\hat{\beta}_0$.
+
+:::{.callout-note collapse="true"}
+## Solution for the intercept-only equation
+
+$$
+\begin{align*}
+\frac{\partial}{\partial \hat{\beta}_0} RSS(\hat{\beta}_0) & = 
+\sum_{i=1}^n 2(y_i - \hat{\beta}_0) \cdot (-1) \\
+& = -2 \sum_{i=1}^n (y_i - \hat{\beta}_0) \\
+& = -2 \sum_{i=1}^n y_i + 2 \sum_{i=1}^n \hat{\beta}_0 \\
+& = -2 \sum_{i=1}^n y_i + 2 n \hat{\beta}_0
+\end{align*}
+$$
+
+Setting the derivative to zero, we get
+
+$$
+\begin{align*}
+-2 \sum_{i=1}^n y_i + 2 n \hat{\beta}_0 & = 0 \\
+\hat{\beta}_0 & = \frac{1}{n} \sum_{i=1}^n y_i \\
+& = \overline{y}
+\end{align*}
+$$
+
+The value of $\hat{\beta}_0$ that minimizes the MSE is thus just the average of the observed values of $y_i$.
+:::
+
+## The one variable case
+
+Now let us consider the case where we have two variables, $\text{Invoices}_i$ and $\text{Time}_i$. We want to find the values of $\hat{\beta}_0$ and $\hat{\beta}_1$ that minimize the RSS.
+
+The prediction equation is
+
+$$
+\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_i
+$$
+
+The RSS is (as above)
+
+$$
+\begin{align*}
+\text{RSS}(\hat{\beta}_0, \hat{\beta}_1) & = \sum_{i=1}^n (y_i - \hat{y}_i)^2 \\
+  & = \sum_{i=1}^n (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2
+\end{align*}
+$$
+
+The first order conditions for the minimum are
+
+$$
+\begin{align*}
+\frac{\partial}{\partial \hat{\beta}_0} \text{RSS}(\hat{\beta}_0, \hat{\beta}_1) & = -2 \sum_{i=1}^n (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i) = 0 \\
+\frac{\partial}{\partial \hat{\beta}_1} \text{RSS}(\hat{\beta}_0, \hat{\beta}_1) & = -2 \sum_{i=1}^n (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i) x_i = 0
+\end{align*}
+$$
+
+The first equation gives
+
+$$
+\begin{align*}
+\sum_{i=1}^n y_i - \hat{\beta}_0 n - \hat{\beta}_1 \sum_{i=1}^n x_i & = 0 \\
+\hat{\beta}_0 n + \hat{\beta}_1 \sum_{i=1}^n x_i & = \sum_{i=1}^n y_i \\
+\hat{\beta}_0 & = \overline{y} - \hat{\beta}_1 \overline{x}
+\end{align*}
+$$
+
+The second equation gives
+
+$$
+\begin{align*}
+\sum_{i=1}^n y_i x_i - \hat{\beta}_0 \sum_{i=1}^n x_i - \hat{\beta}_1 \sum_{i=1}^n x_i^2 & = 0 \\
+\hat{\beta}_0 \sum_{i=1}^n x_i + \hat{\beta}_1 \sum_{i=1}^n x_i^2 & = \sum_{i=1}^n y_i x_i \\
+\hat{\beta}_0 & = \overline{y} - \hat{\beta}_1 \overline{x}
+\end{align*}
+$$
+
+Substituting the expression for $\hat{\beta}_0$ in the second equation, we get
+
+$$
+\begin{align*}
+(\overline{y} - \hat{\beta}_1 \overline{x}) \sum_{i=1}^n x_i + \hat{\beta}_1 \sum_{i=1}^n x_i^2 & = \sum_{i=1}^n y_i x_i \\
+\overline{y} \sum_{i=1}^n x_i - \hat{\beta}_1 \overline{x} \sum_{i=1}^n x_i + \hat{\beta}_1 \sum_{i=1}^n x_i^2 & = \sum_{i=1}^n y_i x_i \\
+\hat{\beta}_1 \sum_{i=1}^n x_i^2 & = \sum_{i=1}^n y_i x_i - \overline{y} \sum_{i=1}^n x_i + \hat{\beta}_1 \overline{x} \sum_{i=1}^n x_i \\
+\hat{\beta}_1 & = \frac{\sum_{i=1}^n y_i x_i - \overline{y} \sum_{i=1}^n x_i}{\sum_{i=1}^n x_i^2 - \overline{x} \sum_{i=1}^n x_i}
+\end{align*}
+$$
+
+Simplyfing the expression, we get
+
+$$
+\begin{align*}
+\hat{\beta}_1 & = \frac{\overline{x y} - \overline{x} \cdot \overline{y}}{\overline{x^2} - \overline{x}^2} \\
+\hat{\beta}_0 & = \overline{y} - \hat{\beta}_1 \overline{x}
+\end{align*}
+$$
+
+The last expression may seem a bit complicated, but it is actually quite simple. It is just the ratio between the empirical covariance between $x_i$ and $y_i$ divided by the variance of $x_i$.
+
+The empirical covariance between $x_i$ and $y_i$ is defined as the sum of the products of the deviations of $x_i$ and $y_i$ from their respective means, divided by the number of observations.
+
+:::{#def-covariance}
+## Covariance
+
+The covariance between two variables $x$ and $y$ with $n$ values is defined as
+
+$$
+S_{xy} = \frac{1}{n - 1} \sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y})
+$$
+
+:::
+
+:::{#def-variance-decomposition}
+## Variance decomposition
+
+We have already defined the variance of a variable $x$ as
+
+$$
+S_x^2 = \frac{1}{n - 1} \sum_{i=1}^n (x_i - \overline{x})^2
+$$
+
+It can be shown that the variance of $x$ can be decomposed into the sum of the squared mean and the variance of the deviations from the mean.
+
+$$
+S_x^2 = \frac{1}{n  - 1}(\overline{x_i^2} - \overline{x}^2)
+$$
+:::
+:::{.proof}
+The proof is straightforward. We have
+
+$$
+\begin{align*}
+(n - 1) S_x^2 & =  \sum_{i=1}^n (x_i - \overline{x})^2 \\
+& =  \sum_{i=1}^n (x_i^2 - 2x_i \overline{x} + \overline{x}^2) \\
+& =  \sum_{i=1}^n x_i^2 - 2\overline{x} \sum_{i=1}^n x_i + \overline{x}^2 \sum_{i=1}^n 1 \\
+& =  \sum_{i=1}^n x_i^2 - 2\overline{x} \sum_{i=1}^n x_i + \overline{x}^2 n \\
+& =  \sum_{i=1}^n x_i^2 - 2\overline{x}^2 n + \overline{x}^2 n \\
+& =  \sum_{i=1}^n x_i^2 - n \overline{x}^2 \\
+& = n (\overline{x_i^2} - \overline{x}^2)
+\end{align*}
+$$
+:::
+
+:::{#def-covariance}
+## Covariance and Covariance decomposition
+
+The covariance between two variables $x$ and $y$ with $n$ values is defined as
+
+$$
+S_{xy} = \frac{1}{n - 1} \sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y})
+$$
+
+Much in the same way as the variance, the covariance can be decomposed into the sum of the squared mean and the variance of the deviations from the mean.
+
+$$
+(n - 1) S_{xy} = n(\overline{x y} - \overline{x} \overline{y})
+$$
+
+The proof is similar to the proof for the variance decomposition.
+:::
+:::{.proof}
+The proof is straightforward. We have
+
+$$
+\begin{align*}
+(n - 1) S_{xy} & = \sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y}) \\
+& = \sum_{i=1}^n x_i y_i - \overline{x} \sum_{i=1}^n y_i - \overline{y} \sum_{i=1}^n x_i + n \overline{x} \overline{y} \\
+& = n(\overline{x y} - \overline{x} \overline{y})
+\end{align*}
+$$
+:::
+
+To understand what the covariance measures, consider the following scatterplot:
+
+```{r}
+#| label: fig-covariance-positive
+#| fig-cap: "Scatterplot of two variables with a positive linear assocition"
+
+set.seed(123)
+dt <- tibble(
+    x = rnorm(100),
+    y = 2 * x + rnorm(100)
+)
+
+dt %>%
+    ggplot(aes(x = x, y = y)) +
+    geom_point() +
+    geom_vline(xintercept = mean(dt$x), colour = "firebrick4") +
+    geom_hline(yintercept = mean(dt$y), colour = "steelblue4")
+```
+
+The reddish line is drawn at the average of the $x$ values and the bluish line is drawn at the average of the $y$ values. The covariance measures the average product of the deviations of the $x$ and $y$ values from their respective means. If the product is positive, it means that when $x$ is above its average, $y$ is also above its average. If the product is negative, it means that when $x$ is above its average, $y$ is below its average.
+
+You can compute the empirical covariance between two variables using the `cov` function in R.
+
+```{r}
+cov(dt$x, dt$y)
+```
+
+Only the *sign* of the covariance is important. The magnitude of the covariance depends on the units of the variables. To make the covariance unit-free, we can divide it by the product of the standard deviations of the two variables. This gives us the correlation coefficient.
+
+```{r}
+cov(dt$x * 1000, dt$y)
+cov(dt$x , dt$y * 50)
+```
+
+```{r}
+#| label: fig-covariance-negative
+#| fig-cap: "Scatterplot of two variables with a positive linear assocition"
+
+set.seed(123)
+dt1 <- tibble(
+    x = rnorm(100),
+    y = -3 * x + rnorm(100)
+)
+
+dt1 %>%
+    ggplot(aes(x = x, y = y)) +
+    geom_point() +
+    geom_vline(xintercept = mean(dt1$x), colour = "firebrick4") +
+    geom_hline(yintercept = mean(dt1$y), colour = "steelblue4")
+```
+
+```{r}
+cov(dt1$x, dt1$y)
+```
+
+:::{#def-correlation}
+## Correlation
+
+The correlation between two variables $x$ and $y$ with $n$ values is defined as
+
+$$
+r_{xy} = \frac{S_{xy}}{S_x S_y}
+$$
+
+where $S_{xy}$ is the covariance between $x$ and $y$, and $S_x$ and $S_y$ are the standard deviations of $x$ and $y$ respectively.
+
+:::
+
+Because the covariance is divided by the product of the standard deviations, the correlation is unit-free. Furthermore, the correlation is always between -1 and 1. A correlation of 1 means that the two variables lie on a straight line with a positive slope. A correlation of -1 means that the two variables lie on a straight line with a negative slope. A correlation of 0 means that there is no *linear* association between the two variables.
+
+```{r}
+cor(dt$x, dt$y)
+cor(dt1$x, dt1$y)
+```
+
+## Exercise
+
+Given two variables $x$ and $y$, compute the regression coefficients $\hat{\beta}_0$ and $\hat{\beta}_1$ using the formulas above (XXX, insert reference).
+
+```{r}
+ols_two_variables <- function(x, y){
+    # Compute the coefficients
+    beta_1_hat <- 
+    beta_0_hat <- 
+
+    list(beta_0_hat = beta_0_hat, beta_1_hat = beta_1_hat)
+}
+```
+
+Test your function using the following data set.
+
+```{r}
+set.seed(123)
+
+x <- rnorm(100)
+y <- 2 * x + rnorm(100)
+```
+
+Compare your results with the `lm` function in R.
+
+```{r}
+# Uncomment the following line to compare your results with the lm function
+
+# ols_two_variables(x, y)
+lm(y ~ x)
 ```
