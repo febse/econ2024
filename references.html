@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -150,14 +150,8 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-Probability-Review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistics Review (Optional)</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./04-Least-Squares.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Least Squares</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Least Squares</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -197,11 +191,6 @@ div.csl-indent {
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-BERTSEKAS2008IntroductionProbability" class="csl-entry" role="listitem">
-Bertsekas, Dimitri P., and John N. Tsitsiklis. 2008. <em>Introduction to
-Probability</em>. 2nd ed. Optimization and Computation Series.
-<span>Belmont</span>: <span>Athena scientific</span>.
-</div>
 <div id="ref-DALGAARD2008IntroductoryStatistics" class="csl-entry" role="listitem">
 Dalgaard, Peter. 2008. <em>Introductory Statistics with
 <span>R</span></em>. 2nd edition. Statistics and Computing. <span>New
@@ -212,11 +201,6 @@ Faraway, Julian James. 2015. <em>Linear Models with <span>R</span></em>.
 Second edition. Chapman &amp; <span>Hall</span>/<span>CRC</span> Texts
 in Statistical Science Series. <span>Boca Raton</span>: <span>CRC Press,
 Taylor &amp; Francis Group</span>.
-</div>
-<div id="ref-FREEDMAN2007Statistics" class="csl-entry" role="listitem">
-Freedman, David, Robert Pisani, and Roger Purves. 2007.
-<em>Statistics</em>. 4th ed. <span>New York</span>: <span>W.W. Norton
-&amp; Co</span>.
 </div>
 <div id="ref-GELMAN2021RegressionOtherStories" class="csl-entry" role="listitem">
 Gelman, Andrew, Jennifer Hill, and Aki Vehtari. 2021. <em>Regression and
@@ -320,6 +304,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -354,7 +356,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -631,7 +637,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./04-Least-Squares.html" class="pagination-link" aria-label="Least Squares">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Least Squares</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Least Squares</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
