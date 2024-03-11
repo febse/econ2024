@@ -317,7 +317,6 @@ summary(lm(height_cm ~ weight_kg, data = earnings1))
 ```
 
 :::{#exr-visualizations}
-## Data Manipulation and Visualization
 
 1. Create a new variable `bmi` (body mass index) in the `earnings` data set. The BMI is defined as the weight in kilograms divided by the square of the height in meters. The height in meters is the height in centimeters divided by 100.
 
