@@ -51,3 +51,5 @@ vignettes/*.pdf
 figure-html/
 libs/
 
+/03-Least-Squares_files
+/02-Descriptive-Statistics-Exercise_files

@@ -540,3 +540,104 @@ Compare your results with the `lm` function in R.
 # ols_two_variables(x, y)
 lm(y ~ x)
 ```
+
+## Least Squares in Matrix Notation
+
+The previous discussion can be summarized in matrix notation and you will commonly find it in this form in textbooks and articles.
+
+For the one variable case, the prediction equation, written for all observations is
+
+$$
+\begin{align*}
+\hat{y}_1 & = \hat{\beta}_0 + \hat{\beta}_1 x_1 \\
+\hat{y}_2 & = \hat{\beta}_0 + \hat{\beta}_1 x_2 \\
+\vdots & \\
+\hat{y}_n & = \hat{\beta}_0 + \hat{\beta}_1 x_n \\
+\end{align*}
+$$
+
+This can be written in matrix notation as
+
+$$
+\underbrace{\begin{bmatrix}
+\hat{y}_1 \\
+\hat{y}_2 \\
+\vdots \\
+\hat{y}_n
+\end{bmatrix}
+}_{\hat{y}_{n \times 1}}
+=
+\underbrace{\begin{bmatrix}
+1 & x_1 \\
+1 & x_2 \\
+\vdots & \vdots \\
+1 & x_n
+\end{bmatrix}}_{X_{n \times 2}}
+\underbrace{\begin{bmatrix}
+\hat{\beta}_0 \\
+\hat{\beta}_1
+\end{bmatrix}}_{\hat{\beta}_{2 \times 1}}
+$$
+
+$$
+\hat{y} = X \hat{\beta}
+$$
+
+You can think about the least squares as finding a solution to a system of linear equations where the number of equations is greater than the number of unknowns. Let us focus on a case with one variable and two observations (the first two from the `invoices` data set).
+
+```{r}
+invoices %>%
+ head(n = 2)
+```
+
+
+$$
+2.1 = \hat{\beta}_0 + \hat{\beta}_1 149 \\
+1.8 = \hat{\beta}_0 + \hat{\beta}_1 60
+$$
+
+In this system of equations you have two unknowns, $\hat{\beta}_0$ and $\hat{\beta}_1$, and two equations. Therefore, you can actually solve for the unknowns (left as an exercise).
+
+```{r}
+M <- matrix(c(1, 149, 1, 60), ncol = 2, byrow = TRUE)
+y <- c(2.1, 1.8)
+solve(M, y)
+```
+
+You will find that the solution is
+$$
+\begin{align*}
+\hat{\beta}_0 \approx 1.598 \\
+\hat{\beta}_1 \approx 0.0034
+\end{align*}
+$$
+
+Let's look at the first three observations in the `invoices` data set.
+
+```{r}
+invoices %>%
+ head(n = 3)
+```
+
+The equations for the first three observations are
+
+$$
+\begin{align*}
+2.1 & = \hat{\beta}_0 + \hat{\beta}_1 149 \\
+1.8 & = \hat{\beta}_0 + \hat{\beta}_1 60 \\
+2.2 & = \hat{\beta}_0 + \hat{\beta}_1 201
+\end{align*}
+$$
+
+Substituting the solution for $\hat{\beta}_0$ and $\hat{\beta}_1$ that we
+obtained from the first two equations into the third equation, we get
+
+```{r}
+1.597752809 + 0.003370787 * 201
+```
+
+which is not exactly equal to 2.2, therefore the third equation is not satisfied.
+
+In the general case we cannot hope to solve the system of equations exactly. What we could hope for is to find an approximate solution which is close to the
+actual left hand side values. The least squares method provides such a solution
+by defining a sense of `closeness` between the approximate solution and the actual left hand side values (data).
