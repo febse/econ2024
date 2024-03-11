@@ -640,4 +640,4 @@ which is not exactly equal to 2.2, therefore the third equation is not satisfied
 
 In the general case we cannot hope to solve the system of equations exactly. What we could hope for is to find an approximate solution which is close to the
 actual left hand side values. The least squares method provides such a solution
-by defining a sense of `closeness` between the approximate solution and the actual left hand side values (data).
+by defining a sense of `closeness` between the approximate solution and the actual left hand side values (data) and then finding the approximate solution that minimizes that `closeness` measure.
