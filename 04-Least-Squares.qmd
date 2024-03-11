@@ -213,7 +213,7 @@ fig <- plot_ly(
     layout(
         scene = list(
           xaxis = list(title = "beta1_hat"),
-          yaxis = list(title = "beta1_hat"),
+          yaxis = list(title = "beta0_hat"),
           zaxis = list(title = "RSS")
         )
     )
