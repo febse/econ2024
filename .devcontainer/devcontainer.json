@@ -11,9 +11,11 @@
 				"r-cran-tidyverse",
 				"r-cran-rmarkdown",
 				"r-cran-plotly",
-				// "r-cran-patchwork",
+				"r-cran-patchwork",
 				"r-cran-ggally",
-				"r-cran-broom"
+				"r-cran-broom",
+				"r-cran-caret",
+				"r-cran-testthat"
 			]
 		}
     },
