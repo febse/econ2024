@@ -350,7 +350,7 @@ $$
 \end{align*}
 $$
 
-Simplyfing the expression, we get
+Simplifying the expression, we get
 
 $$
 \begin{align*}
@@ -511,7 +511,7 @@ cor(dt1$x, dt1$y)
 
 ## Exercise
 
-Given two variables $x$ and $y$, compute the regression coefficients $\hat{\beta}_0$ and $\hat{\beta}_1$ using the formulas above (XXX, insert reference).
+Write a function that takes two vectors `x` and `y` as arguments and returns the OLS coefficients $\hat{\beta}_0$ and $\hat{\beta}_1$ using the formulas above.
 
 ```{r}
 ols_two_variables <- function(x, y){
@@ -528,8 +528,8 @@ Test your function using the following data set.
 ```{r}
 set.seed(123)
 
-x <- rnorm(100)
-y <- 2 * x + rnorm(100)
+x_test <- rnorm(100)
+y_test <- 1 + 2 * x_test + rnorm(100)
 ```
 
 Compare your results with the `lm` function in R.
@@ -538,8 +538,57 @@ Compare your results with the `lm` function in R.
 # Uncomment the following line to compare your results with the lm function
 
 # ols_two_variables(x, y)
-lm(y ~ x)
+lm(y_test ~ x_test)
 ```
+
+
+## OLS using the `lm` function in ```{html}
+
+Our primary tool for calculating the least squares coefficients will be the `lm` function in R. The `lm` function takes a formula as its first argument and a data set as its second argument. The formula is of the form `y ~ x` where `y` is the dependent variable and `x` is the independent variable. The data set is a data frame/tibble with the variables `x` and `y`.
+
+Use the `lm` function to compute the OLS coefficients for the `invoices` data set.
+and the model:
+
+$$
+\widehat{\text{Time}} = \hat{\beta}_0 + \hat{\beta}_1 \text{Invoices}
+$$
+
+```{r}
+# Uncomment the following two lines to fit the model
+
+# fit_OLS <- lm(WRITE THE FORMULA HERE, data = invoices)
+# fit_OLS
+```
+
+```{r}
+# invoices <- invoices %>%
+#     mutate(
+#       Time_hat_OLS = predict(fit_OLS),
+#       residuals_OLS = # WRITE YOUR CODE HERE
+#     )
+
+# Compute the RSS for the OLS model
+
+```
+
+## Plot the OLS predictions
+
+```{r}
+# Plot the predictions
+invoices %>%
+    ggplot(aes(x = Invoices, y = Time)) +
+    geom_point() +
+    geom_line(aes(y = Time_hat_OLS), colour = "steelblue4")
+```
+
+```{r}
+# Plot the predictions
+invoices %>%
+    ggplot(aes(x = Invoices, y = Time)) +
+    geom_point() +
+    geom_smooth(method = "lm")
+```
+
 
 ## Least Squares in Matrix Notation
 
@@ -641,3 +690,88 @@ which is not exactly equal to 2.2, therefore the third equation is not satisfied
 In the general case we cannot hope to solve the system of equations exactly. What we could hope for is to find an approximate solution which is close to the
 actual left hand side values. The least squares method provides such a solution
 by defining a sense of `closeness` between the approximate solution and the actual left hand side values (data) and then finding the approximate solution that minimizes that `closeness` measure.
+
+## The Geometry of Least Squares
+
+In the previous section we derived the formula using calculus and an objective function (the RSS) that we wanted to minimize. In this section we will derive the formula using a geometric approach.
+
+First, let us think about the data in terms of vectors.
+
+
+```{r}
+#| label: fig-vector-projection
+#| fig-cap: "Vector projection"
+#| code-fold: true
+#| warning: false
+#| 
+if (!require("ggforce")) install.packages("ggforce")
+
+library(tidyverse)
+library(ggforce)
+
+X <- c(2, 3) / 4
+Y <- c(1, 0.2)
+
+Y_proj <- X %*% Y / X %*% X * X
+Y_min_Y_proj <- Y_proj - Y
+
+df <- tibble(
+  x = c(0, 0, Y[1], 0, Y[1], Y[2], Y_proj[1], Y_proj[1]),
+  y = c(0, 0, Y[2], 0, X[2], Y[2], Y_proj[2], Y_proj[2]),
+  xend = c(X[1], Y[1], Y_proj[1], Y_proj[1], NA, NA, NA, NA),
+  yend = c(X[2], Y[2], Y_proj[2], Y_proj[2], NA, NA, NA, NA),
+  color = c('A', 'B', 'C', 'D', NA, NA, NA, NA)
+)
+
+ggplot(df, aes(x = x, y = y)) +
+  geom_segment(
+    aes(
+      xend = xend, yend = yend, 
+      color = color
+      ),
+      arrow = arrow(length = unit(0.3,"cm")
+    )
+  ) + 
+  annotate(
+    geom = "text",
+    label = "x",
+    x = 0.5, y = 0.76
+  ) + 
+  annotate(
+    geom = "text",
+    label = "y_hat = bx",
+    x = 0.35, y = 0.6
+  ) +
+  annotate(
+    geom = "text",
+    label = "y",
+    x = 1, y = 0.19
+  ) + 
+  annotate(
+    geom = "text",
+    label = "y - bx",
+    x = 0.75, y = 0.4
+  )
+```
+
+What is the projection of the vector $y$ onto the vector $x$? It is the vector that is closest to $y$ and lies on the line spanned by $x$.
+
+Two vectors are said to be orthogonal if their dot product is zero. The dot product of two vectors $x$ and $y$ is defined as
+
+$$
+x \cdot y = \sum_{i=1}^n x_i y_i
+$$
+
+Another way to write the dot product is as a matrix product:
+
+$$
+x \cdot y = x^T y
+$$
+
+where $x^T$ is the transpose of $x$ (meaning that $x^T$ is a row vector).
+
+$$
+x \cdot y = ||x|| \cdot ||y|| \cdot \cos(\theta)
+$$
+
+where $||x||$ and $||y||$ are the lengths of the vectors and $\theta$ is the angle between the two vectors.
