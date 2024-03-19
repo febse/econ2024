@@ -48,14 +48,14 @@ As our goal is to create predictions, we will denote the predicted time needed t
 Strategy 1: Use the average processing time for the predictions
 
 $$
-\widehat{\text{Time}}_i^{avg} = \overline{\text{Time}}
+\widehat{\text{Time}}_i^{eq1} = \overline{\text{Time}}
 $$
 
 
 Strategy 2: Use the following linear equation for the predictions
 
 $$
-\widehat{\text{Time}}_i^{eq1} = 0.6 + 0.01 \cdot \text{Invoices}_i
+\widehat{\text{Time}}_i^{eq2} = 0.6 + 0.01 \cdot \text{Invoices}_i
 $$
 
 
