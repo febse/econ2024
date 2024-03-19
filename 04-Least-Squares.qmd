@@ -152,10 +152,10 @@ lm(Time ~ Invoices, data = invoices) %>% summary()
 
 Which strategy is better? To answer this question we need to agree on a criterion for comparison. The criterion should be a summary of the differences between the actual and the predicted values and should be small when the differences are small. It should also be zero when the predictions are perfect (i.e. no differences between predicted and actual values).
 
-A candidate criterion could be the average prediction error:
+A candidate criterion could be the average residual:
 
 $$
-\sum_{i = 1}^{n} (\text{Time}_i - \widehat{\text{Time}}_i)
+\frac{1}{n}\sum_{i = 1}^{n} (\text{Time}_i - \widehat{\text{Time}}_i)
 $$
 
 It suffers from a major drawback, however. Can you spot it?
@@ -778,8 +778,8 @@ ggplot(df, aes(x = x, y = y)) +
   ) + 
   annotate(
     geom = "text",
-    label = "y - bx",
-    x = 0.74, y = 0.42
+    label = "r = y - bx",
+    x = 0.76, y = 0.42
   ) + 
   labs(
     x = "",
