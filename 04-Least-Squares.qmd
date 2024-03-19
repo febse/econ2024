@@ -67,6 +67,11 @@ Compute the predicted time $\widehat{Time}_i$ for the first strategy and store i
 ```{r}
 # Hint: use the mutate function
 
+invoices <- invoices %>%
+    mutate(
+        Time_hat_eq1 = mean(Time),
+        residuals_eq1 = Time - Time_hat_eq1
+    )
 ```
 
 :::
@@ -79,7 +84,11 @@ Compute the predicted time $\widehat{Time}_i$ for the second strategy and store 
 ```{r}
 # Hint: use the mutate function
 
-
+invoices <- invoices %>%
+    mutate(
+        Time_hat_eq2 = 0.6 + 0.01 * Invoices,
+        residuals_eq2 = Time - Time_hat_eq2
+    )
 ```
 
 :::
@@ -89,6 +98,7 @@ Before we proceed, let us visualize the residuals of the two strategies.
 ```{r}
 #| label: fig-residuals-strategy-1
 #| fig-cap: "Prediction and Residuals for Strategy 1"
+#| code-fold: true
 
 invoices %>%
     mutate(
@@ -112,7 +122,8 @@ ggplot(aes(x = Invoices, y = Time)) +
 ```{r}
 #| label: fig-residuals-strategy-2
 #| fig-cap: "Prediction and Residuals for Strategy 2"
-#| 
+#| code-fold: true
+
 invoices %>%
     mutate(
         Time_hat = 0.6 + 0.01 * Invoices,
@@ -152,12 +163,15 @@ It suffers from a major drawback, however. Can you spot it?
 A widely used criterion is the mean squared error (MSE). The MSE is defined as.
 
 $$
-\text{MSE} = \frac{1}{n} \sum_{i=1}^n (\text{Time}_i - \widehat{\text{Time}}_i)^2
+\begin{align*}
+\text{RSS} & = \sum_{i=1}^n (\text{Time}_i - \widehat{\text{Time}}_i)^2 \\
+\text{MSE} & = \frac{1}{n} \text{RSS}
+\end{align*}
 $$
 
 where $\widehat{\text{Time}}_i$ is the predicted time needed to process the invoices.
 
-Let's calculate the MSE for the two strategies.
+Let's calculate the average prediction error, RSS and MSE for the two strategies. *Hint*: use the summarize function and the variables holding the residuals.
 
 ```{r}
 # Strategy 1
@@ -169,7 +183,7 @@ Let's calculate the MSE for the two strategies.
 
 ```
 
-Can you guess better values for the coefficients in the linear equation? Try your own values and calculate the MSE.
+Can you guess better values for the coefficients in the linear equation? Try your own values and calculate the RSS and MSE.
 
 ```{r}
 # Your own strategy
@@ -184,7 +198,8 @@ First, let us visualize the MSE as a function of the coefficients. For this purp
 
 ```{r}
 #| label: fig-rss-3d
-#| fig-cap: "MSE as a function of the coefficients"
+#| fig-cap: "RSS as a function of the coefficients"
+#| code-fold: true
 
 # NOTE: this code here is only for illustration purposes, you don't need to study it or understand it for the course
 
@@ -291,7 +306,17 @@ $$
 The value of $\hat{\beta}_0$ that minimizes the MSE is thus just the average of the observed values of $y_i$.
 :::
 
-## The one variable case
+:::{#exr-no-intercept-equation}
+Consider the following equation for the predictions
+
+$$
+\hat{y} = \hat{\beta}_1 x
+$$
+
+Find the value of $\hat{\beta}_1$ that minimizes the RSS. **Hint**: Take the derivative of the RSS with respect to $\hat{\beta}_1$, set it to zero and solve for $\hat{\beta}_1$.
+:::
+
+## The one variable case with an intercept
 
 Now let us consider the case where we have two variables, $\text{Invoices}_i$ and $\text{Time}_i$. We want to find the values of $\hat{\beta}_0$ and $\hat{\beta}_1$ that minimize the RSS.
 
