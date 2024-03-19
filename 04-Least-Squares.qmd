@@ -29,15 +29,14 @@ More precisely, our task is to predict the time needed to process 50, 120, 201, 
 
 
 ```{r}
+#| label: fig-invoices-time
+#| fig-cap: "Time needed to process the invoices"
+#| code-fold: true
+
 ggplot(data = invoices, aes(x = Invoices, y = Time)) +
   geom_point() +
   geom_vline(xintercept = c(50, 120, 201, 250, 400), lty = 2, alpha = 0.5) +
   scale_x_continuous(breaks = c(50, 120, 201, 250, 400))
-
-# +
-# geom_vline(xintercept = 120, lty = 2) +
-# geom_hline(yintercept = 2.110) +
-# geom_abline(intercept = 0.1, slope = 0.015, colour = "steelblue2")
 ```
 
 Let us set up a bit of notation. We have a sample of $n = 30$ observations. Let $i$  be the number of the days $i=1,2,\ldots, n$. The variable of interest is the time needed to process the invoices, denoted by $\text{Time}_i$. We have one predictor variable, the number of invoices, denoted by $\text{Invoices}_i$.
@@ -142,14 +141,6 @@ ggplot(aes(x = Invoices, y = Time)) +
   geom_label(aes(label = round(residuals, 2)))
 ```
 
-```{r}
-lm(Time ~ Invoices, data = invoices) %>% summary()
-```
-
-```{r}
-```
-
-
 Which strategy is better? To answer this question we need to agree on a criterion for comparison. The criterion should be a summary of the differences between the actual and the predicted values and should be small when the differences are small. It should also be zero when the predictions are perfect (i.e. no differences between predicted and actual values).
 
 A candidate criterion could be the average residual:
@@ -160,7 +151,7 @@ $$
 
 It suffers from a major drawback, however. Can you spot it?
 
-A widely used criterion is the mean squared error (MSE). The MSE is defined as.
+A widely used criterion is the mean squared error (MSE) defined as the average of the squared residuals:
 
 $$
 \begin{align*}
@@ -175,12 +166,22 @@ Let's calculate the average prediction error, RSS and MSE for the two strategies
 
 ```{r}
 # Strategy 1
-
+invoices %>%
+  summarize(
+    avg_res_eq1 = mean(residuals_eq1),
+    RSS_eq1 = sum(residuals_eq1^2),
+    MSE_eq1 = mean(residuals_eq1^2),    
+  )
 ```
 
 ```{r}
 # Strategy 2
-
+invoices %>%
+  summarize(
+    avg_res_eq2 = mean(residuals_eq2),
+    RSS_eq2 = sum(residuals_eq2^2),
+    MSE_eq2 = mean(residuals_eq2^2),    
+  )
 ```
 
 Can you guess better values for the coefficients in the linear equation? Try your own values and calculate the RSS and MSE.

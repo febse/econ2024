@@ -321,13 +321,10 @@ summary(lm(height_cm ~ weight_kg, data = earnings1))
 1. Create a new variable `bmi` (body mass index) in the `earnings` data set. The BMI is defined as the weight in kilograms divided by the square of the height in meters. The height in meters is the height in centimeters divided by 100.
 
 ```{r}
-# Select the following code and uncomment it by pressing Ctrl+Shift+C
-
-# earnings <- earnings # YOUR CODE HERE
-#   mutate(
-#     bmi = # YOUR CODE HERE
-#   )
-
+earnings <- earnings %>%
+  mutate(
+    bmi = weight_kg / (height_cm / 100)^2
+  )
 ```
 
 
@@ -341,17 +338,17 @@ summary(lm(height_cm ~ weight_kg, data = earnings1))
 Create a two new variables `is_underweight`, `is_normal` in the dataset. *Hint*: Use the `mutate` function and the `<`, `<=`, `>`, `>=` operators. You can join multiple conditions using the `&` (logical and) operator. Don't forget to uncommend the code first (Ctrl+Shift+C). How many customers are underweight and how many have a normal weight? Use the `summarize` function to compute the number of customers in each category.
 
 ```{r}
-# earnings <- earnings # YOUR CODE HERE
-#   mutate(
-#     is_underweight = # YOUR CODE HERE
-#     is_normal = # YOUR CODE HERE
-#   )
+earnings <- earnings %>%
+  mutate(
+    is_underweight = bmi < 18.5,
+    is_normal = bmi >= 18.5 & bmi <= 24.9
+  )
 
-# earnings %>%
-#   summarize(
-#     n_underweight = # YOUR CODE HERE
-#     n_normal = # YOUR CODE HERE
-#   )
+earnings %>%
+  summarize(
+    n_underweight = sum(is_underweight, na.rm = TRUE),
+    n_normal = sum(is_normal, na.rm = TRUE)
+  )
 ```
 
 :::
@@ -359,13 +356,14 @@ Create a two new variables `is_underweight`, `is_normal` in the dataset. *Hint*:
 3. Group the data by `male` and compute the number of customers in each group, as well as the number of underweight and normal weight customers in each group. Additionally, compute the share of underweight and normal weight customers in each group. *Hint*: Use the `group_by` function and the `summarize` function. Don't forget to uncommend the code first (Ctrl+Shift+C). The `n()` function can be used to compute the number of observations in each group.
 
 ```{r}
-# earnings %>%
-#   group_by(# YOUR CODE HERE) %>%
-#   summarize(
-#     n = n(),
-#     n_underweight = # YOUR CODE HERE
-#     n_normal = # YOUR CODE HERE
-#     share_underweight = # YOUR CODE HERE
-#     share_normal = # YOUR CODE HERE
-#   )
+earnings %>%
+  group_by(male) %>%
+  summarize(
+    # Count the number of customers in each group
+    n = n(),
+    n_underweight = sum(is_underweight, na.rm = TRUE),
+    n_normal = sum(is_normal, na.rm = TRUE),
+    share_underweight = mean(is_underweight, na.rm = TRUE),
+    share_normal = mean(is_normal, na.rm = TRUE)
+  )
 ```
