@@ -589,7 +589,7 @@ $$
 ```{r}
 # Compute the predicted values for the days (observations) in the sample
 
-time_predicted_OLS <- predict(fit_OLS)
+# time_predicted_OLS <- predict(fit_OLS)
 ```
 
 ```{r}
@@ -683,8 +683,6 @@ model.matrix(fit_OLS)
 ```
 
 The colum of ones in the design matrix is the intercept term. The other column is the predictor term (the number of invoices in our example).
-
-```{r}
 
 $$
 \hat{y} = X \hat{\beta}
