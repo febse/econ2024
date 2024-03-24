@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Introduction to linear regression analysis - 3&nbsp; Statistics Review (Optional)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./04-Least-Squares.html" rel="next">
+<link href="./02-Descriptive-Statistics.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-Probability-Review.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistics Review (Optional)</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Introduction to linear regression analysis</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">General Information</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-Recommended-Literature.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recommended reading</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-Introduction-to-R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-Descriptive-Statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-Probability-Review.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistics Review (Optional)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-Least-Squares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Least Squares</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-probability" id="toc-sec-probability" class="nav-link active" data-scroll-target="#sec-probability"><span class="header-section-number">3.1</span> Probability</a></li>
+  <li><a href="#sec-discrete-distributions" id="toc-sec-discrete-distributions" class="nav-link" data-scroll-target="#sec-discrete-distributions"><span class="header-section-number">3.2</span> Discrete distributions</a></li>
+  <li><a href="#discrete-random-variables" id="toc-discrete-random-variables" class="nav-link" data-scroll-target="#discrete-random-variables"><span class="header-section-number">3.3</span> Discrete Random Variables</a></li>
+  <li><a href="#expected-value" id="toc-expected-value" class="nav-link" data-scroll-target="#expected-value"><span class="header-section-number">3.4</span> Expected value</a>
+  <ul class="collapse">
+  <li><a href="#properties-of-the-expected-value" id="toc-properties-of-the-expected-value" class="nav-link" data-scroll-target="#properties-of-the-expected-value"><span class="header-section-number">3.4.1</span> Properties of the expected value</a></li>
+  </ul></li>
+  <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance"><span class="header-section-number">3.5</span> Variance</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistics Review (Optional)</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## First, load the tidyverse package</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">## If the package is not installed, uncomment the next line and run the code chunk again</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">## install.packages("tidyverse")</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.0     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># source("lib.R")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="sec-probability" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-probability"><span class="header-section-number">3.1</span> Probability</h2>
+<p>Imagine a game where you flip a single coin once. The possible outcomes are head (H) and tail (T). The set of all possible outcomes of the game is called the <em>sample</em> space of the experiment. We will denote this set with <span class="math inline">\Omega</span>. For a single coin toss game, the sample space is <span class="math inline">\Omega = \{\text{heads}, \text{tails}\}</span>.</p>
+<div id="def-probability" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 3.1 (Probability)</strong></span> Let <span class="math inline">\Omega</span> denote the sample space of a random experiment. Let <span class="math inline">A \subseteq \Omega</span> and <span class="math inline">B \subset \Omega</span> be two disjoint events (i.e.&nbsp;<span class="math inline">A \cap B = \varnothing</span>). Disjoint events are events that cannot co-occur. A probability measure on this space has the following properties:</p>
+<p><span class="math display">
+\begin{align}
+  &amp; P(A) \geq 0 \qquad \text{non-negativity}\\
+  &amp; P(\Omega) = 1 \qquad  \text{unit measure} \\
+  &amp; P(A \cup B) = P(A) + P(B) \qquad \text{additivity}
+\end{align}
+</span></p>
+</div>
+<div id="thm-probability-complement" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.1 (Probability of complementary sets)</strong></span> Let <span class="math inline">\Omega</span> be a sample space, let <span class="math inline">A \subseteq \Omega</span> be a subset of the sample space, and let <span class="math inline">\bar{A} = \Omega \setminus A</span> be the complement of <span class="math inline">A</span> in <span class="math inline">\Omega</span>. Then the probability of the complementary set is given by:</p>
+<p><span class="math display">
+P(A) = 1 - P(\bar{A})
+</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>For the proof note that <span class="math inline">A</span> and <span class="math inline">\bar{A}</span> are disjoint by definition (<span class="math inline">A \cap \bar{A} = \varnothing</span>). Using the additivity of probability together with the unit probability of the sample space <span class="math inline">\Omega</span> from <a href="#def-probability" class="quarto-xref">Definition&nbsp;<span>3.1</span></a>, it follows that:</p>
+<span class="math display">\begin{align}
+    P(A \cup \bar{A}) = P(A) + P(\bar{A})
+  \end{align}</span>
+<span class="math display">\begin{align}
+    P(A \cup \bar{A}) &amp; =  P(\Omega) \\
+    P(A) + P(\bar{A}) &amp; = 1 \implies \\
+    P(A) &amp; = 1 - P(\bar{A}).
+  \end{align}</span>
+</div>
+<div id="exm-probability-weather" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.1 (Weather forecast)</strong></span> The weather forecast for the next day shows that it will be raining (<span class="math inline">A</span>) with probability <span class="math inline">P(A) = 0.3</span>. The sample space is <span class="math inline">\Omega = \{A, \bar{A}\}</span> and the probability of not raining (<span class="math inline">\bar{A}</span>) is then <span class="math inline">P(\bar{A}) = 1 - 0.3 = 0.7</span>.</p>
+</div>
+<div id="exm-probability-dice" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.2 (Dice)</strong></span> In a game where you roll a (6-sided) dice once the sample space is <span class="math inline">\Omega = \{1, 2, 3, 4, 5, 6\}</span>. Denote the outcome of a roll with <span class="math inline">X</span> and assume that the probability of each outcome is equal: <span class="math inline">P(X = i) = 1 / 6, i = 1,2,\ldots,6</span>. The probability of the event <span class="math inline">X = 1</span> is then <span class="math inline">P(X = 1) = 1/6</span>. The probability of the event “outcome is not one” is <span class="math inline">P(X \neq 1) = P(X &gt; 1) = 5 / 6.</span></p>
+</div>
+<p>See <span class="citation" data-cites="BERTSEKAS2008IntroductionProbability">Bertsekas and Tsitsiklis (<a href="references.html#ref-BERTSEKAS2008IntroductionProbability" role="doc-biblioref">2008</a>)</span> (Chapter 1) for a more thorough treatment of the subject.</p>
+</section>
+<section id="sec-discrete-distributions" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-discrete-distributions"><span class="header-section-number">3.2</span> Discrete distributions</h2>
+<p>When we presented the axioms of probability we mentioned the concept of a sample space and probability. For the sake of brevity we will skip almost all of the set theoretic foundation of probability measures and will directly introduce the concept of a random variable.</p>
+<p>Let us go back to the roots of probability theory that date back at least to the 17th century and the study of games of chance (gambling) <span class="citation" data-cites="FREEDMAN2007Statistics">(<a href="references.html#ref-FREEDMAN2007Statistics" role="doc-biblioref">Freedman, Pisani, and Purves 2007, 248</a>)</span>. Almost all introductory text on probability theory start with an example of some simple game of chance. We will follow this example, because it is easy to understand a simple game and the mathematical concepts involved. Later we will see how we can apply the concepts developed here to an extremely broad range of problems.</p>
+</section>
+<section id="discrete-random-variables" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="discrete-random-variables"><span class="header-section-number">3.3</span> Discrete Random Variables</h2>
+<p>Imagine that you are about to buy a lottery ticket that costs 1 EUR. Until you buy and scratch the ticket you don’t actually know how much you will win, but before you commit to the purchase you may wonder what winnings you should <em>expect</em>. Without knowing the <em>rules</em> of the lottery you would be completely in the dark about your prospects, so let us assume that you actually know how the lottery works.</p>
+<p>From our point of view the rules of the game are completely determined by two things. The first one is the set of possible outcomes (the sample space) of the lottery and let’s assume that each ticket can win 0 EUR, 1 EUR or 2 EUR. Notice that the set of possible values is <em>finite</em> as there are only three possible outcomes. Let us write <span class="math inline">X</span> for the (yet unknown) winning from our lottery ticket. In lottery games the value of <span class="math inline">X</span> depends on some random mechanism (for example drawing numbered balls, spinning a wheel, etc.), therefore it is a <em>function</em> of the outcome of this random mechanism. We will call functions like <span class="math inline">X</span> <em>random variables</em>. For the most part we will not refer the underlying random mechanism and will simply focus on the distribution of the possible values of <span class="math inline">X</span>. The second part of the rules is how often winnings of 0 EUR, 1 EUR and 2 EUR occur when you repeatedly play the game. Obviously, a game where half of the tickets win 2 EUR is quite different from a game where only one out of 100 tickets wins 2 EUR.</p>
+<div id="tbl-discrete-game-probabilities" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-discrete-game-probabilities-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.1: Distribution of outcomes for two games of chance. Possible outcomes and probabilities for each outcome.
+</figcaption>
+<div aria-describedby="tbl-discrete-game-probabilities-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-stdout">
+<pre><code>  Winnings(x) P(x) Winnings(y) P(y)
+1       0 EUR  0.5       0 EUR  0.5
+2       1 EUR  0.3       1 EUR  0.1
+3       2 EUR  0.2       2 EUR  0.3</code></pre>
+</div>
+</div>
+</figure>
+</div>
+<p>Let us focus on the first game with probabilities (0.5, 0.3 and 0.2) and develop some intuitive understanding of these quantities. You can think about the probabilities in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>3.1</span></a> as theoretical proportions in a sense that if you play the lottery 100 times you would expect to win nothing (0 EUR) in <em>about</em> 50 games, 1 EUR in <em>about</em> 30 games and 2 EUR in about <em>20</em> games. Notice that to <em>expect</em> 20 2-EUR wins out of 100 games is absolutely <em>not</em> the same as the statement that you <em>will</em> win 2 EUR in exactly 20 out of 100 games! To convince yourself look at <a href="#tbl-discrete-games-simulation" class="quarto-xref">Table&nbsp;<span>3.2</span></a> which presents the results of five simulated games with 100 tickets each. You can play with this and similar games by changing the number of tickets and the number of games in this <a href="https://feb-uni-sofia.shinyapps.io/econometrics2020/">simulation</a>. In the first game the player had 49 tickets that won nothing, but in the second game she had only 38 0-win tickets. When we say to expect 50 0-wins out of 100 tickets we mean that the number of observed (actually played) 0-wins will <em>vary</em> around 50. In neither of the five simulated games was the number of 0-wins exactly equal to 50 (this is also possible, though).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43243</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>Ex <span class="ot">&lt;-</span> <span class="fu">sum</span>(x <span class="sc">*</span> probs)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>nGames <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>cnts <span class="ot">&lt;-</span> <span class="fu">rmultinom</span>(<span class="at">n =</span> nGames, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">prob =</span> probs)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>avgWinnings <span class="ot">&lt;-</span><span class="fu">apply</span>(cnts, <span class="dv">2</span>, <span class="cf">function</span>(cnt) <span class="fu">sum</span>(cnt <span class="sc">*</span> x) <span class="sc">/</span> <span class="dv">100</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>gameResult <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">t</span>(cnts), avgWinnings)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(gameResult) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">'x ='</span>, <span class="dv">0</span><span class="sc">:</span>(<span class="fu">length</span>(probs) <span class="sc">-</span> <span class="dv">1</span>), <span class="at">sep =</span> <span class="st">' '</span>), <span class="st">'Average winnings per ticket'</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(gameResult) <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">'Game'</span>, <span class="dv">1</span><span class="sc">:</span>nGames, <span class="at">sep =</span> <span class="st">' '</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>gameResult <span class="sc">%&gt;%</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-discrete-games-simulation" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-discrete-games-simulation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.2: Simulation of five games with 100 tickets each. Number of tickets by outcome (0, 1, or 2 EUR) and average ticket win.
+</figcaption>
+<div aria-describedby="tbl-discrete-games-simulation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">x = 0</th>
+<th style="text-align: right;">x = 1</th>
+<th style="text-align: right;">x = 2</th>
+<th style="text-align: right;">Average winnings per ticket</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Game 1</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0.68</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Game 2</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">0.88</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Game 3</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">0.75</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Game 4</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0.76</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Game 5</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">0.53</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>The probabilities in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>3.1</span></a> completely describe the two games. The functions that assigns a probability to each possible outcome <span class="math inline">p(x)</span> and <span class="math inline">p(y)</span> are called <em>probability mass functions</em>. These functions incorporate everything there is to know about our hypothetical games. While this knowledge will not guarantee you a profit from gambling, it enables you to compute the expected value of each ticket, the probability that none of your tickets will win, etc. An important property of the probability mass function is that it is always non-negative (no negative probabilities) and that the sum of the probabilities over all possible values is exactly <span class="math inline">1</span>.</p>
+<div id="def-probability-mass-function" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 3.2 (Probability mass function)</strong></span> For a discrete random variable <span class="math inline">X</span> with possible values <span class="math inline">x_1,\ldots,x_K</span> a function <span class="math inline">p(x_i)</span> that assigns a probability to the possible values of <span class="math inline">X</span> is called a probability mass function.</p>
+<p><span class="math display">
+\begin{align}
+  P(X = x_k) = p_k.
+\end{align}
+</span> The probabilities are real numbers in the interval <span class="math inline">[0, 1]</span> and need to sum to 1 over all possible values.</p>
+<span class="math display">\begin{align}
+  p_k \geq 0\\
+  \sum_{k = 1} ^ {K} p_k = 1.
+\end{align}</span>
+</div>
+<p>Note that the set of <span class="math inline">K</span> possible values <span class="math inline">x_1,\ldots,x_K</span> is <em>finite</em>. The same definition can be used for infinite sets of possible values as long as these are <em>countably infinite</em> but we will skip this discussion.</p>
+<div id="exm-probability-mass-function-games" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.3 (Probability mass function)</strong></span> The first game in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>3.1</span></a> has three possible outcomes: <span class="math inline">x_1 = 0, x_2 = 1, x_3 = 2</span>. The probability mass function is then</p>
+<p><span class="math display">
+p(x) = \begin{cases}
+0.5 &amp; \text{if} \quad x = 0 \\
+0.3 &amp; \text{if} \quad x = 1 \\
+0.2 &amp; \text{if} \quad x = 2 \\
+0 &amp; \text{otherwise}
+\end{cases}
+</span></p>
+</div>
+<p>A common visualization of the probability mass function is a barchart with the heights of the bars corresponding to the probability of each outcome.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="fl">0.2</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> p)) <span class="sc">+</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03-Probability-Review_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- ::: {#exr-discrete-game} -->
+<!-- ## Discrete probability -->
+<!-- Consider a game of chance with the following probability mass function. -->
+<!-- $$ -->
+<!-- p(x) = \begin{cases} -->
+<!-- 0.05 & \text{if} \quad x = -2 \\ -->
+<!-- 0.20 & \text{if} \quad x = -1 \\ -->
+<!-- 0.25 & \text{if} \quad x = 0 \\ -->
+<!-- 0.5 & \text{if} \quad x = 1 \\ -->
+<!-- 0 & \text{otherwise} -->
+<!-- \end{cases} -->
+<!-- $$ -->
+<!-- - Plot ths PMF using a barchart -->
+<!-- - Write down the corresponding CDF -->
+<!-- ```{r} -->
+<!-- ## ggplot -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- ## Select size = 20 values at random from the numbers 0, 1, 2, -->
+<!-- ## with selection probabilities: 0.5, 0.3, 0.2 -->
+<!-- sample(0:2, size = 20, prob = c(0.5, 0.3, 0.2), replace = TRUE) -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: {def-cdf} -->
+<!-- # Cumulative Distribution Function -->
+<!-- Closely related to the probability mass function is the cumulative distribution function (CDF) which computes the probability for events of the type $X \leq x$. -->
+<!-- ```{=tex} -->
+<!-- \begin{align} -->
+<!--     F(x) = \sum_{x_i \leq x} p(x_i). -->
+<!--   \end{align} -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: {exm-cdf-games} -->
+<!-- # CDF for the lottery game -->
+<!-- ```{=tex} -->
+<!-- \begin{align} -->
+<!--   P(X < 0) = 0 \\ -->
+<!--   P(X < 1) & = \sum_{x_k < 1} p(x_k) = p(x_1) = 0.5. \\ -->
+<!--   P(X \leq 1) & = \sum_{x_k \leq 1} p(x_k) = p(x_1) + p(x_2) = 0.5+ 0.3= 0.8\\ -->
+<!--   P(X < 2) & = \sum_{x_k < 2} p(x_k) = p(x_1) + p(x_2) = 0.5+ 0.3= 0.8\\ -->
+<!--   P(X \leq 2) & = \sum_{x_k \leq 2} p(x_k) = p(x_1) + p(x_2) + p(x_3) = 0.5+ 0.3+ 0.2= 1\\ -->
+<!-- \end{align} -->
+<!-- ``` -->
+<!-- $$ -->
+<!-- F(x) =  -->
+<!-- \begin{cases} -->
+<!--   0 & x < 0 \\ -->
+<!--   0.5 & 0 \leq x < 1 \\ -->
+<!--   0.8 & 1 \leq x < 2 \\ -->
+<!--   1 & x \leq 2 \\ -->
+<!--   1 & x > 2 -->
+<!-- \end{cases} -->
+<!-- $$ -->
+<!-- ::: -->
+</section>
+<section id="expected-value" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="expected-value"><span class="header-section-number">3.4</span> Expected value</h2>
+<p>Just as the descriptive statistics (average, empirical median, empirical quantiles, etc.) are useful for summarizing a set of numbers we would like to be able to summarize distribution <em>functions</em>.</p>
+<p>Imagine that you plan to buy 100 tickets from the first game in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>3.1</span></a>. Based on the interpretation of probabilities as theoretical proportions you would <em>expect</em> that 50 of the tickets will win nothing, 30 of the tickets will bring you 1 EUR and 20 of the tickets will win 2 EUR. Thus you can write the expected winnings per ticket by summing the contributions of each ticket type:</p>
+<p><span id="eq-expected-value-game-1"><span class="math display">
+\begin{align}
+  \text{expected winnings} &amp; =
+    \underbrace{\frac{50}{100} \times 0\text{ EUR}}_{0\text{ EUR tickets}} +
+    \underbrace{\frac{30}{100} \times 1\text{ EUR}}_{1\text{ EUR tickets}} +
+    \underbrace{\frac{20}{100} \times 2\text{ EUR}}_{2\text{ EUR tickets}} \\
+    &amp; = 0.5 \times 0 \text{EUR} + 0.3 \times 1 \text{EUR} + 0.2 \times 2 \text{EUR} = 0.7\text{EUR}.
+\end{align}
+\tag{3.1}</span></span></p>
+<p>Note that the coefficients before the possible outcomes are simply their probabilities. Therefore in a game with 100 tickets you expect that each ticket will bring you <span class="math inline">0.7</span> EUR (on average). Just as with the probabilities, the expected values does not tell you that your average win per ticket <em>will</em> be 0.7 EUR. If you take a look at the five simulated games in <a href="#tbl-discrete-games-simulation" class="quarto-xref">Table&nbsp;<span>3.2</span></a> you will notice that the <em>realized</em> average ticket wins are <em>not</em> equal to 0.7 but they <em>vary</em> around it. You can think about the expected value as the <em>center</em> of the distribution (see <a href="#tbl-discrete-games-simulation" class="quarto-xref">Table&nbsp;<span>3.2</span></a> and <span class="citation" data-cites="FREEDMAN2007Statistics">Freedman, Pisani, and Purves (<a href="references.html#ref-FREEDMAN2007Statistics" role="doc-biblioref">2007</a>)</span>, pp.&nbsp;288). It is important to see that the expected value only depends on the probabilities and the possible values and it <em>does not</em> depend on the outcome of any particular game. Therefore it is a <em>constant</em> and not a random variable itself.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-game-probabilities-plot" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-game-probabilities-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-Probability-Review_files/figure-html/fig-game-probabilities-plot-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-game-probabilities-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: Probabilities plot. The black vertical line depicts the expected value.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<!-- TODO: bridge -->
+<p>Let us write the expected value in a more general way:</p>
+<div id="def-expectation-discrete" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 3.3 (Expected Value)</strong></span> For discrete random variable <span class="math inline">X</span> with possible values <span class="math inline">x_1, x_2,\ldots,x_n</span> the weighted average of the possible outcomes:</p>
+<p><span class="math display">
+E(X) = \sum_{i = 1} ^ {n} x_i p(x_i)
+</span></p>
+<p>is called the expected value of <span class="math inline">X</span>. Sometimes we will refer to the expected value as the mean of the distribution or the mean of the random variable following the distribution.</p>
+</div>
+<p>We introduced the expected value with an example of a game with 100 tickets in order to illustrate it. You should notice from <a href="#def-expectation-discrete" class="quarto-xref">Definition&nbsp;<span>3.3</span></a> that the expected value is independent of the <em>number</em> of games played as it is a property of the probability mass function of the game.</p>
+<div id="exr-expected-value-game-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.1 (Expected Value)</strong></span> Let <span class="math inline">Y</span> be a game with possible winnings of -1, 0, and 2 EUR. The probabilities of these outcomes are <span class="math inline">P(x = -1) = 0.2, P(x = 0) = 0.7, P(x = 2) = 0.1</span>.</p>
+<ul>
+<li>Plot the PMF using a bar chart</li>
+<li>Calculate the expected winnings of this game using <a href="#def-expectation-discrete" class="quarto-xref">Definition&nbsp;<span>3.3</span></a></li>
+</ul>
+<p>Play the game using the function <code>sample</code> (check its documentation either by typing <code>?sample</code> on the command line in R or by searching for it online). It selects <code>size</code> of the values specified in <code>x</code> according to the probabilities given in <code>prob</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>), </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="dv">10</span>, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.7</span>, <span class="fl">0.1</span>),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">replace =</span> <span class="cn">TRUE</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  0  0  0 -1  0  0  0  0 -1  0</code></pre>
+</div>
+</div>
+<p>Play the game a couple of times and look at the outcomes. Compute the average winnings using <code>mean</code> and compare the result with the expected value that you calculated in the previous step.</p>
+</div>
+<section id="properties-of-the-expected-value" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="properties-of-the-expected-value"><span class="header-section-number">3.4.1</span> Properties of the expected value</h3>
+<p>In the following we list a few important properties of the expected value that we will use throughout the course. In the following let <span class="math inline">X</span> and <span class="math inline">Y</span> be random variables with expected values <span class="math inline">E(X)</span> and <span class="math inline">E(Y)</span>.</p>
+<div id="thm-expectation-linearity" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.2 (Linearity of the Expected Value)</strong></span> Let <span class="math inline">X</span> and <span class="math inline">Y</span> be two random variables. Then the expected value of their sum equals the sum of their expected values.</p>
+<span class="math display">\begin{align}
+  E(X + Y) = E(X) + E(Y)
+\end{align}</span>
+</div>
+<div id="thm-expectation-constant" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.3 (The Expected Value of a Constant)</strong></span> The expected value of a constant equals the constant itself. Let <span class="math inline">a</span> be any fixed (not random) real number. Then its expected value is:</p>
+<span class="math display">\begin{align}
+  E(a) = a.
+\end{align}</span>
+</div>
+<div id="thm-expectation-scaled" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.4 (Expected value of a scaled random variable)</strong></span> Let <span class="math inline">X</span> be a random variable and let <span class="math inline">a</span> be any fixed (not random) real number. Then the expected value of <span class="math inline">aX</span> is:</p>
+<span class="math display">\begin{align}
+  E(aX) = a E(X)
+\end{align}</span>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<span class="math display">\begin{align}
+  E(aX) = \sum_{i = 1} ^ {n} a x_i p(x_i) = a \sum_{i = 1} ^ {n} x_i p(x_i) = aE(X).
+\end{align}</span>
+</div>
+</section>
+</section>
+<section id="variance" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="variance"><span class="header-section-number">3.5</span> Variance</h2>
+<p>Let us compare the two games in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>3.1</span></a>. Both have the same sample space (set of possible outcomes) and the same expected winnings; see <a href="#eq-expected-value-game-1" class="quarto-xref">Equation&nbsp;<span>3.1</span></a> and <span class="quarto-unresolved-ref">?eq-expected-value-game-2</span>. However, the games are not identical because their probability distributions are different. If given the choice to play only one game, which would you prefer?</p>
+<p>The second game offers a higher probability of winning the highest prize (2 EUR) at the cost of a lower probability for the middle prize (1 EUR). In other words, it places a higher probability on <em>extreme</em> outcomes (far from the distribution’s center, i.e., the expected value). A summary of a distribution that measures its spread (i.e., how likely are extreme values) is the variance:</p>
+<div id="def-variance" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 3.4 (Variance)</strong></span> For a discrete random variable <span class="math inline">X</span> with possible outcomes <span class="math inline">x_1, x_2,\ldots,x_n</span> and probability function p(x) the variance is the expected quadratic deviation from the expected value of the distribution <span class="math inline">E(X)</span>.</p>
+<p><span class="math display">
+\begin{align}
+  Var(X) &amp; = E(X - E(X)) ^ 2 \\
+         &amp; = \sum_{i = 1}  ^ n \left(x_i - E(X)\right) ^ 2 p(x_i)
+\end{align}
+</span></p>
+</div>
+<div id="exm-variance-discrete" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.4 (Variance)</strong></span> The variance of the first game (X) is:</p>
+<p><span class="math display">
+\begin{align}
+    Var(X) &amp; = \sum_{i = 1} ^ {3} (x_i - E(X)) ^ 2 p(x_i) \\
+           &amp; = (x_1 - E(X)) ^ 2 p(x_i) + (x_2 - E(X)) ^ 2 p(x_2) + (x_3 - E(X)) ^ 2 p(x_3) \\
+           &amp; = (0 - 0.7) ^ 2 \times 0.5 + (1 - 0.7) ^ 2 \times 0.3 + (2 - 0.7) ^ 2 \times 0.2 \\
+           &amp; = 0.61.
+  \end{align}
+</span></p>
+</div>
+<div id="exr-variance-discrete" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.2</strong></span> Compute the variance of <span class="math inline">Y</span>, the second game described in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>3.1</span></a>.</p>
+</div>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span><span class="math inline">Var(Y) = 0.76</span>.</p>
+</div>
+<div id="thm-independence-random-variables" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.5 (Independence of Random Variables)</strong></span> Two discrete random variables <span class="math inline">X</span> and <span class="math inline">Y</span> with possible values <span class="math inline">x_1,\ldots,x_K</span> and <span class="math inline">y_1,\ldots,y_L</span> are independent if for every <span class="math inline">k</span> and <span class="math inline">l</span>:</p>
+<p><span class="math display">
+\begin{align}
+  P(X = x_k, Y = y_l) = P(X = x_k)P(Y = y_l)
+\end{align}
+</span></p>
+</div>
+<div id="thm-variance-sum-independent" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.6</strong></span> For two independent random variables <span class="math inline">X</span> and <span class="math inline">Y</span>.</p>
+<span class="math display">\begin{align}
+  Var(X + Y) = Var(X) + Var(Y)
+\end{align}</span>
+<p>More generally, if <span class="math inline">X_i, i = 1,\ldots,n</span> are independent random variables, the variance of their sum is equal to the sum of their variances:</p>
+<p><span class="math display">
+\begin{align}
+Var\left(\sum_{i = 1}^{n} X_i\right) = \sum_{i = 1}^{n} Var(X_i).
+\end{align}
+</span></p>
+</div>
+<!-- TODO: rename to variance-sum-independent -->
+<p><a href="#thm-variance-sum-independent" class="quarto-xref">Theorem&nbsp;<span>3.6</span></a> actually holds even for only uncorrelated variables. We will discuss the concept correlation later.</p>
+<div id="thm-variance-scaled" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.7 (Variance of a Scaled Random Variable)</strong></span> Let <span class="math inline">a \in \mathbf{R}</span> be a fixed (not random) real number and let <span class="math inline">X</span> be a random variable with variance <span class="math inline">Var(X)</span>.</p>
+<p>The variance of <span class="math inline">aX</span> is given by:</p>
+<span class="math display">\begin{align}
+Var(aX) = a^2 Var(X).
+\end{align}</span>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<span class="math display">\begin{align}
+  Var(aX) &amp; = \sum_{k = 1} ^ K (ax_k - E(aX))^2 p(x_k) \\
+          &amp; = \sum_{k = 1} ^ K a^2(x_k - E(X))^2 p(x_k) \\
+          &amp; = a^2 \sum_{k = 1} ^ K a^2(x_k - E(X))^2 p(x_k) \\
+          &amp; = a^2 Var(X).
+\end{align}</span>
+</div>
+<p>Another useful formula for working with the variance is:</p>
+<p>Often it will be easier to compute the variance using the following decomposition: <span class="math display">\begin{align}
+  Var(X) &amp; = E(X - E(X))^2 \\
+         &amp; = E\left(X^2 - 2XE(X) + E(X) ^ 2\right) \\
+         &amp; = E(X^2) - E(2XE(X)) + E(E(X) ^ 2) \\
+         &amp; = E(X^2) - 2 E(X)E(X) + E(X) ^ 2 \\
+         &amp; = E(X^2) - E(X)^2.
+\end{align}</span></p>
+<p>The proof above uses the fact that <span class="math inline">E(X)</span> is a constant and applies <a href="#thm-expectation-constant" class="quarto-xref">Theorem&nbsp;<span>3.3</span></a> and <a href="#thm-expectation-scaled" class="quarto-xref">Theorem&nbsp;<span>3.4</span></a>.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-BERTSEKAS2008IntroductionProbability" class="csl-entry" role="listitem">
+Bertsekas, Dimitri P., and John N. Tsitsiklis. 2008. <em>Introduction to Probability</em>. 2nd ed. Optimization and Computation Series. Belmont: Athena scientific.
+</div>
+<div id="ref-FREEDMAN2007Statistics" class="csl-entry" role="listitem">
+Freedman, David, Robert Pisani, and Roger Purves. 2007. <em>Statistics</em>. 4th ed. New York: W.W. Norton &amp; Co.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./02-Descriptive-Statistics.html" class="pagination-link" aria-label="Descriptive Statistics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./04-Least-Squares.html" class="pagination-link" aria-label="Least Squares">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Least Squares</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
