@@ -587,15 +587,26 @@ $$
 ```
 
 ```{r}
-# invoices <- invoices %>%
-#     mutate(
-#       Time_hat_OLS = predict(fit_OLS),
-#       residuals_OLS = # WRITE YOUR CODE HERE
-#     )
+# Compute the predicted values for the days (observations) in the sample
 
+time_predicted_OLS <- predict(fit_OLS)
+```
+
+```{r}
 # Compute the RSS for the OLS model
 
+# invoices <- invoices %>%
+#     mutate(
+#       Time_hat_OLS = time_predicted_OLS,
+#       residuals_OLS = # WRITE YOUR CODE HERE
+#     )
 ```
+
+```{r}
+# Compute the RSS and MSE for the OLS model
+
+```
+
 
 ## Plot the OLS predictions
 
@@ -616,6 +627,12 @@ $$
 #     geom_point() +
 #     geom_smooth(method = "lm")
 ```
+
+## Interpretation of the OLS coefficients
+
+- Scale of the coefficients
+- Interpretation of the intercept
+- Interpretation of the slope
 
 
 ## Least Squares in Matrix Notation
@@ -655,6 +672,19 @@ $$
 \hat{\beta}_1
 \end{bmatrix}}_{\hat{\beta}_{2 \times 1}}
 $$
+
+The matrix $X$ is called the design matrix and contains the predictor terms. The vector $\hat{\beta}$ contains the coefficients that we want to estimate. The vector $\hat{y}$ contains the predicted values.
+
+You can extract the design matrix from the `fit_OLS` object using the `model.matrix` function.
+
+```{r}
+fit_OLS <- lm(Time ~ Invoices, data = invoices)
+model.matrix(fit_OLS)
+```
+
+The colum of ones in the design matrix is the intercept term. The other column is the predictor term (the number of invoices in our example).
+
+```{r}
 
 $$
 \hat{y} = X \hat{\beta}
@@ -834,3 +864,76 @@ $$
 $$
 \hat{\beta}_1 = \frac{\sum_{i=1}^n x_i y_i}{\sum_{i=1}^n x_i^2} = \frac{n \overline{x y}}{n \overline{x^2}} = \frac{\overline{x y}}{\overline{x^2}}
 $$
+
+In the general case of multiple variables, the projection of the outcome vector $y$ onto the space spanned by all linear combinations of the predictor variables $X$ is
+
+$$
+\begin{align*}
+X^T(y - X \hat{\beta}) = 0 \\
+X^T y - X^T X \hat{\beta} = 0 \\
+X^T X \hat{\beta} = X^T y \\
+\end{align*}
+$$
+
+In the one-variable case without an intercept term, we could devide the equation by $x^T x$ to get the formula for $\hat{\beta}_1$. This worked because the scalar product of a vector is a scalar. However, here we need to deal with a whole matrix ($X^TX$). We can solve the equation for $\hat{\beta}$ by pre-multiplying both sides by the inverse of $X^T X$.
+
+$$
+\begin{align*}
+\hat{\beta} & = (X^T X)^{-1} X^T y
+\end{align*}
+$$
+
+The last operation requires that inverse of $X^T X$ exists. This is the case if the columns of $X$ are linearly independent. If some of the columns of $X$ are linearly dependent, the matrix $X^T X$ will be singular and its inverse will not exist.
+
+```{r}
+# Create t full column rank matrix
+x_fcr <- matrix(
+  c(1, 149, 1, 60, 1, 201),
+  ncol = 2,
+  byrow = TRUE
+)
+x_fcr
+```
+
+
+```{r}
+
+# Compute the inverse of the matrix. The %*% operator is the matrix multiplication operator in R
+
+solve(t(x_fcr) %*% x_fcr)
+```
+
+```{r}
+# To veritfy that the inverse is correct, multiply the matrix with its inverse
+
+t(x_fcr) %*% x_fcr %*% solve(t(x_fcr) %*% x_fcr)
+```
+
+What happens if we have a matrix that is not full column rank?
+
+```{r}
+x_rcr <- matrix(
+  c(1, 149, 2, 1, 60, 2, 1, 149, 2),
+  ncol = 3,
+  byrow = TRUE
+)
+x_rcr
+```
+
+```{r}
+# solve(t(x_rcr) %*% x_rcr)
+```
+
+In the case of a matrix that is not full column rank, the inverse of the matrix does not exist, and `solve` will throw an error. We say that there is (perfect) multicollinearity in predictors.
+
+The same will happen if some column is a linear combination (e.g. the sum) of some other columns.
+
+```{r}
+x_rcr1 <- cbind(x_fcr, 0.2 * x_fcr[, 1] + 5 * x_fcr[, 2])
+x_rcr1
+```
+
+```{r}
+
+# solve(t(x_rcr1) %*% x_rcr1)
+```
