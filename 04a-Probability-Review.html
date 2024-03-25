@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to linear regression analysis - 3&nbsp; Statistics Review (Optional)</title>
+<title>Introduction to linear regression analysis - 4&nbsp; Statistics Review (Optional)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,8 +84,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./04-Least-Squares.html" rel="next">
-<link href="./02-Descriptive-Statistics.html" rel="prev">
+<link href="./04b-Continuous-Distributions.html" rel="next">
+<link href="./03-Least-Squares.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -178,7 +178,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-Probability-Review.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistics Review (Optional)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04a-Probability-Review.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistics Review (Optional)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -229,14 +229,20 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-Probability-Review.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistics Review (Optional)</span></span></a>
+  <a href="./03-Least-Squares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Least Squares</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-Least-Squares.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Least Squares</span></span></a>
+  <a href="./04a-Probability-Review.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistics Review (Optional)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04b-Continuous-Distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Continuous Distributions (Review)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -255,14 +261,14 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-probability" id="toc-sec-probability" class="nav-link active" data-scroll-target="#sec-probability"><span class="header-section-number">3.1</span> Probability</a></li>
-  <li><a href="#sec-discrete-distributions" id="toc-sec-discrete-distributions" class="nav-link" data-scroll-target="#sec-discrete-distributions"><span class="header-section-number">3.2</span> Discrete distributions</a></li>
-  <li><a href="#discrete-random-variables" id="toc-discrete-random-variables" class="nav-link" data-scroll-target="#discrete-random-variables"><span class="header-section-number">3.3</span> Discrete Random Variables</a></li>
-  <li><a href="#expected-value" id="toc-expected-value" class="nav-link" data-scroll-target="#expected-value"><span class="header-section-number">3.4</span> Expected value</a>
+  <li><a href="#sec-probability" id="toc-sec-probability" class="nav-link active" data-scroll-target="#sec-probability"><span class="header-section-number">4.1</span> Probability</a></li>
+  <li><a href="#sec-discrete-distributions" id="toc-sec-discrete-distributions" class="nav-link" data-scroll-target="#sec-discrete-distributions"><span class="header-section-number">4.2</span> Discrete distributions</a></li>
+  <li><a href="#discrete-random-variables" id="toc-discrete-random-variables" class="nav-link" data-scroll-target="#discrete-random-variables"><span class="header-section-number">4.3</span> Discrete Random Variables</a></li>
+  <li><a href="#expected-value" id="toc-expected-value" class="nav-link" data-scroll-target="#expected-value"><span class="header-section-number">4.4</span> Expected value</a>
   <ul class="collapse">
-  <li><a href="#properties-of-the-expected-value" id="toc-properties-of-the-expected-value" class="nav-link" data-scroll-target="#properties-of-the-expected-value"><span class="header-section-number">3.4.1</span> Properties of the expected value</a></li>
+  <li><a href="#properties-of-the-expected-value" id="toc-properties-of-the-expected-value" class="nav-link" data-scroll-target="#properties-of-the-expected-value"><span class="header-section-number">4.4.1</span> Properties of the expected value</a></li>
   </ul></li>
-  <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance"><span class="header-section-number">3.5</span> Variance</a></li>
+  <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance"><span class="header-section-number">4.5</span> Variance</a></li>
   </ul>
 </nav>
     </div>
@@ -271,7 +277,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistics Review (Optional)</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistics Review (Optional)</span></h1>
 </div>
 
 
@@ -307,11 +313,11 @@ window.Quarto = {
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># source("lib.R")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="sec-probability" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="sec-probability"><span class="header-section-number">3.1</span> Probability</h2>
+<section id="sec-probability" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="sec-probability"><span class="header-section-number">4.1</span> Probability</h2>
 <p>Imagine a game where you flip a single coin once. The possible outcomes are head (H) and tail (T). The set of all possible outcomes of the game is called the <em>sample</em> space of the experiment. We will denote this set with <span class="math inline">\Omega</span>. For a single coin toss game, the sample space is <span class="math inline">\Omega = \{\text{heads}, \text{tails}\}</span>.</p>
 <div id="def-probability" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 3.1 (Probability)</strong></span> Let <span class="math inline">\Omega</span> denote the sample space of a random experiment. Let <span class="math inline">A \subseteq \Omega</span> and <span class="math inline">B \subset \Omega</span> be two disjoint events (i.e.&nbsp;<span class="math inline">A \cap B = \varnothing</span>). Disjoint events are events that cannot co-occur. A probability measure on this space has the following properties:</p>
+<p><span class="theorem-title"><strong>Definition 4.1 (Probability)</strong></span> Let <span class="math inline">\Omega</span> denote the sample space of a random experiment. Let <span class="math inline">A \subseteq \Omega</span> and <span class="math inline">B \subset \Omega</span> be two disjoint events (i.e.&nbsp;<span class="math inline">A \cap B = \varnothing</span>). Disjoint events are events that cannot co-occur. A probability measure on this space has the following properties:</p>
 <p><span class="math display">
 \begin{align}
   &amp; P(A) \geq 0 \qquad \text{non-negativity}\\
@@ -321,13 +327,13 @@ window.Quarto = {
 </span></p>
 </div>
 <div id="thm-probability-complement" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 3.1 (Probability of complementary sets)</strong></span> Let <span class="math inline">\Omega</span> be a sample space, let <span class="math inline">A \subseteq \Omega</span> be a subset of the sample space, and let <span class="math inline">\bar{A} = \Omega \setminus A</span> be the complement of <span class="math inline">A</span> in <span class="math inline">\Omega</span>. Then the probability of the complementary set is given by:</p>
+<p><span class="theorem-title"><strong>Theorem 4.1 (Probability of complementary sets)</strong></span> Let <span class="math inline">\Omega</span> be a sample space, let <span class="math inline">A \subseteq \Omega</span> be a subset of the sample space, and let <span class="math inline">\bar{A} = \Omega \setminus A</span> be the complement of <span class="math inline">A</span> in <span class="math inline">\Omega</span>. Then the probability of the complementary set is given by:</p>
 <p><span class="math display">
 P(A) = 1 - P(\bar{A})
 </span></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>For the proof note that <span class="math inline">A</span> and <span class="math inline">\bar{A}</span> are disjoint by definition (<span class="math inline">A \cap \bar{A} = \varnothing</span>). Using the additivity of probability together with the unit probability of the sample space <span class="math inline">\Omega</span> from <a href="#def-probability" class="quarto-xref">Definition&nbsp;<span>3.1</span></a>, it follows that:</p>
+<p><span class="proof-title"><em>Proof</em>. </span>For the proof note that <span class="math inline">A</span> and <span class="math inline">\bar{A}</span> are disjoint by definition (<span class="math inline">A \cap \bar{A} = \varnothing</span>). Using the additivity of probability together with the unit probability of the sample space <span class="math inline">\Omega</span> from <a href="#def-probability" class="quarto-xref">Definition&nbsp;<span>4.1</span></a>, it follows that:</p>
 <span class="math display">\begin{align}
     P(A \cup \bar{A}) = P(A) + P(\bar{A})
   \end{align}</span>
@@ -338,26 +344,26 @@ P(A) = 1 - P(\bar{A})
   \end{align}</span>
 </div>
 <div id="exm-probability-weather" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.1 (Weather forecast)</strong></span> The weather forecast for the next day shows that it will be raining (<span class="math inline">A</span>) with probability <span class="math inline">P(A) = 0.3</span>. The sample space is <span class="math inline">\Omega = \{A, \bar{A}\}</span> and the probability of not raining (<span class="math inline">\bar{A}</span>) is then <span class="math inline">P(\bar{A}) = 1 - 0.3 = 0.7</span>.</p>
+<p><span class="theorem-title"><strong>Example 4.1 (Weather forecast)</strong></span> The weather forecast for the next day shows that it will be raining (<span class="math inline">A</span>) with probability <span class="math inline">P(A) = 0.3</span>. The sample space is <span class="math inline">\Omega = \{A, \bar{A}\}</span> and the probability of not raining (<span class="math inline">\bar{A}</span>) is then <span class="math inline">P(\bar{A}) = 1 - 0.3 = 0.7</span>.</p>
 </div>
 <div id="exm-probability-dice" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.2 (Dice)</strong></span> In a game where you roll a (6-sided) dice once the sample space is <span class="math inline">\Omega = \{1, 2, 3, 4, 5, 6\}</span>. Denote the outcome of a roll with <span class="math inline">X</span> and assume that the probability of each outcome is equal: <span class="math inline">P(X = i) = 1 / 6, i = 1,2,\ldots,6</span>. The probability of the event <span class="math inline">X = 1</span> is then <span class="math inline">P(X = 1) = 1/6</span>. The probability of the event “outcome is not one” is <span class="math inline">P(X \neq 1) = P(X &gt; 1) = 5 / 6.</span></p>
+<p><span class="theorem-title"><strong>Example 4.2 (Dice)</strong></span> In a game where you roll a (6-sided) dice once the sample space is <span class="math inline">\Omega = \{1, 2, 3, 4, 5, 6\}</span>. Denote the outcome of a roll with <span class="math inline">X</span> and assume that the probability of each outcome is equal: <span class="math inline">P(X = i) = 1 / 6, i = 1,2,\ldots,6</span>. The probability of the event <span class="math inline">X = 1</span> is then <span class="math inline">P(X = 1) = 1/6</span>. The probability of the event “outcome is not one” is <span class="math inline">P(X \neq 1) = P(X &gt; 1) = 5 / 6.</span></p>
 </div>
 <p>See <span class="citation" data-cites="BERTSEKAS2008IntroductionProbability">Bertsekas and Tsitsiklis (<a href="references.html#ref-BERTSEKAS2008IntroductionProbability" role="doc-biblioref">2008</a>)</span> (Chapter 1) for a more thorough treatment of the subject.</p>
 </section>
-<section id="sec-discrete-distributions" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="sec-discrete-distributions"><span class="header-section-number">3.2</span> Discrete distributions</h2>
+<section id="sec-discrete-distributions" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="sec-discrete-distributions"><span class="header-section-number">4.2</span> Discrete distributions</h2>
 <p>When we presented the axioms of probability we mentioned the concept of a sample space and probability. For the sake of brevity we will skip almost all of the set theoretic foundation of probability measures and will directly introduce the concept of a random variable.</p>
 <p>Let us go back to the roots of probability theory that date back at least to the 17th century and the study of games of chance (gambling) <span class="citation" data-cites="FREEDMAN2007Statistics">(<a href="references.html#ref-FREEDMAN2007Statistics" role="doc-biblioref">Freedman, Pisani, and Purves 2007, 248</a>)</span>. Almost all introductory text on probability theory start with an example of some simple game of chance. We will follow this example, because it is easy to understand a simple game and the mathematical concepts involved. Later we will see how we can apply the concepts developed here to an extremely broad range of problems.</p>
 </section>
-<section id="discrete-random-variables" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="discrete-random-variables"><span class="header-section-number">3.3</span> Discrete Random Variables</h2>
+<section id="discrete-random-variables" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="discrete-random-variables"><span class="header-section-number">4.3</span> Discrete Random Variables</h2>
 <p>Imagine that you are about to buy a lottery ticket that costs 1 EUR. Until you buy and scratch the ticket you don’t actually know how much you will win, but before you commit to the purchase you may wonder what winnings you should <em>expect</em>. Without knowing the <em>rules</em> of the lottery you would be completely in the dark about your prospects, so let us assume that you actually know how the lottery works.</p>
 <p>From our point of view the rules of the game are completely determined by two things. The first one is the set of possible outcomes (the sample space) of the lottery and let’s assume that each ticket can win 0 EUR, 1 EUR or 2 EUR. Notice that the set of possible values is <em>finite</em> as there are only three possible outcomes. Let us write <span class="math inline">X</span> for the (yet unknown) winning from our lottery ticket. In lottery games the value of <span class="math inline">X</span> depends on some random mechanism (for example drawing numbered balls, spinning a wheel, etc.), therefore it is a <em>function</em> of the outcome of this random mechanism. We will call functions like <span class="math inline">X</span> <em>random variables</em>. For the most part we will not refer the underlying random mechanism and will simply focus on the distribution of the possible values of <span class="math inline">X</span>. The second part of the rules is how often winnings of 0 EUR, 1 EUR and 2 EUR occur when you repeatedly play the game. Obviously, a game where half of the tickets win 2 EUR is quite different from a game where only one out of 100 tickets wins 2 EUR.</p>
 <div id="tbl-discrete-game-probabilities" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-discrete-game-probabilities-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3.1: Distribution of outcomes for two games of chance. Possible outcomes and probabilities for each outcome.
+Table&nbsp;4.1: Distribution of outcomes for two games of chance. Possible outcomes and probabilities for each outcome.
 </figcaption>
 <div aria-describedby="tbl-discrete-game-probabilities-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-stdout">
@@ -369,7 +375,7 @@ Table&nbsp;3.1: Distribution of outcomes for two games of chance. Possible outco
 </div>
 </figure>
 </div>
-<p>Let us focus on the first game with probabilities (0.5, 0.3 and 0.2) and develop some intuitive understanding of these quantities. You can think about the probabilities in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>3.1</span></a> as theoretical proportions in a sense that if you play the lottery 100 times you would expect to win nothing (0 EUR) in <em>about</em> 50 games, 1 EUR in <em>about</em> 30 games and 2 EUR in about <em>20</em> games. Notice that to <em>expect</em> 20 2-EUR wins out of 100 games is absolutely <em>not</em> the same as the statement that you <em>will</em> win 2 EUR in exactly 20 out of 100 games! To convince yourself look at <a href="#tbl-discrete-games-simulation" class="quarto-xref">Table&nbsp;<span>3.2</span></a> which presents the results of five simulated games with 100 tickets each. You can play with this and similar games by changing the number of tickets and the number of games in this <a href="https://feb-uni-sofia.shinyapps.io/econometrics2020/">simulation</a>. In the first game the player had 49 tickets that won nothing, but in the second game she had only 38 0-win tickets. When we say to expect 50 0-wins out of 100 tickets we mean that the number of observed (actually played) 0-wins will <em>vary</em> around 50. In neither of the five simulated games was the number of 0-wins exactly equal to 50 (this is also possible, though).</p>
+<p>Let us focus on the first game with probabilities (0.5, 0.3 and 0.2) and develop some intuitive understanding of these quantities. You can think about the probabilities in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>4.1</span></a> as theoretical proportions in a sense that if you play the lottery 100 times you would expect to win nothing (0 EUR) in <em>about</em> 50 games, 1 EUR in <em>about</em> 30 games and 2 EUR in about <em>20</em> games. Notice that to <em>expect</em> 20 2-EUR wins out of 100 games is absolutely <em>not</em> the same as the statement that you <em>will</em> win 2 EUR in exactly 20 out of 100 games! To convince yourself look at <a href="#tbl-discrete-games-simulation" class="quarto-xref">Table&nbsp;<span>4.2</span></a> which presents the results of five simulated games with 100 tickets each. You can play with this and similar games by changing the number of tickets and the number of games in this <a href="https://feb-uni-sofia.shinyapps.io/econometrics2020/">simulation</a>. In the first game the player had 49 tickets that won nothing, but in the second game she had only 38 0-win tickets. When we say to expect 50 0-wins out of 100 tickets we mean that the number of observed (actually played) 0-wins will <em>vary</em> around 50. In neither of the five simulated games was the number of 0-wins exactly equal to 50 (this is also possible, though).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43243</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -387,7 +393,7 @@ Table&nbsp;3.1: Distribution of outcomes for two games of chance. Possible outco
 <div id="tbl-discrete-games-simulation" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-discrete-games-simulation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3.2: Simulation of five games with 100 tickets each. Number of tickets by outcome (0, 1, or 2 EUR) and average ticket win.
+Table&nbsp;4.2: Simulation of five games with 100 tickets each. Number of tickets by outcome (0, 1, or 2 EUR) and average ticket win.
 </figcaption>
 <div aria-describedby="tbl-discrete-games-simulation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -444,9 +450,9 @@ Table&nbsp;3.2: Simulation of five games with 100 tickets each. Number of ticket
 </figure>
 </div>
 </div>
-<p>The probabilities in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>3.1</span></a> completely describe the two games. The functions that assigns a probability to each possible outcome <span class="math inline">p(x)</span> and <span class="math inline">p(y)</span> are called <em>probability mass functions</em>. These functions incorporate everything there is to know about our hypothetical games. While this knowledge will not guarantee you a profit from gambling, it enables you to compute the expected value of each ticket, the probability that none of your tickets will win, etc. An important property of the probability mass function is that it is always non-negative (no negative probabilities) and that the sum of the probabilities over all possible values is exactly <span class="math inline">1</span>.</p>
+<p>The probabilities in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>4.1</span></a> completely describe the two games. The functions that assigns a probability to each possible outcome <span class="math inline">p(x)</span> and <span class="math inline">p(y)</span> are called <em>probability mass functions</em>. These functions incorporate everything there is to know about our hypothetical games. While this knowledge will not guarantee you a profit from gambling, it enables you to compute the expected value of each ticket, the probability that none of your tickets will win, etc. An important property of the probability mass function is that it is always non-negative (no negative probabilities) and that the sum of the probabilities over all possible values is exactly <span class="math inline">1</span>.</p>
 <div id="def-probability-mass-function" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 3.2 (Probability mass function)</strong></span> For a discrete random variable <span class="math inline">X</span> with possible values <span class="math inline">x_1,\ldots,x_K</span> a function <span class="math inline">p(x_i)</span> that assigns a probability to the possible values of <span class="math inline">X</span> is called a probability mass function.</p>
+<p><span class="theorem-title"><strong>Definition 4.2 (Probability mass function)</strong></span> For a discrete random variable <span class="math inline">X</span> with possible values <span class="math inline">x_1,\ldots,x_K</span> a function <span class="math inline">p(x_i)</span> that assigns a probability to the possible values of <span class="math inline">X</span> is called a probability mass function.</p>
 <p><span class="math display">
 \begin{align}
   P(X = x_k) = p_k.
@@ -459,7 +465,7 @@ Table&nbsp;3.2: Simulation of five games with 100 tickets each. Number of ticket
 </div>
 <p>Note that the set of <span class="math inline">K</span> possible values <span class="math inline">x_1,\ldots,x_K</span> is <em>finite</em>. The same definition can be used for infinite sets of possible values as long as these are <em>countably infinite</em> but we will skip this discussion.</p>
 <div id="exm-probability-mass-function-games" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.3 (Probability mass function)</strong></span> The first game in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>3.1</span></a> has three possible outcomes: <span class="math inline">x_1 = 0, x_2 = 1, x_3 = 2</span>. The probability mass function is then</p>
+<p><span class="theorem-title"><strong>Example 4.3 (Probability mass function)</strong></span> The first game in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>4.1</span></a> has three possible outcomes: <span class="math inline">x_1 = 0, x_2 = 1, x_3 = 2</span>. The probability mass function is then</p>
 <p><span class="math display">
 p(x) = \begin{cases}
 0.5 &amp; \text{if} \quad x = 0 \\
@@ -480,7 +486,7 @@ p(x) = \begin{cases}
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="03-Probability-Review_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="04a-Probability-Review_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -540,10 +546,10 @@ p(x) = \begin{cases}
 <!-- $$ -->
 <!-- ::: -->
 </section>
-<section id="expected-value" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="expected-value"><span class="header-section-number">3.4</span> Expected value</h2>
+<section id="expected-value" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="expected-value"><span class="header-section-number">4.4</span> Expected value</h2>
 <p>Just as the descriptive statistics (average, empirical median, empirical quantiles, etc.) are useful for summarizing a set of numbers we would like to be able to summarize distribution <em>functions</em>.</p>
-<p>Imagine that you plan to buy 100 tickets from the first game in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>3.1</span></a>. Based on the interpretation of probabilities as theoretical proportions you would <em>expect</em> that 50 of the tickets will win nothing, 30 of the tickets will bring you 1 EUR and 20 of the tickets will win 2 EUR. Thus you can write the expected winnings per ticket by summing the contributions of each ticket type:</p>
+<p>Imagine that you plan to buy 100 tickets from the first game in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>4.1</span></a>. Based on the interpretation of probabilities as theoretical proportions you would <em>expect</em> that 50 of the tickets will win nothing, 30 of the tickets will bring you 1 EUR and 20 of the tickets will win 2 EUR. Thus you can write the expected winnings per ticket by summing the contributions of each ticket type:</p>
 <p><span id="eq-expected-value-game-1"><span class="math display">
 \begin{align}
   \text{expected winnings} &amp; =
@@ -552,17 +558,17 @@ p(x) = \begin{cases}
     \underbrace{\frac{20}{100} \times 2\text{ EUR}}_{2\text{ EUR tickets}} \\
     &amp; = 0.5 \times 0 \text{EUR} + 0.3 \times 1 \text{EUR} + 0.2 \times 2 \text{EUR} = 0.7\text{EUR}.
 \end{align}
-\tag{3.1}</span></span></p>
-<p>Note that the coefficients before the possible outcomes are simply their probabilities. Therefore in a game with 100 tickets you expect that each ticket will bring you <span class="math inline">0.7</span> EUR (on average). Just as with the probabilities, the expected values does not tell you that your average win per ticket <em>will</em> be 0.7 EUR. If you take a look at the five simulated games in <a href="#tbl-discrete-games-simulation" class="quarto-xref">Table&nbsp;<span>3.2</span></a> you will notice that the <em>realized</em> average ticket wins are <em>not</em> equal to 0.7 but they <em>vary</em> around it. You can think about the expected value as the <em>center</em> of the distribution (see <a href="#tbl-discrete-games-simulation" class="quarto-xref">Table&nbsp;<span>3.2</span></a> and <span class="citation" data-cites="FREEDMAN2007Statistics">Freedman, Pisani, and Purves (<a href="references.html#ref-FREEDMAN2007Statistics" role="doc-biblioref">2007</a>)</span>, pp.&nbsp;288). It is important to see that the expected value only depends on the probabilities and the possible values and it <em>does not</em> depend on the outcome of any particular game. Therefore it is a <em>constant</em> and not a random variable itself.</p>
+\tag{4.1}</span></span></p>
+<p>Note that the coefficients before the possible outcomes are simply their probabilities. Therefore in a game with 100 tickets you expect that each ticket will bring you <span class="math inline">0.7</span> EUR (on average). Just as with the probabilities, the expected values does not tell you that your average win per ticket <em>will</em> be 0.7 EUR. If you take a look at the five simulated games in <a href="#tbl-discrete-games-simulation" class="quarto-xref">Table&nbsp;<span>4.2</span></a> you will notice that the <em>realized</em> average ticket wins are <em>not</em> equal to 0.7 but they <em>vary</em> around it. You can think about the expected value as the <em>center</em> of the distribution (see <a href="#tbl-discrete-games-simulation" class="quarto-xref">Table&nbsp;<span>4.2</span></a> and <span class="citation" data-cites="FREEDMAN2007Statistics">Freedman, Pisani, and Purves (<a href="references.html#ref-FREEDMAN2007Statistics" role="doc-biblioref">2007</a>)</span>, pp.&nbsp;288). It is important to see that the expected value only depends on the probabilities and the possible values and it <em>does not</em> depend on the outcome of any particular game. Therefore it is a <em>constant</em> and not a random variable itself.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-game-probabilities-plot" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-game-probabilities-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-Probability-Review_files/figure-html/fig-game-probabilities-plot-1.png" class="img-fluid figure-img" width="672">
+<img src="04a-Probability-Review_files/figure-html/fig-game-probabilities-plot-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-game-probabilities-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: Probabilities plot. The black vertical line depicts the expected value.
+Figure&nbsp;4.1: Probabilities plot. The black vertical line depicts the expected value.
 </figcaption>
 </figure>
 </div>
@@ -571,18 +577,18 @@ Figure&nbsp;3.1: Probabilities plot. The black vertical line depicts the expecte
 <!-- TODO: bridge -->
 <p>Let us write the expected value in a more general way:</p>
 <div id="def-expectation-discrete" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 3.3 (Expected Value)</strong></span> For discrete random variable <span class="math inline">X</span> with possible values <span class="math inline">x_1, x_2,\ldots,x_n</span> the weighted average of the possible outcomes:</p>
+<p><span class="theorem-title"><strong>Definition 4.3 (Expected Value)</strong></span> For discrete random variable <span class="math inline">X</span> with possible values <span class="math inline">x_1, x_2,\ldots,x_n</span> the weighted average of the possible outcomes:</p>
 <p><span class="math display">
 E(X) = \sum_{i = 1} ^ {n} x_i p(x_i)
 </span></p>
 <p>is called the expected value of <span class="math inline">X</span>. Sometimes we will refer to the expected value as the mean of the distribution or the mean of the random variable following the distribution.</p>
 </div>
-<p>We introduced the expected value with an example of a game with 100 tickets in order to illustrate it. You should notice from <a href="#def-expectation-discrete" class="quarto-xref">Definition&nbsp;<span>3.3</span></a> that the expected value is independent of the <em>number</em> of games played as it is a property of the probability mass function of the game.</p>
+<p>We introduced the expected value with an example of a game with 100 tickets in order to illustrate it. You should notice from <a href="#def-expectation-discrete" class="quarto-xref">Definition&nbsp;<span>4.3</span></a> that the expected value is independent of the <em>number</em> of games played as it is a property of the probability mass function of the game.</p>
 <div id="exr-expected-value-game-2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.1 (Expected Value)</strong></span> Let <span class="math inline">Y</span> be a game with possible winnings of -1, 0, and 2 EUR. The probabilities of these outcomes are <span class="math inline">P(x = -1) = 0.2, P(x = 0) = 0.7, P(x = 2) = 0.1</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 4.1 (Expected Value)</strong></span> Let <span class="math inline">Y</span> be a game with possible winnings of -1, 0, and 2 EUR. The probabilities of these outcomes are <span class="math inline">P(x = -1) = 0.2, P(x = 0) = 0.7, P(x = 2) = 0.1</span>.</p>
 <ul>
 <li>Plot the PMF using a bar chart</li>
-<li>Calculate the expected winnings of this game using <a href="#def-expectation-discrete" class="quarto-xref">Definition&nbsp;<span>3.3</span></a></li>
+<li>Calculate the expected winnings of this game using <a href="#def-expectation-discrete" class="quarto-xref">Definition&nbsp;<span>4.3</span></a></li>
 </ul>
 <p>Play the game using the function <code>sample</code> (check its documentation either by typing <code>?sample</code> on the command line in R or by searching for it online). It selects <code>size</code> of the values specified in <code>x</code> according to the probabilities given in <code>prob</code>.</p>
 <div class="cell">
@@ -598,23 +604,23 @@ E(X) = \sum_{i = 1} ^ {n} x_i p(x_i)
 </div>
 <p>Play the game a couple of times and look at the outcomes. Compute the average winnings using <code>mean</code> and compare the result with the expected value that you calculated in the previous step.</p>
 </div>
-<section id="properties-of-the-expected-value" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="properties-of-the-expected-value"><span class="header-section-number">3.4.1</span> Properties of the expected value</h3>
+<section id="properties-of-the-expected-value" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="properties-of-the-expected-value"><span class="header-section-number">4.4.1</span> Properties of the expected value</h3>
 <p>In the following we list a few important properties of the expected value that we will use throughout the course. In the following let <span class="math inline">X</span> and <span class="math inline">Y</span> be random variables with expected values <span class="math inline">E(X)</span> and <span class="math inline">E(Y)</span>.</p>
 <div id="thm-expectation-linearity" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 3.2 (Linearity of the Expected Value)</strong></span> Let <span class="math inline">X</span> and <span class="math inline">Y</span> be two random variables. Then the expected value of their sum equals the sum of their expected values.</p>
+<p><span class="theorem-title"><strong>Theorem 4.2 (Linearity of the Expected Value)</strong></span> Let <span class="math inline">X</span> and <span class="math inline">Y</span> be two random variables. Then the expected value of their sum equals the sum of their expected values.</p>
 <span class="math display">\begin{align}
   E(X + Y) = E(X) + E(Y)
 \end{align}</span>
 </div>
 <div id="thm-expectation-constant" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 3.3 (The Expected Value of a Constant)</strong></span> The expected value of a constant equals the constant itself. Let <span class="math inline">a</span> be any fixed (not random) real number. Then its expected value is:</p>
+<p><span class="theorem-title"><strong>Theorem 4.3 (The Expected Value of a Constant)</strong></span> The expected value of a constant equals the constant itself. Let <span class="math inline">a</span> be any fixed (not random) real number. Then its expected value is:</p>
 <span class="math display">\begin{align}
   E(a) = a.
 \end{align}</span>
 </div>
 <div id="thm-expectation-scaled" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 3.4 (Expected value of a scaled random variable)</strong></span> Let <span class="math inline">X</span> be a random variable and let <span class="math inline">a</span> be any fixed (not random) real number. Then the expected value of <span class="math inline">aX</span> is:</p>
+<p><span class="theorem-title"><strong>Theorem 4.4 (Expected value of a scaled random variable)</strong></span> Let <span class="math inline">X</span> be a random variable and let <span class="math inline">a</span> be any fixed (not random) real number. Then the expected value of <span class="math inline">aX</span> is:</p>
 <span class="math display">\begin{align}
   E(aX) = a E(X)
 \end{align}</span>
@@ -627,12 +633,12 @@ E(X) = \sum_{i = 1} ^ {n} x_i p(x_i)
 </div>
 </section>
 </section>
-<section id="variance" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="variance"><span class="header-section-number">3.5</span> Variance</h2>
-<p>Let us compare the two games in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>3.1</span></a>. Both have the same sample space (set of possible outcomes) and the same expected winnings; see <a href="#eq-expected-value-game-1" class="quarto-xref">Equation&nbsp;<span>3.1</span></a> and <span class="quarto-unresolved-ref">?eq-expected-value-game-2</span>. However, the games are not identical because their probability distributions are different. If given the choice to play only one game, which would you prefer?</p>
+<section id="variance" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="variance"><span class="header-section-number">4.5</span> Variance</h2>
+<p>Let us compare the two games in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>4.1</span></a>. Both have the same sample space (set of possible outcomes) and the same expected winnings; see <a href="#eq-expected-value-game-1" class="quarto-xref">Equation&nbsp;<span>4.1</span></a> and <span class="quarto-unresolved-ref">?eq-expected-value-game-2</span>. However, the games are not identical because their probability distributions are different. If given the choice to play only one game, which would you prefer?</p>
 <p>The second game offers a higher probability of winning the highest prize (2 EUR) at the cost of a lower probability for the middle prize (1 EUR). In other words, it places a higher probability on <em>extreme</em> outcomes (far from the distribution’s center, i.e., the expected value). A summary of a distribution that measures its spread (i.e., how likely are extreme values) is the variance:</p>
 <div id="def-variance" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 3.4 (Variance)</strong></span> For a discrete random variable <span class="math inline">X</span> with possible outcomes <span class="math inline">x_1, x_2,\ldots,x_n</span> and probability function p(x) the variance is the expected quadratic deviation from the expected value of the distribution <span class="math inline">E(X)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 4.4 (Variance)</strong></span> For a discrete random variable <span class="math inline">X</span> with possible outcomes <span class="math inline">x_1, x_2,\ldots,x_n</span> and probability function p(x) the variance is the expected quadratic deviation from the expected value of the distribution <span class="math inline">E(X)</span>.</p>
 <p><span class="math display">
 \begin{align}
   Var(X) &amp; = E(X - E(X)) ^ 2 \\
@@ -641,7 +647,7 @@ E(X) = \sum_{i = 1} ^ {n} x_i p(x_i)
 </span></p>
 </div>
 <div id="exm-variance-discrete" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.4 (Variance)</strong></span> The variance of the first game (X) is:</p>
+<p><span class="theorem-title"><strong>Example 4.4 (Variance)</strong></span> The variance of the first game (X) is:</p>
 <p><span class="math display">
 \begin{align}
     Var(X) &amp; = \sum_{i = 1} ^ {3} (x_i - E(X)) ^ 2 p(x_i) \\
@@ -652,13 +658,13 @@ E(X) = \sum_{i = 1} ^ {n} x_i p(x_i)
 </span></p>
 </div>
 <div id="exr-variance-discrete" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.2</strong></span> Compute the variance of <span class="math inline">Y</span>, the second game described in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>3.1</span></a>.</p>
+<p><span class="theorem-title"><strong>Exercise 4.2</strong></span> Compute the variance of <span class="math inline">Y</span>, the second game described in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>4.1</span></a>.</p>
 </div>
 <div class="proof solution">
 <p><span class="proof-title"><em>Solution</em>. </span><span class="math inline">Var(Y) = 0.76</span>.</p>
 </div>
 <div id="thm-independence-random-variables" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 3.5 (Independence of Random Variables)</strong></span> Two discrete random variables <span class="math inline">X</span> and <span class="math inline">Y</span> with possible values <span class="math inline">x_1,\ldots,x_K</span> and <span class="math inline">y_1,\ldots,y_L</span> are independent if for every <span class="math inline">k</span> and <span class="math inline">l</span>:</p>
+<p><span class="theorem-title"><strong>Theorem 4.5 (Independence of Random Variables)</strong></span> Two discrete random variables <span class="math inline">X</span> and <span class="math inline">Y</span> with possible values <span class="math inline">x_1,\ldots,x_K</span> and <span class="math inline">y_1,\ldots,y_L</span> are independent if for every <span class="math inline">k</span> and <span class="math inline">l</span>:</p>
 <p><span class="math display">
 \begin{align}
   P(X = x_k, Y = y_l) = P(X = x_k)P(Y = y_l)
@@ -666,7 +672,7 @@ E(X) = \sum_{i = 1} ^ {n} x_i p(x_i)
 </span></p>
 </div>
 <div id="thm-variance-sum-independent" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 3.6</strong></span> For two independent random variables <span class="math inline">X</span> and <span class="math inline">Y</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 4.6</strong></span> For two independent random variables <span class="math inline">X</span> and <span class="math inline">Y</span>.</p>
 <span class="math display">\begin{align}
   Var(X + Y) = Var(X) + Var(Y)
 \end{align}</span>
@@ -678,9 +684,9 @@ Var\left(\sum_{i = 1}^{n} X_i\right) = \sum_{i = 1}^{n} Var(X_i).
 </span></p>
 </div>
 <!-- TODO: rename to variance-sum-independent -->
-<p><a href="#thm-variance-sum-independent" class="quarto-xref">Theorem&nbsp;<span>3.6</span></a> actually holds even for only uncorrelated variables. We will discuss the concept correlation later.</p>
+<p><a href="#thm-variance-sum-independent" class="quarto-xref">Theorem&nbsp;<span>4.6</span></a> actually holds even for only uncorrelated variables. We will discuss the concept correlation later.</p>
 <div id="thm-variance-scaled" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 3.7 (Variance of a Scaled Random Variable)</strong></span> Let <span class="math inline">a \in \mathbf{R}</span> be a fixed (not random) real number and let <span class="math inline">X</span> be a random variable with variance <span class="math inline">Var(X)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 4.7 (Variance of a Scaled Random Variable)</strong></span> Let <span class="math inline">a \in \mathbf{R}</span> be a fixed (not random) real number and let <span class="math inline">X</span> be a random variable with variance <span class="math inline">Var(X)</span>.</p>
 <p>The variance of <span class="math inline">aX</span> is given by:</p>
 <span class="math display">\begin{align}
 Var(aX) = a^2 Var(X).
@@ -703,7 +709,7 @@ Var(aX) = a^2 Var(X).
          &amp; = E(X^2) - 2 E(X)E(X) + E(X) ^ 2 \\
          &amp; = E(X^2) - E(X)^2.
 \end{align}</span></p>
-<p>The proof above uses the fact that <span class="math inline">E(X)</span> is a constant and applies <a href="#thm-expectation-constant" class="quarto-xref">Theorem&nbsp;<span>3.3</span></a> and <a href="#thm-expectation-scaled" class="quarto-xref">Theorem&nbsp;<span>3.4</span></a>.</p>
+<p>The proof above uses the fact that <span class="math inline">E(X)</span> is a constant and applies <a href="#thm-expectation-constant" class="quarto-xref">Theorem&nbsp;<span>4.3</span></a> and <a href="#thm-expectation-scaled" class="quarto-xref">Theorem&nbsp;<span>4.4</span></a>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -1128,13 +1134,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./02-Descriptive-Statistics.html" class="pagination-link" aria-label="Descriptive Statistics">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span>
+      <a href="./03-Least-Squares.html" class="pagination-link" aria-label="Least Squares">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Least Squares</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./04-Least-Squares.html" class="pagination-link" aria-label="Least Squares">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Least Squares</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./04b-Continuous-Distributions.html" class="pagination-link" aria-label="Continuous Distributions (Review)">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Continuous Distributions (Review)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
