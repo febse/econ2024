@@ -554,8 +554,8 @@ Write a function that takes two vectors `x` and `y` as arguments and returns the
 ```{r}
 ols_two_variables <- function(x, y){
     # Compute the coefficients
-    beta_1_hat <- 
-    beta_0_hat <- 
+    beta_1_hat <- (mean(x * y) - mean(x) * mean(y)) / (mean(x^2) - mean(x)^2)
+    beta_0_hat <- mean(y) - beta_1_hat * mean(x)
 
     c(beta_0_hat = beta_0_hat, beta_1_hat = beta_1_hat)
 }
@@ -568,6 +568,9 @@ set.seed(123)
 
 x_test <- rnorm(100)
 y_test <- 1 + 2 * x_test + rnorm(100)
+
+print(ols_two_variables(x_test, y_test))
+print(lm(y_test ~ x_test))
 ```
 
 Compare your results with the `lm` function in R.
@@ -594,29 +597,34 @@ $$
 ```{r}
 # Uncomment the following two lines to fit the model
 
-# fit_OLS <- lm(WRITE THE FORMULA HERE, data = invoices)
-# fit_OLS
+fit_OLS <- lm(Time ~ Invoices, data = invoices)
+fit_OLS
 ```
 
 ```{r}
 # Compute the predicted values for the days (observations) in the sample
 
-# time_predicted_OLS <- predict(fit_OLS)
+predict(fit_OLS)
 ```
 
 ```{r}
 # Compute the RSS for the OLS model
 
-# invoices <- invoices %>%
-#     mutate(
-#       Time_hat_OLS = time_predicted_OLS,
-#       residuals_OLS = # WRITE YOUR CODE HERE
-#     )
+invoices <- invoices %>%
+    mutate(
+      Time_predicted_OLS = predict(fit_OLS),
+      residuals_OLS = Time - Time_predicted_OLS
+    )
 ```
 
 ```{r}
 # Compute the RSS and MSE for the OLS model
 
+invoices %>%
+  summarize(
+    RSS_OLS = sum(residuals_OLS^2),
+    MSE_OLS = mean(residuals_OLS^2)
+  )
 ```
 
 
@@ -625,19 +633,19 @@ $$
 ```{r}
 # Plot the predictions
 
-# invoices %>%
-#     ggplot(aes(x = Invoices, y = Time)) +
-#     geom_point() +
-#     geom_line(aes(y = Time_hat_OLS), colour = "steelblue4")
+invoices %>%
+    ggplot(aes(x = Invoices, y = Time)) +
+    geom_point() +
+    geom_line(aes(y = Time_predicted_OLS), color = "steelblue4")
 ```
 
 ```{r}
 # Plot the predictions using geom_smooth
 
-# invoices %>%
-#     ggplot(aes(x = Invoices, y = Time)) +
-#     geom_point() +
-#     geom_smooth(method = "lm")
+invoices %>%
+    ggplot(aes(x = Invoices, y = Time)) +
+    geom_point() +
+    geom_smooth(method = "lm")
 ```
 
 ## Interpretation of the OLS coefficients
