@@ -336,6 +336,16 @@ $$
 \end{align*}
 $$
 
+$$
+\begin{align*}
+\frac{\partial}{\partial \hat{\beta}_0} \text{RSS}(\hat{\beta}_0, \hat{\beta}_1) & = -2 \sum_{i=1}^n (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i) = 0 \\
+\frac{\partial}{\partial \hat{\beta}_1} \text{RSS}(\hat{\beta}_0, \hat{\beta}_1) & = -2 \sum_{i=1}^n (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i) x_i = 0
+\end{align*}
+$$
+
+:::{.callout-note collapse="true"}
+## Solution
+
 The first order conditions for the minimum are
 
 $$
@@ -375,6 +385,7 @@ $$
 \hat{\beta}_1 & = \frac{\sum_{i=1}^n y_i x_i - \overline{y} \sum_{i=1}^n x_i}{\sum_{i=1}^n x_i^2 - \overline{x} \sum_{i=1}^n x_i}
 \end{align*}
 $$
+:::
 
 Simplifying the expression, we get
 
@@ -384,6 +395,7 @@ $$
 \hat{\beta}_0 & = \overline{y} - \hat{\beta}_1 \overline{x}
 \end{align*}
 $$
+
 
 The last expression may seem a bit complicated, but it is actually quite simple. It is just the ratio between the empirical covariance between $x_i$ and $y_i$ divided by the variance of $x_i$.
 
@@ -412,11 +424,11 @@ $$
 It can be shown that the variance of $x$ can be decomposed into the sum of the squared mean and the variance of the deviations from the mean.
 
 $$
-S_x^2 = \frac{1}{n  - 1}(\overline{x_i^2} - \overline{x}^2)
+S_x^2 = \frac{n}{n  - 1}(\overline{x_i^2} - \overline{x}^2)
 $$
 :::
-:::{.proof}
-The proof is straightforward. We have
+:::{.callout-note .proof collapse="true"}
+For the proof we just write out the square in the sum and rearrange the terms.
 
 $$
 \begin{align*}
@@ -432,7 +444,7 @@ $$
 :::
 
 :::{#def-covariance}
-## Covariance and Covariance decomposition
+## Covariance
 
 The covariance between two variables $x$ and $y$ with $n$ values is defined as
 
@@ -443,13 +455,13 @@ $$
 Much in the same way as the variance, the covariance can be decomposed into the sum of the squared mean and the variance of the deviations from the mean.
 
 $$
-(n - 1) S_{xy} = n(\overline{x y} - \overline{x} \overline{y})
+S_{xy} = \frac{n}{(n - 1)}(\overline{x y} - \overline{x} \overline{y})
 $$
 
 The proof is similar to the proof for the variance decomposition.
 :::
-:::{.proof}
-The proof is straightforward. We have
+:::{.callout-note .proof collapse="true"}
+For the proof we just write out the product in the sum and rearrange the terms.
 
 $$
 \begin{align*}
@@ -460,23 +472,23 @@ $$
 $$
 :::
 
-To understand what the covariance measures, consider the following scatterplot:
+To understand what the covariance, consider the following scatterplot:
 
 ```{r}
 #| label: fig-covariance-positive
 #| fig-cap: "Scatterplot of two variables with a positive linear assocition"
 
 set.seed(123)
-dt <- tibble(
+dt_pos_cov <- tibble(
     x = rnorm(100),
     y = 2 * x + rnorm(100)
 )
 
-dt %>%
+dt_pos_cov %>%
     ggplot(aes(x = x, y = y)) +
     geom_point() +
-    geom_vline(xintercept = mean(dt$x), colour = "firebrick4") +
-    geom_hline(yintercept = mean(dt$y), colour = "steelblue4")
+    geom_vline(xintercept = mean(dt_pos_cov$x), colour = "firebrick4") +
+    geom_hline(yintercept = mean(dt_pos_cov$y), colour = "steelblue4")
 ```
 
 The reddish line is drawn at the average of the $x$ values and the bluish line is drawn at the average of the $y$ values. The covariance measures the average product of the deviations of the $x$ and $y$ values from their respective means. If the product is positive, it means that when $x$ is above its average, $y$ is also above its average. If the product is negative, it means that when $x$ is above its average, $y$ is below its average.
@@ -484,14 +496,14 @@ The reddish line is drawn at the average of the $x$ values and the bluish line i
 You can compute the empirical covariance between two variables using the `cov` function in R.
 
 ```{r}
-cov(dt$x, dt$y)
+cov(dt_pos_cov$x, dt_pos_cov$y)
 ```
 
 Only the *sign* of the covariance is important. The magnitude of the covariance depends on the units of the variables. To make the covariance unit-free, we can divide it by the product of the standard deviations of the two variables. This gives us the correlation coefficient.
 
 ```{r}
-cov(dt$x * 1000, dt$y)
-cov(dt$x , dt$y * 50)
+cov(dt_pos_cov$x * 1000, dt_pos_cov$y)
+cov(dt_pos_cov$x , dt_pos_cov$y * 50)
 ```
 
 ```{r}
@@ -499,20 +511,20 @@ cov(dt$x , dt$y * 50)
 #| fig-cap: "Scatterplot of two variables with a positive linear assocition"
 
 set.seed(123)
-dt1 <- tibble(
+dt_neg_cov <- tibble(
     x = rnorm(100),
     y = -3 * x + rnorm(100)
 )
 
-dt1 %>%
+dt_neg_cov %>%
     ggplot(aes(x = x, y = y)) +
     geom_point() +
-    geom_vline(xintercept = mean(dt1$x), colour = "firebrick4") +
-    geom_hline(yintercept = mean(dt1$y), colour = "steelblue4")
+    geom_vline(xintercept = mean(dt_neg_cov$x), colour = "firebrick4") +
+    geom_hline(yintercept = mean(dt_neg_cov$y), colour = "steelblue4")
 ```
 
 ```{r}
-cov(dt1$x, dt1$y)
+cov(dt_neg_cov$x, dt_neg_cov$y)
 ```
 
 :::{#def-correlation}
@@ -531,8 +543,8 @@ where $S_{xy}$ is the covariance between $x$ and $y$, and $S_x$ and $S_y$ are th
 Because the covariance is divided by the product of the standard deviations, the correlation is unit-free. Furthermore, the correlation is always between -1 and 1. A correlation of 1 means that the two variables lie on a straight line with a positive slope. A correlation of -1 means that the two variables lie on a straight line with a negative slope. A correlation of 0 means that there is no *linear* association between the two variables.
 
 ```{r}
-cor(dt$x, dt$y)
-cor(dt1$x, dt1$y)
+cor(dt_pos_cov$x, dt_pos_cov$y)
+cor(dt_neg_cov$x, dt_neg_cov$y)
 ```
 
 ## Exercise
@@ -545,7 +557,7 @@ ols_two_variables <- function(x, y){
     beta_1_hat <- 
     beta_0_hat <- 
 
-    list(beta_0_hat = beta_0_hat, beta_1_hat = beta_1_hat)
+    c(beta_0_hat = beta_0_hat, beta_1_hat = beta_1_hat)
 }
 ```
 
