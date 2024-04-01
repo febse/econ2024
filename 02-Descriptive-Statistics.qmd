@@ -28,7 +28,7 @@ The `earnings` data set contains data on 1816 customers of a shopping mall. The 
 We will use this data set to demonstrate some common operations and basic data summaries.
 
 ```{r}
-earnings <- read_csv("https://raw.githubusercontent.com/feb-uni-sofia/econometrics2021/main/data/earnings.csv")
+earnings <- read_csv("https://raw.githubusercontent.com/febse/data/main/econ/earnings.csv")
 ```
 
 -   *height* (numeric): Height in inches (1 inch = 2.54 cm)

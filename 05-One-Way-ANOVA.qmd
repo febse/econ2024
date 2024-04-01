@@ -105,13 +105,13 @@ Use the following code stub to compute the average IQ scores for the two groups 
 :::
 
 
-
 Let us see how we can model the average IQ scores within a simple linear model.
 
 $$
 \begin{align*}
 & i = 1,\ldots, n = 434 \text{ observations}\\
-& y_i: \text{Kid IQ score} \\
+& y_i: \text{IQ score} \\
+& \hat{y}_i: \text{Predicted IQ score} \\
 & x_i \in \{0, 1\}: \text{status of the mother}
 \end{align*}
 $$
@@ -120,6 +120,12 @@ The linear model is then
 
 $$
 y_i = \beta_0 + \beta_1 x_i + e_i, e_i \sim N(0, \sigma^2)
+$$
+
+The predicted IQ score for the $i$-th child is
+
+$$
+\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x
 $$
 
 
@@ -219,7 +225,7 @@ ggplot() +
 
 Within that model our research question boils down to examining $\beta_1$ (the difference between the population averages). If $\beta_1$ is positive, then children born to a mother with a HS degree would tend to perform better at the IQ test.
 
-The first obstacle to answering the research question is that we don't know the value of $\beta_1$. Therefore, we would need to rely on the sample to learn something about the value of $\beta_1$.
+The first obstacle to answering the research question is that we don't know the value of $\beta_1$. Therefore, we rely on the sample to learn something about its value.
 
 In the previous section we discussed the OLS estimator and now we will use it to find the best (in terms of lowest RSS) estimates for $\beta_0$ and $\beta_1$. As in the previous section will will find these using the `lm` function. We will also store the result of `lm` in an object so that we can use it later without running `lm` every time.
 
