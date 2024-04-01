@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.552">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./05-One-Way-ANOVA.html" rel="next">
 <link href="./04a-Probability-Review.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -227,6 +227,18 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./05-One-Way-ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">One Way ANOVA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-Simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">A Simulation Study</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -353,8 +365,8 @@ F(x) = \int_{-\infty}^{x} f(x) dx = \begin{cases}
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>x_unif <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span>, <span class="at">min =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">max =</span> <span class="dv">1</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>x_unif</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  0.1196725  0.5023165  0.3194468 -0.4525935 -0.9299483  0.1903629
- [7] -0.6329317 -0.9422219  0.4306511  0.7036584</code></pre>
+<pre><code> [1]  0.5601449 -0.8269937 -0.9316510 -0.7453761 -0.9120900  0.2168410
+ [7]  0.7950734  0.9381583 -0.5587136  0.2729495</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -362,7 +374,7 @@ F(x) = \int_{-\infty}^{x} f(x) dx = \begin{cases}
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x_unif <span class="sc">&lt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<pre><code>[1] 5</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Count the number of values greater than 0.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -563,7 +575,7 @@ Figure&nbsp;5.2: Density of the standard normal distribution
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x_norm <span class="sc">&lt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6</code></pre>
+<pre><code>[1] 4</code></pre>
 </div>
 </div>
 <p>Compare the result with the theoretical probability of the event <span class="math inline">X &lt; 0</span>.</p>
@@ -994,8 +1006,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./05-One-Way-ANOVA.html" class="pagination-link" aria-label="One Way ANOVA">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">One Way ANOVA</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
