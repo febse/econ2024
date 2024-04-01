@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to linear regression analysis - 4&nbsp; Statistics Review (Optional)</title>
+<title>Introduction to linear regression analysis - 4&nbsp; Discrete Distributions (Review)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -54,27 +54,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -178,7 +158,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04a-Probability-Review.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistics Review (Optional)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04a-Probability-Review.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Discrete Distributions (Review)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -236,7 +216,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04a-Probability-Review.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistics Review (Optional)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Discrete Distributions (Review)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -273,14 +253,14 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-probability" id="toc-sec-probability" class="nav-link active" data-scroll-target="#sec-probability"><span class="header-section-number">4.1</span> Probability</a></li>
-  <li><a href="#sec-discrete-distributions" id="toc-sec-discrete-distributions" class="nav-link" data-scroll-target="#sec-discrete-distributions"><span class="header-section-number">4.2</span> Discrete distributions</a></li>
-  <li><a href="#discrete-random-variables" id="toc-discrete-random-variables" class="nav-link" data-scroll-target="#discrete-random-variables"><span class="header-section-number">4.3</span> Discrete Random Variables</a></li>
-  <li><a href="#expected-value" id="toc-expected-value" class="nav-link" data-scroll-target="#expected-value"><span class="header-section-number">4.4</span> Expected value</a>
-  <ul class="collapse">
-  <li><a href="#properties-of-the-expected-value" id="toc-properties-of-the-expected-value" class="nav-link" data-scroll-target="#properties-of-the-expected-value"><span class="header-section-number">4.4.1</span> Properties of the expected value</a></li>
-  </ul></li>
-  <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance"><span class="header-section-number">4.5</span> Variance</a></li>
+  <li><a href="#expectation" id="toc-expectation" class="nav-link active" data-scroll-target="#expectation"><span class="header-section-number">4.1</span> Expectation</a></li>
+  <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance"><span class="header-section-number">4.2</span> Variance</a></li>
+  <li><a href="#joint-distribution" id="toc-joint-distribution" class="nav-link" data-scroll-target="#joint-distribution"><span class="header-section-number">4.3</span> Joint Distribution</a></li>
+  <li><a href="#marginal-distributions" id="toc-marginal-distributions" class="nav-link" data-scroll-target="#marginal-distributions"><span class="header-section-number">4.4</span> Marginal Distributions</a></li>
+  <li><a href="#conditional-distributions" id="toc-conditional-distributions" class="nav-link" data-scroll-target="#conditional-distributions"><span class="header-section-number">4.5</span> Conditional Distributions</a></li>
+  <li><a href="#joint-distribution-under-independence" id="toc-joint-distribution-under-independence" class="nav-link" data-scroll-target="#joint-distribution-under-independence"><span class="header-section-number">4.6</span> Joint Distribution under Independence</a></li>
+  <li><a href="#conditional-expectation" id="toc-conditional-expectation" class="nav-link" data-scroll-target="#conditional-expectation"><span class="header-section-number">4.7</span> Conditional Expectation</a></li>
+  <li><a href="#covariance" id="toc-covariance" class="nav-link" data-scroll-target="#covariance"><span class="header-section-number">4.8</span> Covariance</a></li>
   </ul>
 </nav>
     </div>
@@ -289,7 +269,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistics Review (Optional)</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Discrete Distributions (Review)</span></h1>
 </div>
 
 
@@ -307,153 +287,60 @@ window.Quarto = {
 
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## First, load the tidyverse package</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">## If the package is not installed, uncomment the next line and run the code chunk again</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">## install.packages("tidyverse")</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.0     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># source("lib.R")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="sec-probability" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="sec-probability"><span class="header-section-number">4.1</span> Probability</h2>
-<p>Imagine a game where you flip a single coin once. The possible outcomes are head (H) and tail (T). The set of all possible outcomes of the game is called the <em>sample</em> space of the experiment. We will denote this set with <span class="math inline">\Omega</span>. For a single coin toss game, the sample space is <span class="math inline">\Omega = \{\text{heads}, \text{tails}\}</span>.</p>
-<div id="def-probability" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.1 (Probability)</strong></span> Let <span class="math inline">\Omega</span> denote the sample space of a random experiment. Let <span class="math inline">A \subseteq \Omega</span> and <span class="math inline">B \subset \Omega</span> be two disjoint events (i.e.&nbsp;<span class="math inline">A \cap B = \varnothing</span>). Disjoint events are events that cannot co-occur. A probability measure on this space has the following properties:</p>
+<p>Let <span class="math inline">X</span> and <span class="math inline">Y</span> be two discrete random variables with possible values <span class="math inline">0, 1, \ldots, K</span>. The probability mass functions <span class="math inline">p_X(x)</span> and <span class="math inline">p_Y(y)</span> assign occurrence probabilities to each possible outcome.</p>
+<p>For example:</p>
 <p><span class="math display">
-\begin{align}
-  &amp; P(A) \geq 0 \qquad \text{non-negativity}\\
-  &amp; P(\Omega) = 1 \qquad  \text{unit measure} \\
-  &amp; P(A \cup B) = P(A) + P(B) \qquad \text{additivity}
-\end{align}
+p_X(x) = \begin{cases}
+0.250 &amp; \text{for } x = 0\\
+0.095 &amp; \text{for } x = 1 \\
+0.272 &amp; \text{for } x = 2 \\
+0.383 &amp; \text{for } x = 3 \\
+0 &amp; \text{otherwise}
+\end{cases}
 </span></p>
-</div>
-<div id="thm-probability-complement" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.1 (Probability of complementary sets)</strong></span> Let <span class="math inline">\Omega</span> be a sample space, let <span class="math inline">A \subseteq \Omega</span> be a subset of the sample space, and let <span class="math inline">\bar{A} = \Omega \setminus A</span> be the complement of <span class="math inline">A</span> in <span class="math inline">\Omega</span>. Then the probability of the complementary set is given by:</p>
 <p><span class="math display">
-P(A) = 1 - P(\bar{A})
+p_Y(y) = \begin{cases}
+0.76 &amp; \text{for } y = 2\\
+0.24 &amp; \text{for } y = 3 \\
+0 &amp; \text{otherwise}
+\end{cases}
 </span></p>
-</div>
-<div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>For the proof note that <span class="math inline">A</span> and <span class="math inline">\bar{A}</span> are disjoint by definition (<span class="math inline">A \cap \bar{A} = \varnothing</span>). Using the additivity of probability together with the unit probability of the sample space <span class="math inline">\Omega</span> from <a href="#def-probability" class="quarto-xref">Definition&nbsp;<span>4.1</span></a>, it follows that:</p>
-<span class="math display">\begin{align}
-    P(A \cup \bar{A}) = P(A) + P(\bar{A})
-  \end{align}</span>
-<span class="math display">\begin{align}
-    P(A \cup \bar{A}) &amp; =  P(\Omega) \\
-    P(A) + P(\bar{A}) &amp; = 1 \implies \\
-    P(A) &amp; = 1 - P(\bar{A}).
-  \end{align}</span>
-</div>
-<div id="exm-probability-weather" class="theorem example">
-<p><span class="theorem-title"><strong>Example 4.1 (Weather forecast)</strong></span> The weather forecast for the next day shows that it will be raining (<span class="math inline">A</span>) with probability <span class="math inline">P(A) = 0.3</span>. The sample space is <span class="math inline">\Omega = \{A, \bar{A}\}</span> and the probability of not raining (<span class="math inline">\bar{A}</span>) is then <span class="math inline">P(\bar{A}) = 1 - 0.3 = 0.7</span>.</p>
-</div>
-<div id="exm-probability-dice" class="theorem example">
-<p><span class="theorem-title"><strong>Example 4.2 (Dice)</strong></span> In a game where you roll a (6-sided) dice once the sample space is <span class="math inline">\Omega = \{1, 2, 3, 4, 5, 6\}</span>. Denote the outcome of a roll with <span class="math inline">X</span> and assume that the probability of each outcome is equal: <span class="math inline">P(X = i) = 1 / 6, i = 1,2,\ldots,6</span>. The probability of the event <span class="math inline">X = 1</span> is then <span class="math inline">P(X = 1) = 1/6</span>. The probability of the event “outcome is not one” is <span class="math inline">P(X \neq 1) = P(X &gt; 1) = 5 / 6.</span></p>
-</div>
-<p>See <span class="citation" data-cites="BERTSEKAS2008IntroductionProbability">Bertsekas and Tsitsiklis (<a href="references.html#ref-BERTSEKAS2008IntroductionProbability" role="doc-biblioref">2008</a>)</span> (Chapter 1) for a more thorough treatment of the subject.</p>
-</section>
-<section id="sec-discrete-distributions" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="sec-discrete-distributions"><span class="header-section-number">4.2</span> Discrete distributions</h2>
-<p>When we presented the axioms of probability we mentioned the concept of a sample space and probability. For the sake of brevity we will skip almost all of the set theoretic foundation of probability measures and will directly introduce the concept of a random variable.</p>
-<p>Let us go back to the roots of probability theory that date back at least to the 17th century and the study of games of chance (gambling) <span class="citation" data-cites="FREEDMAN2007Statistics">(<a href="references.html#ref-FREEDMAN2007Statistics" role="doc-biblioref">Freedman, Pisani, and Purves 2007, 248</a>)</span>. Almost all introductory text on probability theory start with an example of some simple game of chance. We will follow this example, because it is easy to understand a simple game and the mathematical concepts involved. Later we will see how we can apply the concepts developed here to an extremely broad range of problems.</p>
-</section>
-<section id="discrete-random-variables" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="discrete-random-variables"><span class="header-section-number">4.3</span> Discrete Random Variables</h2>
-<p>Imagine that you are about to buy a lottery ticket that costs 1 EUR. Until you buy and scratch the ticket you don’t actually know how much you will win, but before you commit to the purchase you may wonder what winnings you should <em>expect</em>. Without knowing the <em>rules</em> of the lottery you would be completely in the dark about your prospects, so let us assume that you actually know how the lottery works.</p>
-<p>From our point of view the rules of the game are completely determined by two things. The first one is the set of possible outcomes (the sample space) of the lottery and let’s assume that each ticket can win 0 EUR, 1 EUR or 2 EUR. Notice that the set of possible values is <em>finite</em> as there are only three possible outcomes. Let us write <span class="math inline">X</span> for the (yet unknown) winning from our lottery ticket. In lottery games the value of <span class="math inline">X</span> depends on some random mechanism (for example drawing numbered balls, spinning a wheel, etc.), therefore it is a <em>function</em> of the outcome of this random mechanism. We will call functions like <span class="math inline">X</span> <em>random variables</em>. For the most part we will not refer the underlying random mechanism and will simply focus on the distribution of the possible values of <span class="math inline">X</span>. The second part of the rules is how often winnings of 0 EUR, 1 EUR and 2 EUR occur when you repeatedly play the game. Obviously, a game where half of the tickets win 2 EUR is quite different from a game where only one out of 100 tickets wins 2 EUR.</p>
-<div id="tbl-discrete-game-probabilities" class="cell quarto-float anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-discrete-game-probabilities-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.1: Distribution of outcomes for two games of chance. Possible outcomes and probabilities for each outcome.
-</figcaption>
-<div aria-describedby="tbl-discrete-game-probabilities-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-stdout">
-<pre><code>  Winnings(x) P(x) Winnings(y) P(y)
-1       0 EUR  0.5       0 EUR  0.5
-2       1 EUR  0.3       1 EUR  0.1
-3       2 EUR  0.2       2 EUR  0.3</code></pre>
-</div>
-</div>
-</figure>
-</div>
-<p>Let us focus on the first game with probabilities (0.5, 0.3 and 0.2) and develop some intuitive understanding of these quantities. You can think about the probabilities in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>4.1</span></a> as theoretical proportions in a sense that if you play the lottery 100 times you would expect to win nothing (0 EUR) in <em>about</em> 50 games, 1 EUR in <em>about</em> 30 games and 2 EUR in about <em>20</em> games. Notice that to <em>expect</em> 20 2-EUR wins out of 100 games is absolutely <em>not</em> the same as the statement that you <em>will</em> win 2 EUR in exactly 20 out of 100 games! To convince yourself look at <a href="#tbl-discrete-games-simulation" class="quarto-xref">Table&nbsp;<span>4.2</span></a> which presents the results of five simulated games with 100 tickets each. You can play with this and similar games by changing the number of tickets and the number of games in this <a href="https://feb-uni-sofia.shinyapps.io/econometrics2020/">simulation</a>. In the first game the player had 49 tickets that won nothing, but in the second game she had only 38 0-win tickets. When we say to expect 50 0-wins out of 100 tickets we mean that the number of observed (actually played) 0-wins will <em>vary</em> around 50. In neither of the five simulated games was the number of 0-wins exactly equal to 50 (this is also possible, though).</p>
+<p>For convenience, the probability mass functions of <span class="math inline">X</span> and <span class="math inline">Y</span> are stored in the tibbles <code>px</code> and <code>py</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43243</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>Ex <span class="ot">&lt;-</span> <span class="fu">sum</span>(x <span class="sc">*</span> probs)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>nGames <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>cnts <span class="ot">&lt;-</span> <span class="fu">rmultinom</span>(<span class="at">n =</span> nGames, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">prob =</span> probs)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>avgWinnings <span class="ot">&lt;-</span><span class="fu">apply</span>(cnts, <span class="dv">2</span>, <span class="cf">function</span>(cnt) <span class="fu">sum</span>(cnt <span class="sc">*</span> x) <span class="sc">/</span> <span class="dv">100</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>gameResult <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">t</span>(cnts), avgWinnings)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(gameResult) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">'x ='</span>, <span class="dv">0</span><span class="sc">:</span>(<span class="fu">length</span>(probs) <span class="sc">-</span> <span class="dv">1</span>), <span class="at">sep =</span> <span class="st">' '</span>), <span class="st">'Average winnings per ticket'</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(gameResult) <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">'Game'</span>, <span class="dv">1</span><span class="sc">:</span>nGames, <span class="at">sep =</span> <span class="st">' '</span>)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>gameResult <span class="sc">%&gt;%</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="tbl-discrete-games-simulation" class="cell quarto-float anchored">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>px <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-distr-x" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-discrete-games-simulation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.2: Simulation of five games with 100 tickets each. Number of tickets by outcome (0, 1, or 2 EUR) and average ticket win.
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-distr-x-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.1: Probability mass function of <span class="math inline">X</span>.
 </figcaption>
-<div aria-describedby="tbl-discrete-games-simulation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="tbl-distr-x-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">x = 0</th>
-<th style="text-align: right;">x = 1</th>
-<th style="text-align: right;">x = 2</th>
-<th style="text-align: right;">Average winnings per ticket</th>
+<th style="text-align: right;">x</th>
+<th style="text-align: right;">p</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Game 1</td>
-<td style="text-align: right;">49</td>
-<td style="text-align: right;">34</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.250</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Game 2</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">36</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">0.88</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.095</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Game 3</td>
-<td style="text-align: right;">47</td>
-<td style="text-align: right;">31</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.272</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Game 4</td>
-<td style="text-align: right;">49</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: right;">0.76</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Game 5</td>
-<td style="text-align: right;">62</td>
-<td style="text-align: right;">23</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">0.53</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.383</td>
 </tr>
 </tbody>
 </table>
@@ -462,276 +349,904 @@ Table&nbsp;4.2: Simulation of five games with 100 tickets each. Number of ticket
 </figure>
 </div>
 </div>
-<p>The probabilities in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>4.1</span></a> completely describe the two games. The functions that assigns a probability to each possible outcome <span class="math inline">p(x)</span> and <span class="math inline">p(y)</span> are called <em>probability mass functions</em>. These functions incorporate everything there is to know about our hypothetical games. While this knowledge will not guarantee you a profit from gambling, it enables you to compute the expected value of each ticket, the probability that none of your tickets will win, etc. An important property of the probability mass function is that it is always non-negative (no negative probabilities) and that the sum of the probabilities over all possible values is exactly <span class="math inline">1</span>.</p>
-<div id="def-probability-mass-function" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.2 (Probability mass function)</strong></span> For a discrete random variable <span class="math inline">X</span> with possible values <span class="math inline">x_1,\ldots,x_K</span> a function <span class="math inline">p(x_i)</span> that assigns a probability to the possible values of <span class="math inline">X</span> is called a probability mass function.</p>
-<p><span class="math display">
-\begin{align}
-  P(X = x_k) = p_k.
-\end{align}
-</span> The probabilities are real numbers in the interval <span class="math inline">[0, 1]</span> and need to sum to 1 over all possible values.</p>
-<span class="math display">\begin{align}
-  p_k \geq 0\\
-  \sum_{k = 1} ^ {K} p_k = 1.
-\end{align}</span>
-</div>
-<p>Note that the set of <span class="math inline">K</span> possible values <span class="math inline">x_1,\ldots,x_K</span> is <em>finite</em>. The same definition can be used for infinite sets of possible values as long as these are <em>countably infinite</em> but we will skip this discussion.</p>
-<div id="exm-probability-mass-function-games" class="theorem example">
-<p><span class="theorem-title"><strong>Example 4.3 (Probability mass function)</strong></span> The first game in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>4.1</span></a> has three possible outcomes: <span class="math inline">x_1 = 0, x_2 = 1, x_3 = 2</span>. The probability mass function is then</p>
-<p><span class="math display">
-p(x) = \begin{cases}
-0.5 &amp; \text{if} \quad x = 0 \\
-0.3 &amp; \text{if} \quad x = 1 \\
-0.2 &amp; \text{if} \quad x = 2 \\
-0 &amp; \text{otherwise}
-\end{cases}
-</span></p>
-</div>
-<p>A common visualization of the probability mass function is a barchart with the heights of the bars corresponding to the probability of each outcome.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>),</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="fl">0.2</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> p)) <span class="sc">+</span> </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>py <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-distr-y" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-distr-y-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.2: Probability mass function of <span class="math inline">Y</span>
+</figcaption>
+<div aria-describedby="tbl-distr-y-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">y</th>
+<th style="text-align: right;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.76</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.24</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>The usual visualization of a probability mass function is a bar plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>px <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> p)) <span class="sc">+</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">"Outcome"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">"Probability"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04a-Probability-Review_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="04a-Probability-Review_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<!-- ::: {#exr-discrete-game} -->
-<!-- ## Discrete probability -->
-<!-- Consider a game of chance with the following probability mass function. -->
-<!-- $$ -->
-<!-- p(x) = \begin{cases} -->
-<!-- 0.05 & \text{if} \quad x = -2 \\ -->
-<!-- 0.20 & \text{if} \quad x = -1 \\ -->
-<!-- 0.25 & \text{if} \quad x = 0 \\ -->
-<!-- 0.5 & \text{if} \quad x = 1 \\ -->
-<!-- 0 & \text{otherwise} -->
-<!-- \end{cases} -->
-<!-- $$ -->
-<!-- - Plot ths PMF using a barchart -->
-<!-- - Write down the corresponding CDF -->
-<!-- ```{r} -->
-<!-- ## ggplot -->
-<!-- ``` -->
-<!-- ```{r} -->
-<!-- ## Select size = 20 values at random from the numbers 0, 1, 2, -->
-<!-- ## with selection probabilities: 0.5, 0.3, 0.2 -->
-<!-- sample(0:2, size = 20, prob = c(0.5, 0.3, 0.2), replace = TRUE) -->
-<!-- ``` -->
-<!-- ::: -->
-<!-- ::: {def-cdf} -->
-<!-- # Cumulative Distribution Function -->
-<!-- Closely related to the probability mass function is the cumulative distribution function (CDF) which computes the probability for events of the type $X \leq x$. -->
-<!-- ```{=tex} -->
-<!-- \begin{align} -->
-<!--     F(x) = \sum_{x_i \leq x} p(x_i). -->
-<!--   \end{align} -->
-<!-- ``` -->
-<!-- ::: -->
-<!-- ::: {exm-cdf-games} -->
-<!-- # CDF for the lottery game -->
-<!-- ```{=tex} -->
-<!-- \begin{align} -->
-<!--   P(X < 0) = 0 \\ -->
-<!--   P(X < 1) & = \sum_{x_k < 1} p(x_k) = p(x_1) = 0.5. \\ -->
-<!--   P(X \leq 1) & = \sum_{x_k \leq 1} p(x_k) = p(x_1) + p(x_2) = 0.5+ 0.3= 0.8\\ -->
-<!--   P(X < 2) & = \sum_{x_k < 2} p(x_k) = p(x_1) + p(x_2) = 0.5+ 0.3= 0.8\\ -->
-<!--   P(X \leq 2) & = \sum_{x_k \leq 2} p(x_k) = p(x_1) + p(x_2) + p(x_3) = 0.5+ 0.3+ 0.2= 1\\ -->
-<!-- \end{align} -->
-<!-- ``` -->
-<!-- $$ -->
-<!-- F(x) =  -->
-<!-- \begin{cases} -->
-<!--   0 & x < 0 \\ -->
-<!--   0.5 & 0 \leq x < 1 \\ -->
-<!--   0.8 & 1 \leq x < 2 \\ -->
-<!--   1 & x \leq 2 \\ -->
-<!--   1 & x > 2 -->
-<!-- \end{cases} -->
-<!-- $$ -->
-<!-- ::: -->
-</section>
-<section id="expected-value" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="expected-value"><span class="header-section-number">4.4</span> Expected value</h2>
-<p>Just as the descriptive statistics (average, empirical median, empirical quantiles, etc.) are useful for summarizing a set of numbers we would like to be able to summarize distribution <em>functions</em>.</p>
-<p>Imagine that you plan to buy 100 tickets from the first game in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>4.1</span></a>. Based on the interpretation of probabilities as theoretical proportions you would <em>expect</em> that 50 of the tickets will win nothing, 30 of the tickets will bring you 1 EUR and 20 of the tickets will win 2 EUR. Thus you can write the expected winnings per ticket by summing the contributions of each ticket type:</p>
-<p><span id="eq-expected-value-game-1"><span class="math display">
-\begin{align}
-  \text{expected winnings} &amp; =
-    \underbrace{\frac{50}{100} \times 0\text{ EUR}}_{0\text{ EUR tickets}} +
-    \underbrace{\frac{30}{100} \times 1\text{ EUR}}_{1\text{ EUR tickets}} +
-    \underbrace{\frac{20}{100} \times 2\text{ EUR}}_{2\text{ EUR tickets}} \\
-    &amp; = 0.5 \times 0 \text{EUR} + 0.3 \times 1 \text{EUR} + 0.2 \times 2 \text{EUR} = 0.7\text{EUR}.
-\end{align}
-\tag{4.1}</span></span></p>
-<p>Note that the coefficients before the possible outcomes are simply their probabilities. Therefore in a game with 100 tickets you expect that each ticket will bring you <span class="math inline">0.7</span> EUR (on average). Just as with the probabilities, the expected values does not tell you that your average win per ticket <em>will</em> be 0.7 EUR. If you take a look at the five simulated games in <a href="#tbl-discrete-games-simulation" class="quarto-xref">Table&nbsp;<span>4.2</span></a> you will notice that the <em>realized</em> average ticket wins are <em>not</em> equal to 0.7 but they <em>vary</em> around it. You can think about the expected value as the <em>center</em> of the distribution (see <a href="#tbl-discrete-games-simulation" class="quarto-xref">Table&nbsp;<span>4.2</span></a> and <span class="citation" data-cites="FREEDMAN2007Statistics">Freedman, Pisani, and Purves (<a href="references.html#ref-FREEDMAN2007Statistics" role="doc-biblioref">2007</a>)</span>, pp.&nbsp;288). It is important to see that the expected value only depends on the probabilities and the possible values and it <em>does not</em> depend on the outcome of any particular game. Therefore it is a <em>constant</em> and not a random variable itself.</p>
+<p>The probability functions sum to one over all possible values by definition:</p>
+<p><span class="math display">
+\sum_{x = 0}^{3}p_X(x) = 0.250 + 0.095 + 0.272 + 0.383 = 1
+</span></p>
+<div id="exr-prob-y" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.1 (Probability Mass Function)</strong></span> Use the <code>sum</code> function to show that the probability mass function of <span class="math inline">Y</span> sums to one.</p>
+</div>
+<div id="exm-sampling-x" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.1 (Sampling from a univariate distribution)</strong></span> &nbsp;</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>smpl_x <span class="ot">&lt;-</span> px <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="fl">1e5</span>, <span class="at">weight_by =</span> p, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(smpl_x) <span class="sc">%&gt;%</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-game-probabilities-plot" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-game-probabilities-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="04a-Probability-Review_files/figure-html/fig-game-probabilities-plot-1.png" class="img-fluid figure-img" width="672">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">x</th>
+<th style="text-align: right;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.383</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.250</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.095</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.383</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.383</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.383</td>
+</tr>
+</tbody>
+</table>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-game-probabilities-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.1: Probabilities plot. The black vertical line depicts the expected value.
-</figcaption>
+</div>
+<p>It is useful to visualize the observed frequency of each outcome.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Absolute frequencies (counts)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(smpl_x<span class="sc">$</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    0     1     2     3 
+25009  9577 27259 38155 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Relative frequencies (shares)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(smpl_x<span class="sc">$</span>x) <span class="sc">/</span> <span class="fu">nrow</span>(smpl_x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+      0       1       2       3 
+0.25009 0.09577 0.27259 0.38155 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>smpl_x <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">"Outcome"</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">"Frequency"</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04a-Probability-Review_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<!-- TODO: bridge -->
-<p>Let us write the expected value in a more general way:</p>
-<div id="def-expectation-discrete" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.3 (Expected Value)</strong></span> For discrete random variable <span class="math inline">X</span> with possible values <span class="math inline">x_1, x_2,\ldots,x_n</span> the weighted average of the possible outcomes:</p>
-<p><span class="math display">
-E(X) = \sum_{i = 1} ^ {n} x_i p(x_i)
-</span></p>
-<p>is called the expected value of <span class="math inline">X</span>. Sometimes we will refer to the expected value as the mean of the distribution or the mean of the random variable following the distribution.</p>
 </div>
-<p>We introduced the expected value with an example of a game with 100 tickets in order to illustrate it. You should notice from <a href="#def-expectation-discrete" class="quarto-xref">Definition&nbsp;<span>4.3</span></a> that the expected value is independent of the <em>number</em> of games played as it is a property of the probability mass function of the game.</p>
-<div id="exr-expected-value-game-2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.1 (Expected Value)</strong></span> Let <span class="math inline">Y</span> be a game with possible winnings of -1, 0, and 2 EUR. The probabilities of these outcomes are <span class="math inline">P(x = -1) = 0.2, P(x = 0) = 0.7, P(x = 2) = 0.1</span>.</p>
-<ul>
-<li>Plot the PMF using a bar chart</li>
-<li>Calculate the expected winnings of this game using <a href="#def-expectation-discrete" class="quarto-xref">Definition&nbsp;<span>4.3</span></a></li>
-</ul>
-<p>Play the game using the function <code>sample</code> (check its documentation either by typing <code>?sample</code> on the command line in R or by searching for it online). It selects <code>size</code> of the values specified in <code>x</code> according to the probabilities given in <code>prob</code>.</p>
+<div id="exr-prob-y-sample" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.2 (Sampling from the Distribution of Y)</strong></span> Select 2000 samples from the distribution of <span class="math inline">Y</span> and visualize the frequencies.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>), </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="dv">10</span>, </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.7</span>, <span class="fl">0.1</span>),</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">replace =</span> <span class="cn">TRUE</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  0  0  0 -1  0  0  0  0 -1  0</code></pre>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Take the samples here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the frequencies here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p>Play the game a couple of times and look at the outcomes. Compute the average winnings using <code>mean</code> and compare the result with the expected value that you calculated in the previous step.</p>
-</div>
-<section id="properties-of-the-expected-value" class="level3" data-number="4.4.1">
-<h3 data-number="4.4.1" class="anchored" data-anchor-id="properties-of-the-expected-value"><span class="header-section-number">4.4.1</span> Properties of the expected value</h3>
-<p>In the following we list a few important properties of the expected value that we will use throughout the course. In the following let <span class="math inline">X</span> and <span class="math inline">Y</span> be random variables with expected values <span class="math inline">E(X)</span> and <span class="math inline">E(Y)</span>.</p>
-<div id="thm-expectation-linearity" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.2 (Linearity of the Expected Value)</strong></span> Let <span class="math inline">X</span> and <span class="math inline">Y</span> be two random variables. Then the expected value of their sum equals the sum of their expected values.</p>
-<span class="math display">\begin{align}
-  E(X + Y) = E(X) + E(Y)
-\end{align}</span>
-</div>
-<div id="thm-expectation-constant" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.3 (The Expected Value of a Constant)</strong></span> The expected value of a constant equals the constant itself. Let <span class="math inline">a</span> be any fixed (not random) real number. Then its expected value is:</p>
-<span class="math display">\begin{align}
-  E(a) = a.
-\end{align}</span>
-</div>
-<div id="thm-expectation-scaled" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.4 (Expected value of a scaled random variable)</strong></span> Let <span class="math inline">X</span> be a random variable and let <span class="math inline">a</span> be any fixed (not random) real number. Then the expected value of <span class="math inline">aX</span> is:</p>
-<span class="math display">\begin{align}
-  E(aX) = a E(X)
-\end{align}</span>
-</div>
-<div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span></p>
-<span class="math display">\begin{align}
-  E(aX) = \sum_{i = 1} ^ {n} a x_i p(x_i) = a \sum_{i = 1} ^ {n} x_i p(x_i) = aE(X).
-\end{align}</span>
-</div>
-</section>
-</section>
-<section id="variance" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="variance"><span class="header-section-number">4.5</span> Variance</h2>
-<p>Let us compare the two games in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>4.1</span></a>. Both have the same sample space (set of possible outcomes) and the same expected winnings; see <a href="#eq-expected-value-game-1" class="quarto-xref">Equation&nbsp;<span>4.1</span></a> and <span class="quarto-unresolved-ref">?eq-expected-value-game-2</span>. However, the games are not identical because their probability distributions are different. If given the choice to play only one game, which would you prefer?</p>
-<p>The second game offers a higher probability of winning the highest prize (2 EUR) at the cost of a lower probability for the middle prize (1 EUR). In other words, it places a higher probability on <em>extreme</em> outcomes (far from the distribution’s center, i.e., the expected value). A summary of a distribution that measures its spread (i.e., how likely are extreme values) is the variance:</p>
-<div id="def-variance" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.4 (Variance)</strong></span> For a discrete random variable <span class="math inline">X</span> with possible outcomes <span class="math inline">x_1, x_2,\ldots,x_n</span> and probability function p(x) the variance is the expected quadratic deviation from the expected value of the distribution <span class="math inline">E(X)</span>.</p>
+<section id="expectation" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="expectation"><span class="header-section-number">4.1</span> Expectation</h2>
+<p>The <em>expected value</em> of a random variable is the average of all possible values that can occurr, weighted by their occurrence probabilities. It is a measure of the <em>location</em> of the distribution.</p>
 <p><span class="math display">
 \begin{align}
-  Var(X) &amp; = E(X - E(X)) ^ 2 \\
-         &amp; = \sum_{i = 1}  ^ n \left(x_i - E(X)\right) ^ 2 p(x_i)
+\mu_x &amp; = E(X) = \sum_{x = 0}^{3} x p_X(x) = 0 \times 0.250 + 1 \times 0.095 + 2 \times 0.272 + 3 \times 0.383 = 1.788 \\
 \end{align}
 </span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mu_x <span class="ot">&lt;-</span> <span class="fu">sum</span>(px<span class="sc">$</span>x <span class="sc">*</span> px<span class="sc">$</span>p)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>mu_x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.788</code></pre>
 </div>
-<div id="exm-variance-discrete" class="theorem example">
-<p><span class="theorem-title"><strong>Example 4.4 (Variance)</strong></span> The variance of the first game (X) is:</p>
-<p><span class="math display">
-\begin{align}
-    Var(X) &amp; = \sum_{i = 1} ^ {3} (x_i - E(X)) ^ 2 p(x_i) \\
-           &amp; = (x_1 - E(X)) ^ 2 p(x_i) + (x_2 - E(X)) ^ 2 p(x_2) + (x_3 - E(X)) ^ 2 p(x_3) \\
-           &amp; = (0 - 0.7) ^ 2 \times 0.5 + (1 - 0.7) ^ 2 \times 0.3 + (2 - 0.7) ^ 2 \times 0.2 \\
-           &amp; = 0.61.
-  \end{align}
-</span></p>
 </div>
-<div id="exr-variance-discrete" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.2</strong></span> Compute the variance of <span class="math inline">Y</span>, the second game described in <a href="#tbl-discrete-game-probabilities" class="quarto-xref">Table&nbsp;<span>4.1</span></a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>px <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> p)) <span class="sc">+</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">"Outcome"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">"Probability"</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mu_x, <span class="at">color =</span> <span class="st">"firebrick"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04a-Probability-Review_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="exr-expectation" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.3 (Expected Value)</strong></span> Compute the expected value of <span class="math inline">Y</span>.</p>
 </div>
 <div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span><span class="math inline">Var(Y) = 0.76</span>.</p>
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="thm-independence-random-variables" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.5 (Independence of Random Variables)</strong></span> Two discrete random variables <span class="math inline">X</span> and <span class="math inline">Y</span> with possible values <span class="math inline">x_1,\ldots,x_K</span> and <span class="math inline">y_1,\ldots,y_L</span> are independent if for every <span class="math inline">k</span> and <span class="math inline">l</span>:</p>
+</div>
+<p>If you want to predict future values of a random variable, the expected value is your best guess in the sense that it minimizes the expected value of the quadratic loss function:</p>
 <p><span class="math display">
+E[(X - \hat{x})^2]
+</span></p>
+<p>Let us construct an example. You need to predict the result of <span class="math inline">X</span> and you think that the best prediction is <span class="math inline">\bar{x} = 1</span>. When the game runs it will produce four possible values: 0, 1, 2, and 3. The error that you will make is:</p>
+<p><span class="math display">
+L(x) = (x - 1)^2 =
+\begin{cases}
+   (0 - 1)^2 = 1 &amp; \text{x = 0}\\
+   (1 - 1)^2 = 0 &amp; \text{x = 1}\\
+   (2 - 1)^2 = 1 &amp; \text{x = 2}\\
+   (3 - 1)^2 = 4 &amp; \text{x = 3}
+\end{cases}
+</span></p>
+<div id="exr-expected-loss" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.4 (Expected Quadratic Loss)</strong></span> Compute the expected quadratic loss for a prediction <span class="math inline">\bar{x} = 1.5</span>.</p>
+</div>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Type your code here</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># px %&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   summarise(</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     loss = ?</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   )</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="variance" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="variance"><span class="header-section-number">4.2</span> Variance</h2>
+<p>The variance of a random variable (distribution) measures how different the possible values that can occur are. Values that occur more often (have higher probability) under <span class="math inline">p_X</span> receive a higher weight. Values that occur less frequently under <span class="math inline">p_X</span> are given a lower weight in the sum.</p>
+<p><span id="eq-variance"><span class="math display">
 \begin{align}
-  P(X = x_k, Y = y_l) = P(X = x_k)P(Y = y_l)
+Var(X) &amp; = \sum_{x = 0}^{3} (x - \mu_x)^2 \times p_X(x) \\
+       &amp; = (0 - 1.788)^2 \times 0.250 + (1 - 1.788)^2 \times 0.095 + (2 - 1.788)^2\times 0.272 + (3 - 1.788)^2 \times 0.383 \\
+       &amp; = (-1.788)^2 \times 0.250 + (-0.788)^2 \times 0.095 + (0.212)^2\times 0.272 + (1.212)^2 \times 0.383 \\
+       &amp; = 3.196 \times 0.250 + 0.620^2 \times 0.095 + 0.044 \times 0.272 + 1.468 \times 0.383 \\
+       &amp; \approx 1.433
 \end{align}
+\tag{4.1}</span></span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(px<span class="sc">$</span>x <span class="sc">-</span> mu_x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.788 -0.788  0.212  1.212</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(px<span class="sc">$</span>x <span class="sc">-</span> mu_x)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.196944 0.620944 0.044944 1.468944</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>px<span class="sc">$</span>p <span class="sc">*</span> (px<span class="sc">$</span>x <span class="sc">-</span> mu_x)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.79923600 0.05898968 0.01222477 0.56260555</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(px<span class="sc">$</span>p <span class="sc">*</span> (px<span class="sc">$</span>x <span class="sc">-</span> mu_x)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.433056</code></pre>
+</div>
+</div>
+<p>You can see from <a href="#eq-variance" class="quarto-xref">Equation&nbsp;<span>4.1</span></a> that it is the expected value of the squared deviations from the expected value.</p>
+<p><span class="math display">
+Var(X) = E(X - E(X))^2
+</span></p>
+<div id="def-variance" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.1 (Variance)</strong></span> The variance of a random variable (distribution) is a summary of the distribution and describes its spread: how different are the values that this distribution will generate.</p>
+<p><span class="math display">
+Var(X) = E[(X - E(X))^2] = E(X^2) - E(X)^2
 </span></p>
 </div>
-<div id="thm-variance-sum-independent" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.6</strong></span> For two independent random variables <span class="math inline">X</span> and <span class="math inline">Y</span>.</p>
-<span class="math display">\begin{align}
-  Var(X + Y) = Var(X) + Var(Y)
-\end{align}</span>
-<p>More generally, if <span class="math inline">X_i, i = 1,\ldots,n</span> are independent random variables, the variance of their sum is equal to the sum of their variances:</p>
+<div id="exr-variance" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.5 (Variance)</strong></span> Compute the Variance of <span class="math inline">Y</span>.</p>
+</div>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="thm-exp-value-props" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.1 (Properties of the Expectation)</strong></span> Let <span class="math inline">X</span> be a random variable with expected value <span class="math inline">E(X)</span>, let <span class="math inline">Y</span> be a random variable with expected value <span class="math inline">E(Y)</span>, and let <span class="math inline">a</span> be a fixed constant (<span class="math inline">a \in \mathbb{R}</span>). The following properties are true:</p>
 <p><span class="math display">
 \begin{align}
-Var\left(\sum_{i = 1}^{n} X_i\right) = \sum_{i = 1}^{n} Var(X_i).
+E(a) &amp; = a \\
+E(aX) &amp; = aE(X) \\
+E(X + Y) &amp; = E(X) + E(Y)
 \end{align}
 </span></p>
+<p>Furthermore, if <span class="math inline">X</span> and <span class="math inline">Y</span> are <em>uncorrelated</em>, then the expected value of the product of the two random variables equals the product of their expected values:</p>
+<p><span class="math display">
+E(XY) = E(X)E(Y)
+</span></p>
 </div>
-<!-- TODO: rename to variance-sum-independent -->
-<p><a href="#thm-variance-sum-independent" class="quarto-xref">Theorem&nbsp;<span>4.6</span></a> actually holds even for only uncorrelated variables. We will discuss the concept correlation later.</p>
-<div id="thm-variance-scaled" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.7 (Variance of a Scaled Random Variable)</strong></span> Let <span class="math inline">a \in \mathbf{R}</span> be a fixed (not random) real number and let <span class="math inline">X</span> be a random variable with variance <span class="math inline">Var(X)</span>.</p>
-<p>The variance of <span class="math inline">aX</span> is given by:</p>
-<span class="math display">\begin{align}
-Var(aX) = a^2 Var(X).
-\end{align}</span>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span></p>
-<span class="math display">\begin{align}
-  Var(aX) &amp; = \sum_{k = 1} ^ K (ax_k - E(aX))^2 p(x_k) \\
-          &amp; = \sum_{k = 1} ^ K a^2(x_k - E(X))^2 p(x_k) \\
-          &amp; = a^2 \sum_{k = 1} ^ K a^2(x_k - E(X))^2 p(x_k) \\
-          &amp; = a^2 Var(X).
-\end{align}</span>
+<div class="callout-title-container flex-fill">
+Proof of the Properties of the Expectation
 </div>
-<p>Another useful formula for working with the variance is:</p>
-<p>Often it will be easier to compute the variance using the following decomposition: <span class="math display">\begin{align}
-  Var(X) &amp; = E(X - E(X))^2 \\
-         &amp; = E\left(X^2 - 2XE(X) + E(X) ^ 2\right) \\
-         &amp; = E(X^2) - E(2XE(X)) + E(E(X) ^ 2) \\
-         &amp; = E(X^2) - 2 E(X)E(X) + E(X) ^ 2 \\
-         &amp; = E(X^2) - E(X)^2.
-\end{align}</span></p>
-<p>The proof above uses the fact that <span class="math inline">E(X)</span> is a constant and applies <a href="#thm-expectation-constant" class="quarto-xref">Theorem&nbsp;<span>4.3</span></a> and <a href="#thm-expectation-scaled" class="quarto-xref">Theorem&nbsp;<span>4.4</span></a>.</p>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><span class="math inline">E(a) = a</span></li>
+</ol>
+<p>The expected value of a discrete variable <span class="math inline">X</span> with possible outcomes <span class="math inline">x_1, x_2, \ldots, x_n</span> and probabilities <span class="math inline">p_1, p_2, \ldots, p_n</span> is given by</p>
+<p><span class="math display">
+E(X) = \sum_{i = 1}^{n} x_i p_i
+</span></p>
+<p>Multiplying both sides by <span class="math inline">a</span> gives</p>
+<p><span class="math display">
+aE(X) = a\sum_{i = 1}^{n} x_i p_i = \sum_{i = 1}^{n} ax_i p_i
+</span></p>
+<p>The right-hand side is the expected value of a random variable that takes the values <span class="math inline">ax_1, ax_2, \ldots, ax_n</span> with probabilities <span class="math inline">p_1, p_2, \ldots, p_n</span>. Therefore, <span class="math inline">E(aX) = aE(X)</span>.</p>
+<ol start="2" type="1">
+<li><span class="math inline">E(X + Y) = E(X) + E(Y)</span></li>
+</ol>
+<p>This proof involves the joint distribution function of <span class="math inline">X</span> and <span class="math inline">Y</span> which we will introduce later. The proof is based on the linearity of the expected value operator.</p>
+</div>
+</div>
+</div>
+<div id="thm-variance-short" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.2 (Properties of the Variance)</strong></span> Let <span class="math inline">X</span> be a random variable with expected value <span class="math inline">E(X)</span>, let <span class="math inline">Y</span> be a random variable with expected value <span class="math inline">E(Y)</span>, and let <span class="math inline">a</span> be a fixed constant (<span class="math inline">a \in \mathbb{R}</span>). The following properties are true:</p>
+<p><span class="math display">
+Var(X) = E(X^2) - E(X)^2
+</span></p>
+<p><span class="math display">
+\begin{align}
+Var(a) &amp; = 0 \\
+Var(aX) &amp; = a^2 Var(X)
+\end{align}
+</span></p>
+<p>Furthermore, if <span class="math inline">X</span> and <span class="math inline">Y</span> are <em>uncorrelated</em>, then the variance of their sum equals the sum of their variances:</p>
+<p><span class="math display">
+Var(X + Y) = Var(X) + Var(Y)
+</span></p>
+</div>
+<div id="exr-sum" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.6 (Expected value and variance)</strong></span> Use the distributions of <span class="math inline">X</span> and <span class="math inline">Y</span> from <a href="#tbl-distr-x" class="quarto-xref">Table&nbsp;<span>4.1</span></a> and <a href="#tbl-distr-y" class="quarto-xref">Table&nbsp;<span>4.2</span></a> to compute the expected value and the variance of</p>
+<p><span class="math display">
+2X + 3Y + 1.
+</span></p>
+<p>Assume that <span class="math inline">X</span> and <span class="math inline">Y</span> are independent.</p>
+</div>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span><span class="math display">
+E(2X + 3Y + 1) = \\
+Var(2X + 3Y + 1) =
+</span></p>
+</div>
+</section>
+<section id="joint-distribution" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="joint-distribution"><span class="header-section-number">4.3</span> Joint Distribution</h2>
+<p>It is as summary of the <em>joint</em> distribution of <span class="math inline">X</span> and <span class="math inline">Y</span>. The joint probability mass function tells you the probability of the <em>simultaneous</em> occurrence of <span class="math inline">x</span> and <span class="math inline">y</span>. For example, you can ask it the question: what is the probability of <span class="math inline">x = 2</span> <em>and</em> <span class="math inline">y = 3</span>.</p>
+<p>For two discrete variables, it is convenient to present the joint distribution as a table with cell entries holding the probabilities. The joint distribution is given in the tibble <code>pxy</code> in a long format.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>pxy <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">x</th>
+<th style="text-align: right;">y</th>
+<th style="text-align: right;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.241</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.089</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.006</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.229</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.043</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.201</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.182</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Sometimes it is more convenient to see this distribution in a wide format:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>pxy <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">id_cols =</span> x,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> y,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> p,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix=</span><span class="st">"y="</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-distr-dep" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-distr-dep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.3: Joint distribution of <span class="math inline">X</span> and <span class="math inline">Y</span>.
+</figcaption>
+<div aria-describedby="tbl-distr-dep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">x</th>
+<th style="text-align: right;">y=2</th>
+<th style="text-align: right;">y=3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.241</td>
+<td style="text-align: right;">0.009</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.089</td>
+<td style="text-align: right;">0.006</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.229</td>
+<td style="text-align: right;">0.043</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.201</td>
+<td style="text-align: right;">0.182</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p><span class="math display">
+p_{XY}(x=2, y=3) = 0.043
+</span></p>
+<p>The joint probability distribution function must sum (integrate) to one over all possible <em>pairs</em> of <span class="math inline">x</span> and <span class="math inline">y</span>.</p>
+<p><span class="math display">
+\sum_{x = 0}^{3}\sum_{y = 2}^{3} p_{XY}(x, y) = 1
+</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(pxy<span class="sc">$</span>p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+<p>In the example until now we have summarized the <em>marginal</em> distributions of <span class="math inline">X</span> and <span class="math inline">Y</span> but we have said nothing about their joint distribution. Usually the joint distribution is determined by the subject matter at hand, but for the sake of example we will look at two joint distributions so that we can get an idea how they work.</p>
+<p>First we will construct a special joint distribution under the assumption of <em>independence</em>. Intuitively, two random variables are independent, if the outcome of one of the variables does not influence the probability distribution of the other. Imagine that you hold two lottery tickets: one from a lottery in Germany and another from a lottery in Bulgaria. It would be safe to assume that the realized winnings from the German lottery will not affect the odds to win from the Bulgarian ticket.</p>
+<p>Now let us consider a case of <em>dependent</em> random variables. Let <span class="math inline">X</span> be the level of a river (at some measurement point) at time <span class="math inline">t</span> and <span class="math inline">Y</span> be the level of the same river five minutes later. It would be safe to assume that if the level of the river was high at <span class="math inline">t</span> this would affect the distribution of the level of the river at <span class="math inline">t</span> plus five minutes.</p>
+</section>
+<section id="marginal-distributions" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="marginal-distributions"><span class="header-section-number">4.4</span> Marginal Distributions</h2>
+<p>The marginal distribution of <span class="math inline">X</span> is obtained by summing the joint distribution of <span class="math inline">X</span> and <span class="math inline">Y</span> over all possible values of <span class="math inline">Y</span>.</p>
+<p><span class="math display">
+p_X(x) = \sum_{y=2}^{3}p_{XY}(x, y)
+</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>pxy <span class="sc">%&gt;%</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(x) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">p_x =</span> <span class="fu">sum</span>(p))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+      x   p_x
+  &lt;dbl&gt; &lt;dbl&gt;
+1     0 0.25 
+2     1 0.095
+3     2 0.272
+4     3 0.383</code></pre>
+</div>
+</div>
+<div id="exr-marginal-distr-y" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.7 (Marginal distribution of <span class="math inline">Y</span>)</strong></span> Compute the marginal distribution of <span class="math inline">Y</span> from the joint distribution in <a href="#tbl-distr-dep" class="quarto-xref">Table&nbsp;<span>4.3</span></a>. Use the <code>pxy</code> tibble and the <code>group_by</code> and <code>summarise</code> functions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pxy %&gt;%</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   group_by(...) %&gt;%</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   summarise(p_y = sum(p))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="conditional-distributions" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="conditional-distributions"><span class="header-section-number">4.5</span> Conditional Distributions</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pxy_w <span class="ot">&lt;-</span> pxy <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">id_cols =</span> x,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> y,</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> p,</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">"y="</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">p_x =</span> <span class="st">`</span><span class="at">y=2</span><span class="st">`</span> <span class="sc">+</span> <span class="st">`</span><span class="at">y=3</span><span class="st">`</span>,</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">y=2</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">y=2</span><span class="st">`</span> <span class="sc">/</span> p_x,</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">y=3</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">y=3</span><span class="st">`</span> <span class="sc">/</span> p_x</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>pxy_w <span class="sc">%&gt;%</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-cond-distr-y-dep-x" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cond-distr-y-dep-x-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.4: Conditional distributions of <span class="math inline">Y</span> given <span class="math inline">X</span>
+</figcaption>
+<div aria-describedby="tbl-cond-distr-y-dep-x-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">x</th>
+<th style="text-align: right;">y=2</th>
+<th style="text-align: right;">y=3</th>
+<th style="text-align: right;">p_x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.964</td>
+<td style="text-align: right;">0.036</td>
+<td style="text-align: right;">0.250</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.937</td>
+<td style="text-align: right;">0.063</td>
+<td style="text-align: right;">0.095</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.842</td>
+<td style="text-align: right;">0.158</td>
+<td style="text-align: right;">0.272</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.525</td>
+<td style="text-align: right;">0.475</td>
+<td style="text-align: right;">0.383</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Looking at the conditional distributions of <span class="math inline">Y</span> given <span class="math inline">X</span> in <a href="#tbl-cond-distr-y-dep-x" class="quarto-xref">Table&nbsp;<span>4.4</span></a>, you should notice that these are not the same for each value of <span class="math inline">X</span>. For example, <span class="math inline">Y=2</span> is much more likely when <span class="math inline">X = 0</span> compared to <span class="math inline">X = 3</span>.</p>
+</section>
+<section id="joint-distribution-under-independence" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="joint-distribution-under-independence"><span class="header-section-number">4.6</span> Joint Distribution under Independence</h2>
+<p>Lets construct the joint distribution <span class="math inline">p_{XY}(x, y)</span> that assigns a probability to the points <span class="math inline">(x, y)</span>, assuming that <span class="math inline">X</span> and <span class="math inline">Y</span> are independent.</p>
+<p>For independent random variables the joint probability of occurrence is simply the product of the <em>marginal</em> distributions.</p>
+<p><span class="math display">
+p_{XY}(x, y) = p_X(x)p_Y(y)
+</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>pxy_ind <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  px <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">p_x =</span> p), </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  py <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">p_y =</span> p)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>pxy_ind <span class="ot">&lt;-</span> pxy_ind <span class="sc">%&gt;%</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">p =</span> p_x <span class="sc">*</span> p_y</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>pxy_ind_w <span class="ot">&lt;-</span> pxy_ind <span class="sc">%&gt;%</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">id_cols =</span> x,</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> y,</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> p,</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">"y="</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>pxy_ind_w <span class="sc">%&gt;%</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-distr-indep" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-distr-indep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.5: Joint distribution of <span class="math inline">X</span> and <span class="math inline">Y</span> under independence.
+</figcaption>
+<div aria-describedby="tbl-distr-indep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">x</th>
+<th style="text-align: right;">y=2</th>
+<th style="text-align: right;">y=3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.190</td>
+<td style="text-align: right;">0.060</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.072</td>
+<td style="text-align: right;">0.023</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.207</td>
+<td style="text-align: right;">0.065</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.291</td>
+<td style="text-align: right;">0.092</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Let’s look at the <em>conditional</em> distributions of <span class="math inline">Y</span> given <span class="math inline">X</span>. These answer the questions of the type: if <span class="math inline">X</span> turns out to be <span class="math inline">0</span>, what are the probabilities for <span class="math inline">Y = 2</span> and <span class="math inline">Y = 3</span>.</p>
+<p>To get the conditional distributions of Y for each possible value of <span class="math inline">X</span> we divide the cells of the joint distribution table by the marginal probabilities of each <span class="math inline">x</span>.</p>
+<p><span class="math display">
+p_{Y|X}(x, y) = \frac{p_{XY}(x, y)}{p_X(x)}
+</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>pxy_ind_w <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">p_x =</span> <span class="st">`</span><span class="at">y=2</span><span class="st">`</span> <span class="sc">+</span> <span class="st">`</span><span class="at">y=3</span><span class="st">`</span>,</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">y=2</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">y=2</span><span class="st">`</span> <span class="sc">/</span> p_x,</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">y=3</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">y=3</span><span class="st">`</span> <span class="sc">/</span> p_x</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-xy-distr-ind-w" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-xy-distr-ind-w-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.6: Conditional distributions of <span class="math inline">Y</span>. Independence case.
+</figcaption>
+<div aria-describedby="tbl-xy-distr-ind-w-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">x</th>
+<th style="text-align: right;">y=2</th>
+<th style="text-align: right;">y=3</th>
+<th style="text-align: right;">p_x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.250</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.095</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.272</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.383</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>It is convenient to visualize the conditional distributions of <span class="math inline">Y</span> given <span class="math inline">X</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>pxy <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">factor</span>(x), <span class="at">x =</span> p, <span class="at">color=</span><span class="fu">factor</span>(y))) <span class="sc">+</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"p(x | y)"</span>,</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"x"</span>,</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04a-Probability-Review_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What you should see in <a href="#tbl-xy-distr-ind-w" class="quarto-xref">Table&nbsp;<span>4.6</span></a> is that the conditional distributions of <span class="math inline">Y</span> are the same for every possible value of <span class="math inline">X</span>. This is of course a consequence of the way we constructed this joint distribution in the first place: namely, we assumed that <span class="math inline">X</span> and <span class="math inline">Y</span> are independent.</p>
+</section>
+<section id="conditional-expectation" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="conditional-expectation"><span class="header-section-number">4.7</span> Conditional Expectation</h2>
+<p>We have seen how we derived the conditional distributions of <span class="math inline">Y</span> given <span class="math inline">X</span> in the previous section. Now we can ask the question: what is the expected value of <span class="math inline">Y</span> given that <span class="math inline">X</span> has already turned out to be 0 (for example). We can take the conditional distribution of <span class="math inline">Y</span> given <span class="math inline">X = 0</span> and compute the expected value of this distribution.</p>
+<p>For the joint distribution under independence:</p>
+<p><span class="math display">
+E(Y | X=0) = \sum_{y = 2}^{3} y p_{Y|X=0}(y) = 2 \times 0.76 + 3 \times 0.24 = 2.24
+</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fl">0.76</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="fl">0.24</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.24</code></pre>
+</div>
+</div>
+<p>For the joint distribution in <a href="#tbl-cond-distr-y-dep-x" class="quarto-xref">Table&nbsp;<span>4.4</span></a> the conditional expectation of <span class="math inline">Y</span> given <span class="math inline">X = 0</span> is</p>
+<p><span class="math display">
+E(Y | X=0) = \sum_{y = 2}^{3} y p_{Y|X=0}(y) = 2 \times 0.964 + 3 \times 0.036 = 2.036
+</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fl">0.964</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="fl">0.036</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.036</code></pre>
+</div>
+</div>
+<p>Let us write the conditional expectation of <span class="math inline">Y</span> for each possible value of <span class="math inline">X</span> for the dependent joint distribution case.</p>
+<p><span class="math display">
+E(Y | X = x) = \begin{cases}
+  2.036 &amp; \text{for } x = 0 \\
+  2.060 &amp; \text{for } x = 1 \\
+  2.158 &amp; \text{for } x = 2 \\
+  2.475 &amp; \text{for } x = 3
+\end{cases}
+</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>pxy <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(x) <span class="sc">%&gt;%</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">p_y_x =</span> p <span class="sc">/</span> <span class="fu">sum</span>(p)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">E_Y_given_X =</span> <span class="fu">sum</span>(y <span class="sc">*</span> p_y_x) </span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-cond-exp-y" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cond-exp-y-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.7: Conditional expectation of <span class="math inline">Y</span> for each possible value of <span class="math inline">X</span>.
+</figcaption>
+<div aria-describedby="tbl-cond-exp-y-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">x</th>
+<th style="text-align: right;">E_Y_given_X</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2.036</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.063</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2.158</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.475</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>An important thing to see here is that the conditional expectation is different for each value of <span class="math inline">X</span>. As the value of <span class="math inline">X</span> is uncertain (it is a random variable), the conditional expectation of <span class="math inline">Y</span> given <span class="math inline">X</span> is also a random variable. Its distribution is given by the possible values and the probabilities of occurrence of <span class="math inline">X</span> (the marginal distribution of <span class="math inline">X</span>).</p>
+<div id="exr-cond-exp-ind" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.8</strong></span> Calculate the expected value of <span class="math inline">Y</span> given <span class="math inline">X</span> for every possible value of <span class="math inline">X</span> in the case joint distribution under independence.</p>
+</div>
+<div id="exm-sampling-joint" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.2 (Sampling from the Joint Distribution)</strong></span> &nbsp;</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>sample_joint <span class="ot">&lt;-</span> pxy <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">weight_by =</span> p, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sample_joint)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+      x     y     p
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     3     2 0.201
+2     0     2 0.241
+3     3     2 0.201
+4     3     2 0.201
+5     3     3 0.182
+6     2     2 0.229</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>sample_joint <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(x, y) <span class="sc">%&gt;%</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">p =</span> <span class="fu">first</span>(p),</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">f =</span> n <span class="sc">/</span> <span class="fu">nrow</span>(sample_joint)</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'x'. You can override using the `.groups`
+argument.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 5
+# Groups:   x [4]
+      x     y     p     n     f
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
+1     0     2 0.241   243 0.243
+2     0     3 0.009    10 0.01 
+3     1     2 0.089    85 0.085
+4     1     3 0.006     5 0.005
+5     2     2 0.229   226 0.226
+6     2     3 0.043    43 0.043
+7     3     2 0.201   199 0.199
+8     3     3 0.182   189 0.189</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="covariance" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="covariance"><span class="header-section-number">4.8</span> Covariance</h2>
+<p>The <em>covariance</em> measures the (linear) dependency between two random variables.</p>
+<div id="def-covariance" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.2 (Covariance)</strong></span> The covariance of two random variables <span class="math inline">X</span> and <span class="math inline">Y</span> is given by</p>
+<p><span class="math display">
+Cov(X, Y) = E[(X - E(X))(Y - E(Y))]
+</span> Alternatively, it can be computed using the decomposition formula:</p>
+<p><span class="math display">
+Cov(X, Y) = E(XY) - E(X)E(Y)
+</span></p>
+</div>
+<p>In the analysis of time series we will often encounter situations where the expected value of one of the random variables is zero. As can be seen from the decomposition formula, in that case the covariance reduces to</p>
+<p><span class="math display">
+Cov(X, Y) = E(XY).
+</span></p>
+<p>Closely related to the covariance is the correlation between <span class="math inline">X</span> and <span class="math inline">Y</span>.</p>
+<div id="def-correlation" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.3 (Correlation)</strong></span> <span class="math display">
+\rho(X, Y) = \frac{Cov(X, Y)}{\sqrt{Var(X)Var(Y)}}
+</span> It is easy to show that the correlation is bounded between -1 and 1.</p>
+<p><span class="math display">
+-1 \leq \rho(X, Y) \leq 1
+</span></p>
+</div>
+<div id="exr-corr-proof" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.9 (Correlation)</strong></span> Let X be a random variable with, and <span class="math inline">Y = a + bX</span>. Show that the correlation between <span class="math inline">X</span> and <span class="math inline">Y</span> equals one or minus one depending on the sign of <span class="math inline">b</span>. For simplicity, assume that <span class="math inline">E(X) = 0</span>.</p>
+</div>
+<div id="thm-covariance-props" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.3 (Properties of the Covariance)</strong></span> Let <span class="math inline">X</span> and <span class="math inline">Y</span> be random variables and let <span class="math inline">a, b \in \mathbb{R}</span> be fixed constants.</p>
+<p><span class="math display">
+Var(aX + bY) = a^2 Var(X) + b^2Var(Y) + 2abCov(X, Y)
+</span></p>
+</div>
+<div id="exr-covariance" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.10 (Covariance)</strong></span> Compute the covariance of <span class="math inline">X</span> and <span class="math inline">Y</span> under the joint distributions given in <a href="#tbl-distr-indep" class="quarto-xref">Table&nbsp;<span>4.5</span></a> and <a href="#tbl-distr-dep" class="quarto-xref">Table&nbsp;<span>4.3</span></a>. Use the <code>pxy</code> and <code>pxy_ind</code> tables for these calculations.</p>
+</div>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-BERTSEKAS2008IntroductionProbability" class="csl-entry" role="listitem">
-Bertsekas, Dimitri P., and John N. Tsitsiklis. 2008. <em>Introduction to Probability</em>. 2nd ed. Optimization and Computation Series. Belmont: Athena scientific.
-</div>
-<div id="ref-FREEDMAN2007Statistics" class="csl-entry" role="listitem">
-Freedman, David, Robert Pisani, and Roger Purves. 2007. <em>Statistics</em>. 4th ed. New York: W.W. Norton &amp; Co.
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->

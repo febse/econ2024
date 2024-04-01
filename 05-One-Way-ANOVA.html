@@ -216,7 +216,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04a-Probability-Review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistics Review (Optional)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Discrete Distributions (Review)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -327,16 +327,16 @@ logical.return = TRUE, : there is no package called 'patchwork'</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Downloading packages -------------------------------------------------------
-- Downloading patchwork from CRAN ...           OK [3.1 Mb in 0.46s]
-Successfully downloaded 1 package in 0.89 seconds.
+- Downloading patchwork from CRAN ...           OK [3.1 Mb in 0.5s]
+Successfully downloaded 1 package in 0.83 seconds.
 
 The following package(s) will be installed:
 - patchwork [1.2.0]
 These packages will be installed into "~/work/econ2024/econ2024/renv/library/R-4.3/x86_64-pc-linux-gnu".
 
 # Installing packages --------------------------------------------------------
-- Installing patchwork ...                      OK [installed binary and cached in 0.99s]
-Successfully installed 1 package in 1 second.</code></pre>
+- Installing patchwork ...                      OK [installed binary and cached in 1.0s]
+Successfully installed 1 package in 1.1 seconds.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"latex2exp"</span>)) {</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"latex2exp"</span>)</span>
@@ -350,16 +350,16 @@ logical.return = TRUE, : there is no package called 'latex2exp'</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Downloading packages -------------------------------------------------------
-- Downloading latex2exp from CRAN ...           OK [1.5 Mb in 0.97s]
-Successfully downloaded 1 package in 1.1 seconds.
+- Downloading latex2exp from CRAN ...           OK [1.5 Mb in 0.85s]
+Successfully downloaded 1 package in 0.99 seconds.
 
 The following package(s) will be installed:
 - latex2exp [0.9.6]
 These packages will be installed into "~/work/econ2024/econ2024/renv/library/R-4.3/x86_64-pc-linux-gnu".
 
 # Installing packages --------------------------------------------------------
-- Installing latex2exp ...                      OK [installed binary and cached in 0.64s]
-Successfully installed 1 package in 0.67 seconds.</code></pre>
+- Installing latex2exp ...                      OK [installed binary and cached in 0.65s]
+Successfully installed 1 package in 0.69 seconds.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
@@ -499,13 +499,18 @@ Figure&nbsp;6.1: IQ scores of the children by the status of their mother (high s
 <p><span class="math display">
 \begin{align*}
 &amp; i = 1,\ldots, n = 434 \text{ observations}\\
-&amp; y_i: \text{Kid IQ score} \\
+&amp; y_i: \text{IQ score} \\
+&amp; \hat{y}_i: \text{Predicted IQ score} \\
 &amp; x_i \in \{0, 1\}: \text{status of the mother}
 \end{align*}
 </span></p>
 <p>The linear model is then</p>
 <p><span class="math display">
 y_i = \beta_0 + \beta_1 x_i + e_i, e_i \sim N(0, \sigma^2)
+</span></p>
+<p>The predicted IQ score for the <span class="math inline">i</span>-th child is</p>
+<p><span class="math display">
+\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x
 </span></p>
 <p>Alternatively (and more generally) we can write the model as:</p>
 <p><span id="eq-simple-anova"><span class="math display">
@@ -549,7 +554,7 @@ Figure&nbsp;6.2: Distribution of IQ scores in the population of children accordi
 </div>
 </div>
 <p>Within that model our research question boils down to examining <span class="math inline">\beta_1</span> (the difference between the population averages). If <span class="math inline">\beta_1</span> is positive, then children born to a mother with a HS degree would tend to perform better at the IQ test.</p>
-<p>The first obstacle to answering the research question is that we don’t know the value of <span class="math inline">\beta_1</span>. Therefore, we would need to rely on the sample to learn something about the value of <span class="math inline">\beta_1</span>.</p>
+<p>The first obstacle to answering the research question is that we don’t know the value of <span class="math inline">\beta_1</span>. Therefore, we rely on the sample to learn something about its value.</p>
 <p>In the previous section we discussed the OLS estimator and now we will use it to find the best (in terms of lowest RSS) estimates for <span class="math inline">\beta_0</span> and <span class="math inline">\beta_1</span>. As in the previous section will will find these using the <code>lm</code> function. We will also store the result of <code>lm</code> in an object so that we can use it later without running <code>lm</code> every time.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Run lm and save the output in an object called "fit"</span></span>
