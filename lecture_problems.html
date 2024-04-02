@@ -301,24 +301,19 @@ window.Quarto = {
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">19</span>, <span class="dv">8</span>),</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">36</span>, <span class="dv">25</span>, <span class="dv">13</span>, <span class="dv">49</span>, <span class="dv">17</span>),</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x2 =</span> x <span class="sc">^</span> <span class="dv">2</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">xy =</span> x <span class="sc">*</span> y,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_hat =</span> <span class="fl">2.0158</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fl">7.84</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">res2 =</span> (y <span class="sc">-</span> y_hat) <span class="sc">^</span> <span class="dv">2</span>,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_dev =</span> (y <span class="sc">-</span> <span class="fu">mean</span>(y))<span class="sc">^</span><span class="dv">2</span>,</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>dt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">36</span>, <span class="dv">25</span>, <span class="dv">13</span>, <span class="dv">49</span>, <span class="dv">17</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>dt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 7
-      x     y    x2    xy y_hat  res2 y_dev
-  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1    15    36   225   540  38.1  4.31    64
-2     6    25    36   150  19.9 25.7      9
-3     2    13     4    26  11.9  1.27   225
-4    19    49   361   931  46.1  8.18   441
-5     8    17    64   136  24.0 48.5    121</code></pre>
+<pre><code># A tibble: 5 × 2
+      x     y
+  &lt;dbl&gt; &lt;dbl&gt;
+1    15    36
+2     6    25
+3     2    13
+4    19    49
+5     8    17</code></pre>
 </div>
 </div>
 <p>Линейният регресионен модел за тази задача е (тъй като не е посочено нищо друго):</p>
@@ -393,58 +388,40 @@ F-statistic: 26.33 on 1 and 3 DF,  p-value: 0.01433</code></pre>
 <tr class="header">
 <th style="text-align: right;">x</th>
 <th style="text-align: right;">y</th>
-<th style="text-align: right;">x2</th>
 <th style="text-align: right;">xy</th>
-<th style="text-align: right;">y_hat</th>
-<th style="text-align: right;">res2</th>
-<th style="text-align: right;">y_dev</th>
+<th style="text-align: right;">x2</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">36</td>
-<td style="text-align: right;">225</td>
 <td style="text-align: right;">540</td>
-<td style="text-align: right;">38.0770</td>
-<td style="text-align: right;">4.313929</td>
-<td style="text-align: right;">64</td>
+<td style="text-align: right;">225</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">25</td>
-<td style="text-align: right;">36</td>
 <td style="text-align: right;">150</td>
-<td style="text-align: right;">19.9348</td>
-<td style="text-align: right;">25.656251</td>
-<td style="text-align: right;">9</td>
+<td style="text-align: right;">36</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">13</td>
-<td style="text-align: right;">4</td>
 <td style="text-align: right;">26</td>
-<td style="text-align: right;">11.8716</td>
-<td style="text-align: right;">1.273287</td>
-<td style="text-align: right;">225</td>
+<td style="text-align: right;">4</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">19</td>
 <td style="text-align: right;">49</td>
-<td style="text-align: right;">361</td>
 <td style="text-align: right;">931</td>
-<td style="text-align: right;">46.1402</td>
-<td style="text-align: right;">8.178456</td>
-<td style="text-align: right;">441</td>
+<td style="text-align: right;">361</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">17</td>
-<td style="text-align: right;">64</td>
 <td style="text-align: right;">136</td>
-<td style="text-align: right;">23.9664</td>
-<td style="text-align: right;">48.530729</td>
-<td style="text-align: right;">121</td>
+<td style="text-align: right;">64</td>
 </tr>
 </tbody>
 </table>
@@ -486,14 +463,14 @@ TSS = (36 - 28)^2 + (25 - 28)^2 + (13 - 28)^2 + (49 - 28)^2 + (17 - 28)^2 = 860 
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>dt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 8
-      x     y    x2    xy y_hat  res2 y_dev   res
-  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1    15    36   225   540  38.1  4.31    64 -2.08
-2     6    25    36   150  19.9 25.7      9  5.06
-3     2    13     4    26  11.9  1.27   225  1.13
-4    19    49   361   931  46.1  8.18   441  2.85
-5     8    17    64   136  24.0 48.5    121 -6.97</code></pre>
+<pre><code># A tibble: 5 × 6
+      x     y    xy    x2 y_hat   res
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1    15    36   540   225  38.1 -2.08
+2     6    25   150    36  19.9  5.06
+3     2    13    26     4  11.9  1.13
+4    19    49   931   361  46.1  2.85
+5     8    17   136    64  24.0 -6.97</code></pre>
 </div>
 </div>
 <p><span class="math display">
