@@ -90,7 +90,7 @@ dt %>%
     y_mean = mean(y),
     xy_mean = mean(xy),
     x2_mean = mean(x2),
-    x_mean = mean(x)^2
+    x_mean2 = mean(x)^2
   )
 ```
 
