@@ -458,13 +458,13 @@ F-statistic: 26.33 on 1 and 3 DF,  p-value: 0.01433</code></pre>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">y_mean =</span> <span class="fu">mean</span>(y),</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">xy_mean =</span> <span class="fu">mean</span>(xy),</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x2_mean =</span> <span class="fu">mean</span>(x2),</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x_mean =</span> <span class="fu">mean</span>(x)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x_mean2 =</span> <span class="fu">mean</span>(x)<span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 4
-  x_mean y_mean xy_mean x2_mean
-   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-1    100     28    357.     138</code></pre>
+<pre><code># A tibble: 1 × 5
+  x_mean y_mean xy_mean x2_mean x_mean2
+   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1     10     28    357.     138     100</code></pre>
 </div>
 </div>
 <p>В следващата задача се търси <span class="math inline">R^2</span>. Значението на <span class="math inline">R^2</span> се вижда от разлагането на общата вариация на <span class="math inline">y</span>. Може да се покаже, че важи следната формула:</p>
