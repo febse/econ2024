@@ -86,7 +86,7 @@ Use the `sum` function to show that the probability mass function of $Y$ sums to
 set.seed(12)
 
 smpl_x <- px %>%
-  slice_sample(n = 1e5, weight_by = p, replace = TRUE)
+  slice_sample(n = 20, weight_by = p, replace = TRUE)
 
 head(smpl_x) %>%
   knitr::kable(digits=3)
@@ -142,6 +142,8 @@ $$
 ```{r}
 mu_x <- sum(px$x * px$p)
 mu_x
+
+mean(smpl_x$x)
 ```
 
 ```{r}
@@ -191,7 +193,8 @@ $$
 
 Compute the expected quadratic loss for a prediction $\bar{x} = 1.5$.
 :::
-:::{.solution}
+
+::: solution
 ```{r}
 ## Type your code here
 
@@ -409,7 +412,6 @@ Compute the marginal distribution of $Y$ from the joint distribution in @tbl-dis
 #   group_by(...) %>%
 #   summarise(p_y = sum(p))
 ```
-
 :::
 
 ## Conditional Distributions
