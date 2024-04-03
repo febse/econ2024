@@ -343,7 +343,7 @@ $$
 
 ## Joint Distribution
 
-It is as summary of the *joint* distribution of $X$ and $Y$. The joint probability mass function tells you the probability of the *simultaneous* occurrence of $x$ and $y$. For example, you can ask it the question: what is the probability of $x = 2$ *and* $y = 3$.
+The joint probability mass function tells you the probability of the *simultaneous* occurrence of $x$ and $y$. For example, you can ask it the question: what is the probability of $x = 2$ *and* $y = 3$.
 
 For two discrete variables, it is convenient to present the joint distribution as a table with cell entries holding the probabilities. The joint distribution is given in the tibble `pxy` in a long format.
 
