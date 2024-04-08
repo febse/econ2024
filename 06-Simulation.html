@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.552">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -387,7 +387,7 @@ dbl (5): kid_score, mom_hs, mom_iq, mom_work, mom_age
 &amp; \mu_i = 80 + 15 \text{mom\_hs}_i, \quad \text{mom\_hs} \in \{0, 1\}
 \end{align*}
 \tag{7.1}</span></span></p>
-<p>This model takes the sample of children from <a href="05-One-Way-ANOVA.html" class="quarto-xref"><span>Chapter 6</span></a> for an <em>inspiration</em>. Basically, we will study a <em>population</em> that looks exactly like the sample of children in the previous example. However, the insights gained in the next sections are more general and are not tied to that specific sample.</p>
+<p>This model takes the sample of children from <a href="05-One-Way-ANOVA.html" class="quarto-xref"><span>Chapter 6</span></a> as an <em>inspiration</em> but our goal is to focus on the statistical properties of the OLS estimators and not on the data itself. Basically, we will study an artificially created <em>population</em> that looks somewhat like the sample of children in the previous example. However, the insights gained in the next sections are more general and are not tied to that specific sample.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Population parameters</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -399,7 +399,7 @@ dbl (5): kid_score, mom_hs, mom_iq, mom_work, mom_age
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Population</span></span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fl">1e6</span> <span class="co"># Number of children in the population</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fl">5e6</span> <span class="co"># Number of children in the population</span></span>
 <span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">mom_hs =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, prop_ones),</span>
@@ -458,7 +458,7 @@ lm(formula = kid_score ~ 1 + mom_hs, data = sample_1)
 
 Coefficients:
 (Intercept)       mom_hs  
-      78.11        16.53  </code></pre>
+      84.14        10.35  </code></pre>
 </div>
 </div>
 </section>
@@ -510,7 +510,7 @@ Figure&nbsp;7.1: Sampling distribution of <span class="math inline">\hat{\beta}_
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sim_slopes<span class="sc">$</span>estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 14.94834</code></pre>
+<pre><code>[1] 15.06509</code></pre>
 </div>
 </div>
 <p>We see that this value is very close to the real value of 11.77. This is a consequence of a property of the OLS estimator which we call <em>unbiasedness</em> <span class="quarto-unresolved-ref">?thm-ols-expected-value</span>. The average estimate computed above estimates the expected value of the distribution of <span class="math inline">\hat{\beta}_1</span>: <span class="math inline">E\hat{\beta}_1</span>.</p>
@@ -518,7 +518,7 @@ Figure&nbsp;7.1: Sampling distribution of <span class="math inline">\hat{\beta}_
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(sim_slopes<span class="sc">$</span>estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.37398</code></pre>
+<pre><code>[1] 2.469943</code></pre>
 </div>
 </div>
 </section>
@@ -618,11 +618,11 @@ Figure&nbsp;7.2: Distribution of the t-statistic when the null hypothesis is cor
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Share of TRUE values (red)</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(sim_slopes<span class="sc">$</span>wrong_decision_red)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
+<pre><code>[1] 3</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sim_slopes<span class="sc">$</span>wrong_decision_red)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.001</code></pre>
+<pre><code>[1] 0.003</code></pre>
 </div>
 </div>
 <p>The “less than -2” rule makes a wrong decision in 7 out of 200 samples (3.5 percent). The “less than -3” rule makes a wrong decision in 2 out of 200 samples (one percent).</p>
@@ -977,7 +977,7 @@ Figure&nbsp;7.8: Distribution of p-values under the (true) null hypothesis
 <div class="cell-output cell-output-stdout">
 <pre><code>
 FALSE  TRUE 
-  956    44 </code></pre>
+  948    52 </code></pre>
 </div>
 </div>
 </section>
@@ -1007,11 +1007,11 @@ P\left(\hat{\beta_1} + se(\hat{\beta}_1) t_{\alpha/2}(n - p) &lt; \beta_1 &lt; \
 <div class="cell">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(sim_slopes<span class="sc">$</span>beta1_in_CI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 625</code></pre>
+<pre><code>[1] 614</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sim_slopes<span class="sc">$</span>beta1_in_CI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.625</code></pre>
+<pre><code>[1] 0.614</code></pre>
 </div>
 </div>
 <p>The CI contained the true value of <span class="math inline">\beta_1</span> in 178 out of 200 samples (89 percent). This is quite close to the coverage probability <span class="math inline">1 - \alpha = 0.9</span> The CI that we constructed above are visualized in <a href="#fig-sim-ci" class="quarto-xref">Figure&nbsp;<span>7.9</span></a>. For the sake of clarity the plot is limited to the first 50 samples. Confidence intervals that do not contain the true value of <span class="math inline">\beta_1</span> are show in red. Notice that the boundaries differ from sample to sample (as to the coefficient estimates).</p>
@@ -1064,7 +1064,7 @@ Figure&nbsp;7.9: Confidence intervals for the first 50 samples. The vertical lin
 <span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> x, <span class="at">data =</span> dt)</span>
 <span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">residuals</span>(fit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.630873</code></pre>
+<pre><code>[1] 3.773774</code></pre>
 </div>
 </div>
 
