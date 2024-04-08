@@ -4,7 +4,7 @@
 # Load the packages used in this notebook
 
 if (!require("tidyverse")) {
-    install.packages("tidyverse", dependencies = TRUE)    
+    install.packages("tidyverse")    
 }
 
 library("tidyverse")

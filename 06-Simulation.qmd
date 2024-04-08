@@ -54,7 +54,7 @@ $$
 \end{align*}
 $$ {#eq-simulation-anova-model}
 
-This model takes the sample of children from @sec-simple-anova for an *inspiration*. Basically, we will study a *population* that looks exactly like the sample of children in the previous example. However, the insights gained in the next sections are more general and are not tied to that specific sample.
+This model takes the sample of children from @sec-simple-anova as an *inspiration* but our goal is to focus on the statistical properties of the OLS estimators and not on the data itself. Basically, we will study an artificially created *population* that looks somewhat like the sample of children in the previous example. However, the insights gained in the next sections are more general and are not tied to that specific sample.
 
 ```{r}
 ## Population parameters
@@ -67,7 +67,7 @@ prop_ones <- 0.8 # Proportion of children with mom_hs = 1
 ## Population
 set.seed(123)
 
-N <- 1e6 # Number of children in the population
+N <- 5e6 # Number of children in the population
 
 pop <- tibble(
   mom_hs = rbinom(N, 1, prop_ones),
