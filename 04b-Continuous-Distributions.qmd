@@ -146,7 +146,7 @@ ggplot(df, aes(x = x, y = y, color = mean, lty = sd)) +
 ## How Does the Normal Distribution Arise?
 
 ```{r}
-players_n <- 300
+players_n <- 2
 games_n <- 16
 
 unif_games <- expand_grid(
@@ -162,7 +162,7 @@ unif_games <- expand_grid(
     ## Add a initial values so that all players start with 0
     tibble(
       player = 1:players_n,
-      game = as.integer(0),
+      game = 0L,
       result = 0,
     )
   )

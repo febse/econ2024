@@ -26,8 +26,7 @@ library(tidyverse)
 library(broom)
 library(patchwork)
 
-kids <- read_csv(
-  "https://raw.githubusercontent.com/feb-uni-sofia/econometrics2020-solutions/master/data/childiq.csv") %>%
+kids <- read_csv("https://github.com/febse/data/raw/main/econ/childiq.csv") %>%
   select(kid_score, mom_hs)
 ```
 
