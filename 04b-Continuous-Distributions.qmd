@@ -96,7 +96,7 @@ $$
 
 For this course you don't need to remember the density function of the normal distribution.
 
-There are few properties of the normal distribution that you shold remember, though. The first two properties relate the expected value and the variance of the normal distribution to its parameters $\mu$ and $\sigma$:
+There are few properties of the normal distribution that you should remember, though. The first two properties relate the expected value and the variance of the normal distribution to its parameters $\mu$ and $\sigma$:
 
 $$
 \begin{align*}
