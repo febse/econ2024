@@ -215,7 +215,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04a-Probability-Review.html" class="sidebar-item-text sidebar-link">
+  <a href="./04a-Discrete-Distributions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Discrete Distributions (Review)</span></span></a>
   </div>
 </li>
@@ -333,8 +333,8 @@ logical.return = TRUE, : there is no package called 'patchwork'</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Downloading packages -------------------------------------------------------
-- Downloading patchwork from CRAN ...           OK [3.1 Mb in 0.47s]
-Successfully downloaded 1 package in 0.8 seconds.
+- Downloading patchwork from CRAN ...           OK [3.1 Mb in 0.63s]
+Successfully downloaded 1 package in 0.98 seconds.
 
 The following package(s) will be installed:
 - patchwork [1.2.0]
@@ -356,24 +356,23 @@ logical.return = TRUE, : there is no package called 'latex2exp'</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Downloading packages -------------------------------------------------------
-- Downloading latex2exp from CRAN ...           OK [1.5 Mb in 0.38s]
-Successfully downloaded 1 package in 0.52 seconds.
+- Downloading latex2exp from CRAN ...           OK [1.5 Mb in 0.54s]
+Successfully downloaded 1 package in 0.68 seconds.
 
 The following package(s) will be installed:
 - latex2exp [0.9.6]
 These packages will be installed into "~/work/econ2024/econ2024/renv/library/R-4.3/x86_64-pc-linux-gnu".
 
 # Installing packages --------------------------------------------------------
-- Installing latex2exp ...                      OK [installed binary and cached in 0.66s]
-Successfully installed 1 package in 0.69 seconds.</code></pre>
+- Installing latex2exp ...                      OK [installed binary and cached in 0.67s]
+Successfully installed 1 package in 0.71 seconds.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>kids <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"https://raw.githubusercontent.com/feb-uni-sofia/econometrics2020-solutions/master/data/childiq.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(kid_score, mom_hs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>kids <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://github.com/febse/data/raw/main/econ/childiq.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(kid_score, mom_hs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 434 Columns: 5
 ── Column specification ────────────────────────────────────────────────────────
