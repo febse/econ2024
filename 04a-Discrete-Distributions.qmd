@@ -129,7 +129,7 @@ Select 2000 samples from the distribution of $Y$ and visualize the frequencies.
 ```
 :::
 
-## Expectation
+## The Expected Value
 
 The *expected value* of a random variable is the average of all possible values that can occurr, weighted by their occurrence probabilities. It is a measure of the *location* of the distribution.
 
@@ -256,7 +256,7 @@ Compute the Variance of $Y$.
 :::
 
 ::: {#thm-exp-value-props}
-## Properties of the Expectation
+## Properties of the Expected Value
 
 Let $X$ be a random variable with expected value $E(X)$, let $Y$ be a random variable with expected value $E(Y)$, and let $a$ be a fixed constant ($a \in \mathbb{R}$). The following properties are true:
 
@@ -296,7 +296,31 @@ The right-hand side is the expected value of a random variable that takes the va
 
 2.  $E(X + Y) = E(X) + E(Y)$
 
-This proof involves the joint distribution function of $X$ and $Y$ which we will introduce later. The proof is based on the linearity of the expected value operator.
+This proof involves the joint distribution of $X$ and $Y$ which we will introduce later. Let $p_{XY}(x, y)$ be the joint probability mass function of $X$ and $Y$. The expected value of the sum of two random variables is given by
+
+$$
+E(X + Y) = \sum_{x}\sum_{y} (x + y)p_{XY}(x, y)
+$$
+
+Expanding the sum gives
+
+$$
+\begin{align*}
+\sum_{x}\sum_{y} (x + y)p_{XY}(x, y) & = \sum_{x}\sum_{y} xp_{XY}(x, y) + \sum_{x}\sum_{y} yp_{XY}(x, y)
+\end{align*}
+$$
+
+On the left hand side of the above equation we have two sums. In the first one, we can write $x$ in front of the second sum, because it does not depend on $y$. We can do the same for the second sum where $y$ does not depend on $x$.
+
+$$
+\begin{align*}
+\sum_{x}\sum_{y} (x + y)p_{XY}(x, y) & = \sum_{x}x\sum_{y} p_{XY}(x, y) + \sum_{y}y\sum_{x} p_{XY}(x, y)
+\end{align*}
+$$
+
+Now we need to see that summing the joint probability mass function over all possible values of $y$ gives the marginal distribution of $X$ and summing over all possible values of $x$ gives the marginal distribution of $Y$ (see @sec-marginal-distr).
+
+The first sum is the expected value of $X$ and the second sum is the expected value of $Y$. Therefore, $E(X + Y) = E(X) + E(Y)$.
 :::
 
 ::: {#thm-variance-short}
@@ -388,7 +412,7 @@ First we will construct a special joint distribution under the assumption of *in
 
 Now let us consider a case of *dependent* random variables. Let $X$ be the level of a river (at some measurement point) at time $t$ and $Y$ be the level of the same river five minutes later. It would be safe to assume that if the level of the river was high at $t$ this would affect the distribution of the level of the river at $t$ plus five minutes.
 
-## Marginal Distributions
+## Marginal Distributions {#sec-marginal-distr}
 
 The marginal distribution of $X$ is obtained by summing the joint distribution of $X$ and $Y$ over all possible values of $Y$.
 
