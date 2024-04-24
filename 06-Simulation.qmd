@@ -209,7 +209,6 @@ $$
 \hat{\beta}_1 = \frac{\sum_{i = 1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i = 1}^n (x_i - \bar{x})^2}
 $$
 
-
 and remember that the average deviation of a bunch of values from their average
 is zero. 
 
