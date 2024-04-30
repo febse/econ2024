@@ -259,10 +259,10 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#expectation" id="toc-expectation" class="nav-link active" data-scroll-target="#expectation"><span class="header-section-number">4.1</span> Expectation</a></li>
+  <li><a href="#the-expected-value" id="toc-the-expected-value" class="nav-link active" data-scroll-target="#the-expected-value"><span class="header-section-number">4.1</span> The Expected Value</a></li>
   <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance"><span class="header-section-number">4.2</span> Variance</a></li>
   <li><a href="#joint-distribution" id="toc-joint-distribution" class="nav-link" data-scroll-target="#joint-distribution"><span class="header-section-number">4.3</span> Joint Distribution</a></li>
-  <li><a href="#marginal-distributions" id="toc-marginal-distributions" class="nav-link" data-scroll-target="#marginal-distributions"><span class="header-section-number">4.4</span> Marginal Distributions</a></li>
+  <li><a href="#sec-marginal-distr" id="toc-sec-marginal-distr" class="nav-link" data-scroll-target="#sec-marginal-distr"><span class="header-section-number">4.4</span> Marginal Distributions</a></li>
   <li><a href="#conditional-distributions" id="toc-conditional-distributions" class="nav-link" data-scroll-target="#conditional-distributions"><span class="header-section-number">4.5</span> Conditional Distributions</a></li>
   <li><a href="#joint-distribution-under-independence" id="toc-joint-distribution-under-independence" class="nav-link" data-scroll-target="#joint-distribution-under-independence"><span class="header-section-number">4.6</span> Joint Distribution under Independence</a></li>
   <li><a href="#conditional-expectation" id="toc-conditional-expectation" class="nav-link" data-scroll-target="#conditional-expectation"><span class="header-section-number">4.7</span> Conditional Expectation</a></li>
@@ -502,8 +502,8 @@ Table&nbsp;4.2: Probability mass function of <span class="math inline">Y</span>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the frequencies here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<section id="expectation" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="expectation"><span class="header-section-number">4.1</span> Expectation</h2>
+<section id="the-expected-value" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="the-expected-value"><span class="header-section-number">4.1</span> The Expected Value</h2>
 <p>The <em>expected value</em> of a random variable is the average of all possible values that can occurr, weighted by their occurrence probabilities. It is a measure of the <em>location</em> of the distribution.</p>
 <p><span class="math display">
 \begin{align}
@@ -626,7 +626,7 @@ Var(X) = E[(X - E(X))^2] = E(X^2) - E(X)^2
 </div>
 </div>
 <div id="thm-exp-value-props" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.1 (Properties of the Expectation)</strong></span> Let <span class="math inline">X</span> be a random variable with expected value <span class="math inline">E(X)</span>, let <span class="math inline">Y</span> be a random variable with expected value <span class="math inline">E(Y)</span>, and let <span class="math inline">a</span> be a fixed constant (<span class="math inline">a \in \mathbb{R}</span>). The following properties are true:</p>
+<p><span class="theorem-title"><strong>Theorem 4.1 (Properties of the Expected Value)</strong></span> Let <span class="math inline">X</span> be a random variable with expected value <span class="math inline">E(X)</span>, let <span class="math inline">Y</span> be a random variable with expected value <span class="math inline">E(Y)</span>, and let <span class="math inline">a</span> be a fixed constant (<span class="math inline">a \in \mathbb{R}</span>). The following properties are true:</p>
 <p><span class="math display">
 \begin{align}
 E(a) &amp; = a \\
@@ -666,7 +666,24 @@ aE(X) = a\sum_{i = 1}^{n} x_i p_i = \sum_{i = 1}^{n} ax_i p_i
 <ol start="2" type="1">
 <li><span class="math inline">E(X + Y) = E(X) + E(Y)</span></li>
 </ol>
-<p>This proof involves the joint distribution function of <span class="math inline">X</span> and <span class="math inline">Y</span> which we will introduce later. The proof is based on the linearity of the expected value operator.</p>
+<p>This proof involves the joint distribution of <span class="math inline">X</span> and <span class="math inline">Y</span> which we will introduce later. Let <span class="math inline">p_{XY}(x, y)</span> be the joint probability mass function of <span class="math inline">X</span> and <span class="math inline">Y</span>. The expected value of the sum of two random variables is given by</p>
+<p><span class="math display">
+E(X + Y) = \sum_{x}\sum_{y} (x + y)p_{XY}(x, y)
+</span></p>
+<p>Expanding the sum gives</p>
+<p><span class="math display">
+\begin{align*}
+\sum_{x}\sum_{y} (x + y)p_{XY}(x, y) &amp; = \sum_{x}\sum_{y} xp_{XY}(x, y) + \sum_{x}\sum_{y} yp_{XY}(x, y)
+\end{align*}
+</span></p>
+<p>On the left hand side of the above equation we have two sums. In the first one, we can write <span class="math inline">x</span> in front of the second sum, because it does not depend on <span class="math inline">y</span>. We can do the same for the second sum where <span class="math inline">y</span> does not depend on <span class="math inline">x</span>.</p>
+<p><span class="math display">
+\begin{align*}
+\sum_{x}\sum_{y} (x + y)p_{XY}(x, y) &amp; = \sum_{x}x\sum_{y} p_{XY}(x, y) + \sum_{y}y\sum_{x} p_{XY}(x, y)
+\end{align*}
+</span></p>
+<p>Now we need to see that summing the joint probability mass function over all possible values of <span class="math inline">y</span> gives the marginal distribution of <span class="math inline">X</span> and summing over all possible values of <span class="math inline">x</span> gives the marginal distribution of <span class="math inline">Y</span> (see <a href="#sec-marginal-distr" class="quarto-xref"><span>Section 4.4</span></a>).</p>
+<p>The first sum is the expected value of <span class="math inline">X</span> and the second sum is the expected value of <span class="math inline">Y</span>. Therefore, <span class="math inline">E(X + Y) = E(X) + E(Y)</span>.</p>
 </div>
 </div>
 </div>
@@ -831,8 +848,8 @@ p_{XY}(x=2, y=3) = 0.043
 <p>First we will construct a special joint distribution under the assumption of <em>independence</em>. Intuitively, two random variables are independent, if the outcome of one of the variables does not influence the probability distribution of the other. Imagine that you hold two lottery tickets: one from a lottery in Germany and another from a lottery in Bulgaria. It would be safe to assume that the realized winnings from the German lottery will not affect the odds to win from the Bulgarian ticket.</p>
 <p>Now let us consider a case of <em>dependent</em> random variables. Let <span class="math inline">X</span> be the level of a river (at some measurement point) at time <span class="math inline">t</span> and <span class="math inline">Y</span> be the level of the same river five minutes later. It would be safe to assume that if the level of the river was high at <span class="math inline">t</span> this would affect the distribution of the level of the river at <span class="math inline">t</span> plus five minutes.</p>
 </section>
-<section id="marginal-distributions" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="marginal-distributions"><span class="header-section-number">4.4</span> Marginal Distributions</h2>
+<section id="sec-marginal-distr" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="sec-marginal-distr"><span class="header-section-number">4.4</span> Marginal Distributions</h2>
 <p>The marginal distribution of <span class="math inline">X</span> is obtained by summing the joint distribution of <span class="math inline">X</span> and <span class="math inline">Y</span> over all possible values of <span class="math inline">Y</span>.</p>
 <p><span class="math display">
 p_X(x) = \sum_{y=2}^{3}p_{XY}(x, y)
