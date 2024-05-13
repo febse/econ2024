@@ -357,36 +357,36 @@ Notice that this statistic can be large (far away from zero) in two cases:
 Let us compute the t-statistic for the hypothesis pair in [-@eq-hypothesis-true-one-sided]. In the data set `slopes` the column `estimate` holds the estimated $\beta_1$, the (estimate) standard error is in the column `std.error`. @fig-sim-t-statistic-h0-true shows the distribution of the t-statistics in our simulated samples.
 
 ```{r}
-sim_slopes <- sim_slopes %>%
-  mutate(
-    t_statistic = (estimate - 15) / std.error
-)
+# sim_slopes <- sim_slopes %>%
+#   mutate(
+#     t_statistic = ...
+# )
 ```
 
 ```{r}
 #| label: fig-sim-t-statistic-h0-true
 #| fig-cap: "Distribution of the t-statistic when the null hypothesis is correct."
 
-sim_slopes %>%
-  ggplot(aes(x = t_statistic)) +
-  geom_point(
-    aes(y = 0),
-    position = "jitter",
-    size = 1 / 2,
-    alpha = 0.5
-  ) +
-  geom_boxplot(alpha = 0.5) +
-  labs(
-    x = "Value of the t-statistic",
-    title = "Distribution of t-statistic under a true null hypothesis beta_1 = 11.77 (2000 samples)",
-    y = ""
-  ) +
-  geom_density(color = "steelblue") +
-  geom_vline(xintercept = 0, color = "red") +
-  geom_vline(xintercept = c(-2), color = "steelblue", lty = 2) +
-  geom_vline(xintercept = c(-3), color = "firebrick", lty = 2) +
-  xlim(c(-4, 8)) +
-  scale_x_continuous(breaks = c(-3, -2, 0))
+# sim_slopes %>%
+#   ggplot(aes(x = ...)) +
+#   geom_point(
+#     aes(y = 0),
+#     position = "jitter",
+#     size = 1 / 2,
+#     alpha = 0.5
+#   ) +
+#   geom_boxplot(alpha = 0.5) +
+#   labs(
+#     x = "Value of the t-statistic",
+#     title = "Distribution of t-statistic under a true null hypothesis beta_1 = 11.77 (2000 samples)",
+#     y = ""
+#   ) +
+#   geom_density(color = "steelblue") +
+#   geom_vline(xintercept = 0, color = "red") +
+#   geom_vline(xintercept = c(-2), color = "steelblue", lty = 2) +
+#   geom_vline(xintercept = c(-3), color = "firebrick", lty = 2) +
+#   xlim(c(-4, 8)) +
+#   scale_x_continuous(breaks = c(-3, -2, 0))
 ```
 
 We should see two things in @fig-sim-t-statistic-h0-true.
@@ -402,19 +402,15 @@ Let us study the two decision rules depicted as vertical dashed lines in @fig-si
 In the simulation we can simply count the number of samples where we will make a wrong decision to reject the null hypothesis (remember, in this example $H_0$ is true).
 
 ```{r}
-sim_slopes <- sim_slopes %>%
-  mutate(
-    wrong_decision_blue = t_statistic < -2,
-    wrong_decision_red = t_statistic < -3
-  )
+# sim_slopes <- sim_slopes %>%
+#   mutate(
+#     wrong_2 = ...,
+#     wrong_3 = ...
+#   )
 
-## Share of TRUE values (blue)
-sum(sim_slopes$wrong_decision_blue)
-mean(sim_slopes$wrong_decision_blue)
+# ## Share of TRUE values (blue)
 
 ## Share of TRUE values (red)
-sum(sim_slopes$wrong_decision_red)
-mean(sim_slopes$wrong_decision_red)
 ```
 
 The "less than -2" rule makes a wrong decision in 7 out of 200 samples (3.5 percent). The "less than -3" rule makes a wrong decision in 2 out of 200 samples (one percent).
@@ -439,35 +435,35 @@ $$ {#eq-t-statistic-h0-wrong}
 We will compute the t-statistic in [-@eq-t-statistic-h0-wrong] for each sample and will visualize its distribution in @fig-t-statistic-h0-false.
 
 ```{r}
-sim_slopes <- sim_slopes %>%
-  mutate(
-    t_statistic0 = (estimate - 0) / std.error
-  )
+# sim_slopes <- sim_slopes %>%
+#   mutate(
+#     t_statistic0 = ...
+#   )
 ```
 
 ```{r}
 #| label: fig-t-statistic-h0-false
 #| fig-cap: "Distribution of the t-statistic under the (wrong) null hypothesis $\beta_1 = 0$."
 
-sim_slopes %>%
-  ggplot(aes(x = t_statistic0)) +
-  geom_point(
-    aes(y = 0),
-    position = "jitter",
-    size = 1 / 2,
-    alpha = 0.5
-  ) +
-  geom_boxplot(alpha = 0.5) +
-  labs(
-    x = "t-statistic",
-    y = "Density"
-  ) +
-  geom_density(color = "steelblue") +
-  geom_vline(xintercept = 0, color = "red") +
-  geom_vline(xintercept = c(2), color = "steelblue", lty = 2) +
-  geom_vline(xintercept = c(3), color = "firebrick", lty = 2) +
-  xlim(c(-4, 8)) +
-  scale_x_continuous(breaks = c(0, 2, 3))
+# sim_slopes %>%
+#   ggplot(aes(x = ...)) +
+#   geom_point(
+#     aes(y = 0),
+#     position = "jitter",
+#     size = 1 / 2,
+#     alpha = 0.5
+#   ) +
+#   geom_boxplot(alpha = 0.5) +
+#   labs(
+#     x = "t-statistic",
+#     y = "Density"
+#   ) +
+#   geom_density(color = "steelblue") +
+#   geom_vline(xintercept = 0, color = "red") +
+#   geom_vline(xintercept = c(2), color = "steelblue", lty = 2) +
+#   geom_vline(xintercept = c(3), color = "firebrick", lty = 2) +
+#   xlim(c(-4, 8)) +
+#   scale_x_continuous(breaks = c(0, 2, 3))
 ```
 
 Notice that the center of the distribution of the t-statistic is no longer close to zero. This happens because the null hypothesis is wrong in this example.
@@ -477,20 +473,17 @@ Let us consider two decision rules for rejecting $H_0$. The first one rejects fo
 We can count the number of samples where these two rules lead to wrong decisions. A wrong decision in this case is the non-rejection of the null hypothesis.
 
 ```{r}
-sim_slopes <- sim_slopes %>%
-  mutate(
-    ## A wrong decision here is to not-reject the null
-    wrong_decision_blue_1 = t_statistic0 < 2,
-    wrong_decision_red_1 = t_statistic0 < 3
-  )
+# sim_slopes <- sim_slopes %>%
+#   mutate(
+#     ## A wrong decision here is to not-reject the null
+#     wrong_decision_blue_1 = ...,
+#     wrong_decision_red_1 = ...
+#   )
 
 ## Number of TRUE values
-sum(sim_slopes$wrong_decision_blue_1)
-sum(sim_slopes$wrong_decision_red_1)
 
 ## Share of TRUE values
-mean(sim_slopes$wrong_decision_blue_1)
-mean(sim_slopes$wrong_decision_red_1)
+
 ```
 
 The rejection rule "greater than 2" rejected the null hypothesis in all samples. The rejection rul "greater than 3" failed to reject the null hypothesis in 8 out of 200 samples (four percent).
@@ -713,8 +706,7 @@ ggplot() +
 ```
 
 ```{r}
-qt(0.05 / 2, df = 434 - 2)
-qt(1 - 0.05 / 2, df = 434 - 2)
+#
 ```
 
 For $df = 432$ and $\alpha = 0.05$ the critical values are $t_{0.05 / 2}(432) = -1.96$ and $t_{1 - 0.05 / 2}(432) = 1.96$. Due to the symmetry of the t-distribution these critical values are equal in absolute value.
@@ -729,7 +721,7 @@ Let us take the example with the children from @sec-simple-anova. For convenienc
 summary(lm(kid_score ~ 1 + mom_hs, data = kids))
 ```
 
-Now we consider three null-hypotehsis and alternative pairs.
+Now we consider three null-hypothesis and alternative pairs.
 
 $$
 H_0: \beta_1 \leq 0 \\
@@ -749,7 +741,8 @@ $$
 The notation $\text{t-statistic}^{obs}$ refers to the value of the statistic in the sample (5.1). If $H_0$ is true, i.e. $\beta_1 = 0$ we know that the t-statistic follows a t-distribution with $df = 432$. We can compute the probability of samples with t-statistics less than 5.1 using the `pt` function.
 
 ```{r}
-1 - pt(5.1, df = 434 - 2)
+## Calculate the p-value for the one-sided alternative
+
 ```
 
 This probability is equal to about 2.5 out of 10 million. This means that samples with a t-statistic greater than the one observed (5.1) are extremely rare. Either we have been extremely lucky to select a very rare sample or the null hypothesis is wrong.
@@ -759,14 +752,16 @@ Let us now consider the other one-sided alternative
 $$
 H_0: \beta_1 \geq 0 \\
 H_1: \beta_1 < 0
-$$ For this alternative extreme values of the t-statistic are large (in absolute value) negative values. Therefore the p-value of the test is
+$$ 
+
+For this alternative extreme values of the t-statistic are large (in absolute value) negative values. Therefore the p-value of the test is
 
 $$
 P(t < \text{t-statistic}^{obs} | H_0)
 $$ We can compute this probability using `pt`.
 
 ```{r}
-pt(5.1, df = 434 -2)
+
 ```
 
 This p-value is close to one, implying that under the null hypothesis almost all samples would have a t-statistic less than 5.1.
@@ -782,10 +777,11 @@ Now both large positive and large (in absolute value) negative values of the t-s
 
 $$
 \text{p-value} = P(t < -5.1 | H_0) + P(t > 5.1 | H_0)
-$$ We can compute it with a the `pt` function. Notice that this is the same value (up to rounding errors) as the one shown in the $Pr(>|t|)$ column in the output of `summary`.
+$$ 
+
+We can compute it with a the `pt` function. Notice that this is the same value (up to rounding errors) as the one shown in the $Pr(>|t|)$ column in the output of `summary`.
 
 ```{r}
-pt(-5.1, df = 434 - 2) + (1 - pt(5.1, df = 434 - 2))
 ```
 
 How would the p-value look like if the t-statistic was negative, e.g. -5.1? Again, extreme values are the ones less that -5.1 and greater than the absolute value, i.e. 5.1. We can write this more succinctly (and this explains the notation for the column in the `summary` output):
@@ -797,23 +793,23 @@ $$
 Finally, let us see the distribution of p-values in the simulation study. Here we will compute it for the true null hypothesis $H_0: \beta_1 = 11.77, H_1: \beta_1 \neq 11.77$. Figure @fig-p-value-h0-true shows the estimated density of the p-values (in each sample). You can see that the density is roughly constant over the interval \[0, 1\]. Indeed, it can be shown that the p-value if uniformly distributed over this interval if the null hypothesis is true.
 
 ```{r}
-sim_slopes <- sim_slopes %>%
-  mutate(
-    p_value_h0_true = 2 * pt(-abs(t_statistic), df = 434 - 2)
-  )
+# sim_slopes <- sim_slopes %>%
+#   mutate(
+#     p_value_h0_true = ...
+#   )
 ```
 
 ```{r}
 #| label: fig-p-value-h0-true
 #| fig-cap: "Distribution of p-values under the (true) null hypothesis"
 
-sim_slopes %>%
-  ggplot(aes(x = p_value_h0_true)) + 
-  geom_density() + 
-  labs(
-    x = "p-value",
-    y = "Density"
-  )
+# sim_slopes %>%
+#   ggplot(aes(x = ...)) + 
+#   geom_density() + 
+#   labs(
+#     x = "p-value",
+#     y = "Density"
+#   )
 ```
 
 When using the p-value to make a rejection decision we compare it to a predetermined probability of a wrong rejection of a true null hypothesis. This is the same approach that we followed when we derived the critical values of the tests. A widely used convention is to reject a null hypothesis if the p-value is less than 0.05.
@@ -821,12 +817,12 @@ When using the p-value to make a rejection decision we compare it to a predeterm
 Let us apply this convention in the simulation and see in how many samples we make a wrong decision.
 
 ```{r}
-sim_slopes <- sim_slopes %>%
-  mutate(
-    reject_h0_based_on_p_value = p_value_h0_true < 0.05
-  )
+# sim_slopes <- sim_slopes %>%
+#   mutate(
+#     reject_h0_based_on_p_value = ...
+#   )
 
-table(sim_slopes$reject_h0_based_on_p_value)
+# table(sim_slopes$reject_h0_based_on_p_value)
 ```
 
 ## Confidence intervals {#sec-sim-ci}
@@ -847,19 +843,19 @@ $$
 Compute the upper and the lower bounds of the confidence intervals for each sample in the simulation with a coverage probability of $1 - \alpha = 0.9$. In how many samples did the confidence interval contain the real coefficient $\beta_1$?
 
 ```{r}
-sim_slopes <- sim_slopes %>%
-  mutate(
-    CI_lower = estimate + std.error * qt(0.1 / 2, df = 434 - 2),
-    CI_upper = estimate + std.error * qt(1 - 0.1 / 2, df = 434 - 2),
-    ## Construct a new variables that is TRUE/FALSE if the
-    ## true value of beta_1 (11.77) is inside the confidence interval
-    beta1_in_CI = CI_lower < 11.77 & 11.77 < CI_upper
-  )
+# sim_slopes <- sim_slopes %>%
+#   mutate(
+#     CI_lower = ...,
+#     CI_upper = ...,
+#     ## Construct a new variables that is TRUE/FALSE if the
+#     ## true value of beta_1 (11.77) is inside the confidence interval
+#     beta1_in_CI = ...
+#   )
 ```
 
 ```{r}
-sum(sim_slopes$beta1_in_CI)
-mean(sim_slopes$beta1_in_CI)
+# sum(sim_slopes$beta1_in_CI)
+# mean(sim_slopes$beta1_in_CI)
 ```
 
 The CI contained the true value of $\beta_1$ in 178 out of 200 samples (89 percent). This is quite close to the coverage probability $1 - \alpha = 0.9$ The CI that we constructed above are visualized in @fig-sim-ci. For the sake of clarity the plot is limited to the first 50 samples. Confidence intervals that do not contain the true value of $\beta_1$ are show in red. Notice that the boundaries differ from sample to sample (as to the coefficient estimates).
@@ -868,40 +864,40 @@ The CI contained the true value of $\beta_1$ in 178 out of 200 samples (89 perce
 #| label: fig-sim-ci
 #| fig-cap: "Confidence intervals for the first 50 samples. The vertical line is drawn at 11.77 (the real value of $\\beta_1$)."
 
-sim_slopes %>%
-  ungroup() %>%
-  slice_head(n = 50) %>%
-  ggplot(
-    aes(
-      x = estimate, 
-      y = factor(R),
-      xmin = CI_lower,
-      xmax = CI_upper,
-      color = beta1_in_CI
-    )
-  ) + 
-  geom_point() + 
-  geom_errorbarh() + 
-  labs(
-    x = "",
-    y = "Sample",
-    color = "Beta1 in CI"
-  ) + 
-  theme(
-    axis.text.y = element_blank(),
-    axis.ticks.y = element_blank(),
-  ) + 
-  geom_vline(
-    xintercept = 15
-  )
+# sim_slopes %>%
+#   ungroup() %>%
+#   slice_head(n = 50) %>%
+#   ggplot(
+#     aes(
+#       x = estimate, 
+#       y = factor(R),
+#       xmin = CI_lower,
+#       xmax = CI_upper,
+#       color = beta1_in_CI
+#     )
+#   ) + 
+#   geom_point() + 
+#   geom_errorbarh() + 
+#   labs(
+#     x = "",
+#     y = "Sample",
+#     color = "Beta1 in CI"
+#   ) + 
+#   theme(
+#     axis.text.y = element_blank(),
+#     axis.ticks.y = element_blank(),
+#   ) + 
+#   geom_vline(
+#     xintercept = 15
+#   )
 ```
 
 ```{r}
-dt <- tibble(
-  x = 1:10,
-  y = rnorm(10, mean = 2 + 0.3 * x, sd = 0.5)
-)
+# dt <- tibble(
+#   x = 1:10,
+#   y = rnorm(10, mean = 2 + 0.3 * x, sd = 0.5)
+# )
 
-fit <- lm(y ~ 0 + x, data = dt)
-sum(residuals(fit))
+# fit <- lm(y ~ 0 + x, data = dt)
+# sum(residuals(fit))
 ```
