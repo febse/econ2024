@@ -15,6 +15,7 @@ book:
     - 04b-Continuous-Distributions.qmd
     - 05-One-Way-ANOVA.qmd
     - 06-Simulation.qmd
+    - 07-Multiple-Regression.qmd
     - lecture_problems.qmd
     # - 00-Homework-Instructions.qmd  
     # - 02a-Continuous-Distributions.qmd
