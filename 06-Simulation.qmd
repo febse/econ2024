@@ -77,8 +77,6 @@ pop <- tibble(
   select(-mu)
 ```
 
-
-
 ## Selecting the sample
 
 We will select $R = 1000$ samples from the population. Each sample will have $n = 434$ children. We will store the samples in a data frame called `sim`.
@@ -133,7 +131,7 @@ Now apply `lm` on that sample and compare the coefficient estimates with the fir
 lm(kid_score ~ 1 + mom_hs, data = sample_1)
 ```
 
-:::{#exr-sim-ols-estimates}
+::: {#exr-sim-ols-estimates}
 Select the second sample from the data set `sim` and compute the OLS estimates for the coefficients $\beta_0$ and $\beta_1$.
 
 ```{r}
@@ -145,7 +143,6 @@ Select the second sample from the data set `sim` and compute the OLS estimates f
 # lm(..., data = ...)
 ```
 :::
-
 
 ## Distribution of the OLS estimates
 
@@ -194,7 +191,7 @@ We see that this value is very close to the real value of 11.77. This is a conse
 
 The standard deviation of this distribution is called the *standard error* of $\hat{\beta}_1$. It describes the spread of the sampling distribution of the estimates.
 
-:::{.callout-note collapse="true"}
+::: {.callout-note collapse="true"}
 ## Is this distribution a coincidence?
 
 The distribution of the OLS estimates that we see in the simulation is a consequence of the properties of the OLS estimator and the sampling process. Remember that we are selecting independent samples (this means that the chance to be selected in one sample does not depend on the chance to be selected in another sample) from the same population.
@@ -209,8 +206,7 @@ $$
 \hat{\beta}_1 = \frac{\sum_{i = 1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i = 1}^n (x_i - \bar{x})^2}
 $$
 
-and remember that the average deviation of a bunch of values from their average
-is zero. 
+and remember that the average deviation of a bunch of values from their average is zero.
 
 $$
 \sum_{i = 1}^n (x_i - \bar{x}) = 0
@@ -274,15 +270,15 @@ $$
 
 We say that the OLS estimator is unbiased. This means that the average of the estimates over all possible samples is equal to the true value of the population parameter (this is basically the result that we saw in the simulation).
 
-Right now we have established that the expected value of the OLS estimator is equal to the true value of the population parameter. There is another property of the OLS estimator (or any other estimater) that is important and that is its variablity (spread) around the expected value over all possible samples. 
+Right now we have established that the expected value of the OLS estimator is equal to the true value of the population parameter. There is another property of the OLS estimator (or any other estimater) that is important and that is its variablity (spread) around the expected value over all possible samples.
 
 We can measure the variability of the OLS estimator by computing the standard deviation of the estimates in the simulation. The standard deviation is just the square root of the variance, so we start with the variance.
 
 $$
 Var(\hat{\beta}_1 |x) = Var\left(\sum_{i = 1}^n w_i y_i |x \right) = \sum_{i = 1}^n w_i^2 Var(y_i |x) = \sigma^2 \sum_{i = 1}^n w_i^2
-$${#eq-variance-ols-estimator-slope}
+$$ {#eq-variance-ols-estimator-slope}
 
-The above expression uses the fact that the $y_i$ are uncorrelated given $x$ and have the same variance $\sigma^2$ (homoscedasticity) and the fact that the weights $w_i$ are fixed (not random) under the condition $x$. It furthermore uses the fact that the variance of a sum of _uncorrelated_ random variables is the sum of the variances of these random variables.
+The above expression uses the fact that the $y_i$ are uncorrelated given $x$ and have the same variance $\sigma^2$ (homoscedasticity) and the fact that the weights $w_i$ are fixed (not random) under the condition $x$. It furthermore uses the fact that the variance of a sum of *uncorrelated* random variables is the sum of the variances of these random variables.
 
 $$
 Var(X + Y) = Var(X) + Var(Y)
@@ -304,21 +300,14 @@ $$
 
 and we already know that the denominator is just the sum of squared deviations of $x$.
 
-So we can denote the denomitator as 
+So we can denote the denomitator as
 
 $$
 S_{xx} = \sum_{i = 1}^n (x_i - \bar{x})^2 = \sum_{i = 1}^n (x_i - \bar{x})x_i
 $$
 
 and rewrite the weights as
-
 :::
-
-
-
-
-
-
 
 ```{r}
 sd(sim_slopes$estimate)
@@ -435,10 +424,10 @@ $$ {#eq-t-statistic-h0-wrong}
 We will compute the t-statistic in [-@eq-t-statistic-h0-wrong] for each sample and will visualize its distribution in @fig-t-statistic-h0-false.
 
 ```{r}
-# sim_slopes <- sim_slopes %>%
-#   mutate(
-#     t_statistic0 = ...
-#   )
+sim_slopes <- sim_slopes %>%
+  mutate(
+    t_statistic0 = estimate / std.error
+  )
 ```
 
 ```{r}
@@ -742,6 +731,7 @@ The notation $\text{t-statistic}^{obs}$ refers to the value of the statistic in 
 
 ```{r}
 ## Calculate the p-value for the one-sided alternative
+#
 
 ```
 
@@ -752,7 +742,7 @@ Let us now consider the other one-sided alternative
 $$
 H_0: \beta_1 \geq 0 \\
 H_1: \beta_1 < 0
-$$ 
+$$
 
 For this alternative extreme values of the t-statistic are large (in absolute value) negative values. Therefore the p-value of the test is
 
@@ -777,7 +767,7 @@ Now both large positive and large (in absolute value) negative values of the t-s
 
 $$
 \text{p-value} = P(t < -5.1 | H_0) + P(t > 5.1 | H_0)
-$$ 
+$$
 
 We can compute it with a the `pt` function. Notice that this is the same value (up to rounding errors) as the one shown in the $Pr(>|t|)$ column in the output of `summary`.
 
