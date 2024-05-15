@@ -31,6 +31,23 @@ During World war 2 combat aviation played a crucial role but also suffered heavy
 
 ```{r}
 # install.packages(c("plotly", "GGally"))
+
+if (!require("tidyverse")) {
+  install.packages("tidyverse")
+}
+
+if (!require("broom")) {
+  install.packages("broom")
+}
+
+if (!require("patchwork")) {
+  install.packages("patchwork")
+}
+
+if (!require("GGally")) {
+  install.packages("GGally")
+}
+
 library(tidyverse)
 library(patchwork)
 library(plotly)
@@ -44,7 +61,6 @@ Variables description:
 -   `C`: number of crimes per 100,000 inhabitants
 -   `HS`: share of high school graduates
 -   `U`: share of persons living in urban areas
-
 
 ```{r}
 ## Code for illustration purposes only
@@ -147,8 +163,7 @@ $$
 
 ### Predictions
 
-Predict the crime rate in 3 hypothetical counties using the centered
-predictor model.
+Predict the crime rate in 3 hypothetical counties using the centered predictor model.
 
 $$
 \hat{C}_{HS = 0} = ? \\
@@ -219,7 +234,6 @@ ggpairs(crime, columns = c(4, 3, 2), lower = list(continuous = "smooth"))
 
 
 ## Fourth Model: Crime, Education, and Urbanization
-
 
 $$
 C_i = \beta_0 + \beta_1 \text{HS}_i  + \beta_2 \text{U}_i + e_i
