@@ -76,37 +76,18 @@ sim <- pop %>%
     # We will add a column to identify the sample number
     sample_id = rep(1:R, each = n)
   )
-```
 
-The resulting data frame `sim` has $434 \times 1000 = 434000$ rows and contains the samples that we will use to study the statistical properties of the OLS estimators.
-
-## OLS estimates in each sample
-
-Now that we have the samples in the data set `sim_samples` we can compute the OLS estimates for $\beta_0$ and $\beta_1$ in each sample.
-
-```{r}
 sim_coeffs <- sim %>%
   group_by(sample_id) %>%
   ## The tidy function reformats the output of lm so that it can fit in a data frame
   do(tidy(lm(kid_score ~ 1 + mom_hs, data = .))) %>%
   select(sample_id, term, estimate, std.error, statistic)
 
-```
-
-```{r}
-## Creates a separate table with the coefficients for mom_hs
 sim_slopes <- sim_coeffs %>%
   filter(term == "mom_hs")
-```
 
-The last code chunk may seem a little bit complex, but is simply groups the `sim_samples` data by the sample number and then runs the `lm` function with the data in each sample. You can verify the results in `sim_coeffs` by running the `lm` function manually with the data from the first sample (of course you can choose another sample). The coefficient estimates in `sim_coeffs` are stored in a column called `estimate`. As there are two coefficients in our model, the column `term` tells you whether a row holds the estimate for the intercept $\hat{\beta}_0$ (`term == "(Intercept)"`) or the slope $\hat{\beta}_1$ (`term == "mom_hs"`).
-
-You can use the `filter` function to select only the observations in the first sample
-
-```{r}
 sample_1 <- sim %>% filter(sample_id == 1)
 ```
-
 
 ```{r}
 # Compute the p-value for the null hypothesis that beta1 >= 0 vs beta1 < 0
