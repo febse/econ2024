@@ -78,11 +78,11 @@ $$
 $$
 
 ```{r}
-gdp2019 %>%
-  group_by(gdppc_gr) %>%
-  summarise(
-    Avg = mean(gdppc)
-  )
+# gdp2019 %>%
+#   group_by(gdppc_gr) %>%
+#   summarise(
+#     ...
+#   )
 ```
 
 ```{r}
@@ -113,6 +113,36 @@ gdp2019 %>%
     alpha = 0.5
   )
 ```
+
+Very often we want test the hypothesis that a certain subset of the coefficients are simultaneously equal to zero. This is called a joint hypothesis.
+
+In our example we could test the hypothesis that the coefficients of `Med Low`, `Med High`, `High` and `Very High` are all equal to zero. This is equivalent to testing if the average of `gdppc` is the same in all groups.
+
+The test is called an F-test and is based on the ratio of the sum of squared errors of the restricted model and the sum of squared errors of the unrestricted model.
+
+The restricted model is the one where the coefficients of `Med Low`, `Med High`, `High` and `Very High` are all equal to zero.
+
+The unrestricted model is the one where all coefficients are estimated.
+
+The F-test is based on the following statistic:
+
+$$
+F = \frac{(RSS_{\text{restricted}} - RSS_{\text{unrestricted}}) / (p_{\text{restricted}} - p_{\text{unrestricted}})}{RSS_{\text{unrestricted}} / (n - p_{\text{unrestricted}})}
+$$
+
+where $p$ is the number of coefficients in the model and $n$ is the number of observations.
+
+```{r}
+fit2
+```
+
+```{r}
+if (!require("car")) install.packages("car")
+
+library(car)
+linearHypothesis(fit2, c("gdppc_grMedium-low - gdppc_grMedium-high = 0"))
+```
+
 
 ## Interaction effect
 
@@ -212,7 +242,6 @@ fit1_pred <- predict(
   )
 ```
 
-
 Plot the fitted values (model predictions) against the residuals.
 
 ```{r}
@@ -227,8 +256,6 @@ fit1_pred %>%
 ```
 
 3.  Add a quadratic term to the linear model and estimate it
-
-
 
 $$
 y_i = \beta_0 + \beta_1 x_i + \beta_2 x^2_i + e_i, e_i \sim N(0, \sigma^2)
@@ -275,7 +302,6 @@ fit2_pred %>%
     y = "Residual"
   )
 ```
-
 
 4.  Add the third and fourth degree polynomial terms to the model and estimate it
 
@@ -331,7 +357,7 @@ $$
 R^2 = 1 - \frac{RSS}{TSS} \\
 RSS = \sum_{i = 1}^{n}(y_i - \hat{y}_i)^2 \\
 TSS = \sum_{i = 1}^{n}(y_i - \bar{y})^2
-$$ 
+$$
 
 Compute $R^2$ for the three models. Which model fits the data best according to it?
 
@@ -358,7 +384,6 @@ sim_noconst %>%
 summary(lm(y ~ 1 + x, data = sim_noconst))
 summary(lm(y ~ 0 + x, data = sim_noconst))
 ```
-
 
 2.  Adjusted $R^2$
 

@@ -90,8 +90,39 @@ sample_1 <- sim %>% filter(sample_id == 1)
 ```
 
 ```{r}
+lm(kid_score ~ mom_hs, data = sample_1) %>% summary()
+```
+
+
+```{r}
 # Compute the p-value for the null hypothesis that beta1 >= 0 vs beta1 < 0
 
+sim_slopes <- sim_slopes %>%
+  mutate(
+    t_obs = (estimate - 15) / std.error,
+    p_value1 = pt(t_obs, df = 434 - 2),
+    p_value2 = 1 - pt(t_obs, df = 434 - 2),
+    p_value3 = 2 * pt(-abs(t_obs), df = 434 - 2)
+  )
+
+alpha <- 0.05
+qt(alpha / 2, df = 434 - 2)
+qt(1 - alpha / 2, df = 434 - 2)
+
+pt(-1, df = 434 - 2) + (1 - pt(1, df = 434 - 2))
+pt(-4.286431, df = 434 - 2) + (1 - pt(4.286431, df = 434 - 2))
+```
+
+```{r}
+summary(sim_slopes$p_value3)
+```
+
+
+```{r}
+```
+
+
+```{r}
 # Compute the p-value for the null hypothesis that beta1 >= 0 vs beta1 < 0
 
 # Compute the p-value for the null hypothesis that beta1 >= 0 vs beta1 < 0
