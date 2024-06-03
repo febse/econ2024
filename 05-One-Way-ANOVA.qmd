@@ -22,6 +22,10 @@ if (!require("latex2exp")) {
   install.packages("latex2exp")
 }
 
+if (!require("maps")) {
+  install.packages("maps")
+}
+
 library(tidyverse)
 library(broom)
 library(patchwork)
@@ -86,8 +90,7 @@ kids %>%
   )
 ```
 
-:::{#exr-summary-kids}
-
+::: {#exr-summary-kids}
 Use the following code stub to compute the average IQ scores for the two groups of children in the `kids` data set.
 
 ```{r}
@@ -100,9 +103,7 @@ Use the following code stub to compute the average IQ scores for the two groups 
 #     ... = mean(...)
 #   )
 ```
-
 :::
-
 
 Let us see how we can model the average IQ scores within a simple linear model.
 
@@ -126,7 +127,6 @@ The predicted IQ score for the $i$-th child is
 $$
 \hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x
 $$
-
 
 Alternatively (and more generally) we can write the model as:
 
@@ -156,7 +156,7 @@ $$
 \beta_0 & = \mu_0 \\
 \beta_1 & = \mu_1 - \mu_0
 \end{align*}
-$$ 
+$$
 
 Therefore, the constant in the model ($\beta_0$) equals the population average IQ score of children in the $x = 0$ group. The slope coefficient $\beta_1$ equals the difference between the population average IQ scores. @fig-simple-anova-model-vis visualizes the population of children (as the model in @eq-simple-anova sees it). There are two groups of children in that population. The first has an average IQ score of $\mu_0$, the second group has an average IQ score of $\mu_1$. The children in both groups are normally distributed and the two distributions have the same standard deviation (spread).
 
