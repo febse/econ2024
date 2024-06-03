@@ -808,18 +808,18 @@ lm(formula = y ~ 1 + x, data = dt)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--4021.3 -2706.3  -857.5  2612.0  6979.2 
+-4515.0 -2588.1  -717.5  2125.3  7281.6 
 
 Coefficients:
               Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 13384.2553   218.1911  61.342   &lt;2e-16 ***
-x              -0.3725     3.7604  -0.099    0.921    
+(Intercept) 13411.6816   215.6508   62.19   &lt;2e-16 ***
+x              -0.2605     3.7166   -0.07    0.944    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 3093 on 199 degrees of freedom
-Multiple R-squared:  4.932e-05, Adjusted R-squared:  -0.004976 
-F-statistic: 0.009815 on 1 and 199 DF,  p-value: 0.9212</code></pre>
+Residual standard error: 3057 on 199 degrees of freedom
+Multiple R-squared:  2.469e-05, Adjusted R-squared:  -0.005 
+F-statistic: 0.004914 on 1 and 199 DF,  p-value: 0.9442</code></pre>
 </div>
 </div>
 <p>Fit a linear (in x) model to the data <span class="math display">
@@ -841,19 +841,19 @@ lm(formula = y ~ 1 + x + I(x^2), data = dt)
 
 Residuals:
      Min       1Q   Median       3Q      Max 
--1172.67  -347.94   -35.26   312.40  2181.52 
+-1485.55  -339.47    20.42   344.75  1506.10 
 
 Coefficients:
               Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 9993.59818   56.13636 178.024   &lt;2e-16 ***
-x             -0.37255    0.64498  -0.578    0.564    
-I(x^2)         1.00713    0.01243  81.034   &lt;2e-16 ***
+(Intercept) 10058.2259    54.2192 185.510   &lt;2e-16 ***
+x              -0.2605     0.6230  -0.418    0.676    
+I(x^2)          0.9961     0.0120  82.979   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 530.6 on 198 degrees of freedom
-Multiple R-squared:  0.9707,    Adjusted R-squared:  0.9704 
-F-statistic:  3283 on 2 and 198 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 512.4 on 198 degrees of freedom
+Multiple R-squared:  0.972, Adjusted R-squared:  0.9718 
+F-statistic:  3443 on 2 and 198 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <p><span class="math display">
