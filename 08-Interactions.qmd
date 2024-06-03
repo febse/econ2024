@@ -143,55 +143,42 @@ library(car)
 linearHypothesis(fit2, c("gdppc_grMedium-low - gdppc_grMedium-high = 0"))
 ```
 
-
 ## Interaction effect
 
 ```{r}
-kids <- read_csv(
-  "https://raw.githubusercontent.com/feb-uni-sofia/econometrics2020-solutions/master/data/childiq.csv") %>%
-  select(kid_score, mom_hs, mom_iq) %>%
+# Load the data
+stu <- read.csv("https://raw.githubusercontent.com/febse/data/main/econ/drinking.csv") %>%
   mutate(
-    mom_hs = factor(mom_hs)
+    sex = ifelse(male == 1, "Male", "Female")
   )
+
+# Print the first few rows
+stu %>% head()
+
 ```
 
 ```{r}
-kids_splt <- kids %>%
-  ggplot(aes(x = mom_iq, y = kid_score, color = mom_hs)) +
-  geom_point()
-
-kids_splt
+stu %>%
+  ggplot(aes(x=gpa, y=drink)) +
+    geom_point() +
+    geom_smooth(method=lm)
 ```
 
 ```{r}
-lm(kid_score ~ 1 + mom_hs, data = kids)
+m1 <- lm(drink ~ gpa, data = stu)
+m1 %>% summary()
 ```
 
 ```{r}
-lm(mom_iq ~ 1 + mom_hs, data = kids)
+m2 <- lm(drink ~ sex + gpa, data = stu)
+m2 %>% summary()
 ```
 
 ```{r}
-fit1 <- lm(kid_score ~ 1 + mom_hs + mom_iq, data = kids)
-summary(fit1)
+m3 <- lm(drink ~ sex * gpa, data = stu)
+m3 %>% summary()
 ```
 
-```{r}
-kids_splt + 
-  geom_abline(intercept = 25.73154, slope = 0.56, color = "firebrick") + 
-  geom_abline(intercept = 25.73154 + 5.95012, slope = 0.56, color = "steelblue")
-```
-
-```{r}
-fit2 <- lm(kid_score ~ 1 + mom_hs * mom_iq, data = kids)
-summary(fit2)
-```
-
-```{r}
-kids_splt + 
-  geom_abline(intercept = -11.4820, slope = 0.9689, color = "firebrick") + 
-  geom_abline(intercept = -11.4820 + 51.2682 + 5.95012, slope = 0.9689 -0.4843, color = "steelblue")
-```
 
 ## Polynomial regression
 
