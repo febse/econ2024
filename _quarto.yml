@@ -7,6 +7,7 @@ book:
   date: "4/11/2023"
   chapters:
     - index.qmd
+    - 00-Homework.qmd
     - 00-Recommended-Literature.qmd
     - 01-Introduction-to-R.qmd
     - 02-Descriptive-Statistics.qmd
