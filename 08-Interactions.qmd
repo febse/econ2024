@@ -154,7 +154,6 @@ stu <- read.csv("https://raw.githubusercontent.com/febse/data/main/econ/drinking
 
 # Print the first few rows
 stu %>% head()
-
 ```
 
 ```{r}
@@ -391,3 +390,21 @@ AIC(fit1)
 AIC(fit2)
 AIC(fit3)
 ```
+
+4. Validation
+
+```{r}
+smpl <- sample(1:100, 20)
+poly_dt_estim <- poly_dt[smpl, ]
+poly_dt_test <- poly_dt[-smpl, ]
+
+fit2_estim <- lm(y ~ poly(x, 4), data = poly_dt_estim)
+fit5_test <- lm(y ~ poly(x, 4), data = poly_dt_test)
+
+pred2 <- predict(fit2_estim, newdata = poly_dt_estim)
+pred5 <- predict(fit2_estim, newdata = poly_dt_estim)
+
+# TODO: calculate the MSE in the test data
+
+```
+
