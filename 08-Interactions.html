@@ -760,18 +760,18 @@ lm(formula = y ~ x, data = poly_dt)
 
 Residuals:
    Min     1Q Median     3Q    Max 
--5.493 -3.040 -1.382  3.102 10.793 
+-5.634 -3.190 -1.364  3.538  8.322 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  5.98843    0.42877  13.967   &lt;2e-16 ***
-x           -0.08962    0.19556  -0.458    0.648    
+(Intercept)  5.51418    0.40393   13.65   &lt;2e-16 ***
+x            0.02078    0.20699    0.10     0.92    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 3.982 on 98 degrees of freedom
-Multiple R-squared:  0.002138,  Adjusted R-squared:  -0.008044 
-F-statistic:  0.21 on 1 and 98 DF,  p-value: 0.6478</code></pre>
+Residual standard error: 3.895 on 98 degrees of freedom
+Multiple R-squared:  0.0001028, Adjusted R-squared:  -0.0101 
+F-statistic: 0.01008 on 1 and 98 DF,  p-value: 0.9202</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -818,20 +818,20 @@ Call:
 lm(formula = y ~ x + I(x^2), data = poly_dt)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--2.3345 -0.6263 -0.1194  0.7092  3.1190 
+     Min       1Q   Median       3Q      Max 
+-2.26724 -0.67946  0.00859  0.64784  1.86036 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  2.01634    0.15417   13.08   &lt;2e-16 ***
-x            0.93871    0.05764   16.29   &lt;2e-16 ***
-I(x^2)       1.00014    0.02700   37.04   &lt;2e-16 ***
+(Intercept)  2.19292    0.13146   16.68   &lt;2e-16 ***
+x            1.02907    0.05737   17.94   &lt;2e-16 ***
+I(x^2)       1.00892    0.02599   38.83   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.029 on 97 degrees of freedom
-Multiple R-squared:  0.9341,    Adjusted R-squared:  0.9327 
-F-statistic: 687.5 on 2 and 97 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 0.9627 on 97 degrees of freedom
+Multiple R-squared:  0.9396,    Adjusted R-squared:  0.9383 
+F-statistic: 753.8 on 2 and 97 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -896,22 +896,22 @@ Call:
 lm(formula = y ~ x + I(x^2) + I(x^3) + I(x^4), data = poly_dt)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--2.6498 -0.6583 -0.1202  0.7121  2.3779 
+     Min       1Q   Median       3Q      Max 
+-2.21519 -0.75007  0.02045  0.70025  1.80183 
 
 Coefficients:
              Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  2.284699   0.184731  12.368  &lt; 2e-16 ***
-x            1.047241   0.165512   6.327 8.16e-09 ***
-I(x^2)       0.857340   0.082810  10.353  &lt; 2e-16 ***
-I(x^3)      -0.011854   0.025628  -0.463    0.645    
-I(x^4)       0.009748   0.008615   1.132    0.261    
+(Intercept)  2.048820   0.158902  12.894  &lt; 2e-16 ***
+x            1.110686   0.149787   7.415 5.04e-11 ***
+I(x^2)       1.156085   0.093263  12.396  &lt; 2e-16 ***
+I(x^3)      -0.019377   0.023738  -0.816    0.416    
+I(x^4)      -0.015138   0.009736  -1.555    0.123    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.004 on 95 degrees of freedom
-Multiple R-squared:  0.9385,    Adjusted R-squared:  0.9359 
-F-statistic: 362.2 on 4 and 95 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 0.9591 on 95 degrees of freedom
+Multiple R-squared:  0.9412,    Adjusted R-squared:  0.9388 
+F-statistic: 380.4 on 4 and 95 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -975,15 +975,15 @@ TSS = \sum_{i = 1}^{n}(y_i - \bar{y})^2
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit1)<span class="sc">$</span>r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.002138215</code></pre>
+<pre><code>[1] 0.0001028273</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit2)<span class="sc">$</span>r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9341008</code></pre>
+<pre><code>[1] 0.9395522</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit3)<span class="sc">$</span>r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9384609</code></pre>
+<pre><code>[1] 0.941239</code></pre>
 </div>
 </div>
 <p>Note: don’t use <span class="math inline">R^2</span> in models without a constant</p>
@@ -1012,19 +1012,19 @@ Call:
 lm(formula = y ~ 1 + x, data = sim_noconst)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--2.9738 -0.6123  0.0309  0.5645  3.4392 
+     Min       1Q   Median       3Q      Max 
+-2.05917 -0.64007 -0.04722  0.61696  2.16795 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   1.8239     0.2211   8.248 7.47e-13 ***
-x             0.3914     0.3706   1.056    0.293    
+(Intercept)  1.93830    0.19605   9.887   &lt;2e-16 ***
+x            0.05243    0.34494   0.152    0.879    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.062 on 98 degrees of freedom
-Multiple R-squared:  0.01126,   Adjusted R-squared:  0.001168 
-F-statistic: 1.116 on 1 and 98 DF,  p-value: 0.2934</code></pre>
+Residual standard error: 0.9342 on 98 degrees of freedom
+Multiple R-squared:  0.0002357, Adjusted R-squared:  -0.009966 
+F-statistic: 0.0231 on 1 and 98 DF,  p-value: 0.8795</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> x, <span class="at">data =</span> sim_noconst))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1034,17 +1034,17 @@ lm(formula = y ~ 0 + x, data = sim_noconst)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--2.8903 -0.4296  0.5144  1.3937  4.2708 
+-2.1840 -0.3556  0.4241  1.3124  4.0217 
 
 Coefficients:
   Estimate Std. Error t value Pr(&gt;|t|)    
-x   3.0724     0.2305   13.33   &lt;2e-16 ***
+x   3.0507     0.2311    13.2   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.375 on 99 degrees of freedom
-Multiple R-squared:  0.6422,    Adjusted R-squared:  0.6386 
-F-statistic: 177.7 on 1 and 99 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 1.314 on 99 degrees of freedom
+Multiple R-squared:  0.6377,    Adjusted R-squared:  0.634 
+F-statistic: 174.2 on 1 and 99 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
@@ -1063,15 +1063,15 @@ R^2_{ADJ} = 1 - \frac{n - 1}{n - p - 1} \frac{RSS}{TSS}
 <div class="cell">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(fit1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 564.1389</code></pre>
+<pre><code>[1] 559.7203</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(fit2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 294.3901</code></pre>
+<pre><code>[1] 281.133</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(fit3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 291.5447</code></pre>
+<pre><code>[1] 282.3028</code></pre>
 </div>
 </div>
 <ol start="4" type="1">
