@@ -807,19 +807,19 @@ Call:
 lm(formula = y ~ 1 + x, data = dt)
 
 Residuals:
-   Min     1Q Median     3Q    Max 
- -4736  -2672   -855   2204   6670 
+    Min      1Q  Median      3Q     Max 
+-4238.4 -2622.4  -705.6  2084.6  7145.5 
 
 Coefficients:
              Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 1.334e+04  2.172e+02  61.426   &lt;2e-16 ***
-x           5.862e-01  3.743e+00   0.157    0.876    
+(Intercept) 13413.951    213.443  62.846   &lt;2e-16 ***
+x               1.109      3.679   0.301    0.763    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 3079 on 199 degrees of freedom
-Multiple R-squared:  0.0001232, Adjusted R-squared:  -0.004901 
-F-statistic: 0.02452 on 1 and 199 DF,  p-value: 0.8757</code></pre>
+Residual standard error: 3026 on 199 degrees of freedom
+Multiple R-squared:  0.0004565, Adjusted R-squared:  -0.004566 
+F-statistic: 0.09089 on 1 and 199 DF,  p-value: 0.7634</code></pre>
 </div>
 </div>
 <p>Fit a linear (in x) model to the data <span class="math display">
@@ -841,19 +841,19 @@ lm(formula = y ~ 1 + x + I(x^2), data = dt)
 
 Residuals:
      Min       1Q   Median       3Q      Max 
--1420.61  -365.27    24.47   361.50  1211.00 
+-1532.34  -296.43    22.43   292.77  1129.95 
 
 Coefficients:
              Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 9961.8005    53.3037 186.888   &lt;2e-16 ***
-x              0.5862     0.6124   0.957     0.34    
-I(x^2)         1.0039     0.0118  85.068   &lt;2e-16 ***
+(Intercept) 1.009e+04  5.026e+01 200.736   &lt;2e-16 ***
+x           1.109e+00  5.775e-01   1.921   0.0562 .  
+I(x^2)      9.876e-01  1.113e-02  88.756   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 503.8 on 198 degrees of freedom
-Multiple R-squared:  0.9734,    Adjusted R-squared:  0.9731 
-F-statistic:  3619 on 2 and 198 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 475 on 198 degrees of freedom
+Multiple R-squared:  0.9755,    Adjusted R-squared:  0.9752 
+F-statistic:  3941 on 2 and 198 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <p><span class="math display">
